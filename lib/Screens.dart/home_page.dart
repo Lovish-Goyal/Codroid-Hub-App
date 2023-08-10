@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
+import 'widgets/addition_feature_card.dart';
 import 'widgets/end_drawer.dart';
 import 'widgets/feature_card.dart';
 
@@ -11,6 +12,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // backgroundColor: Colors.blue[700],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -114,6 +116,86 @@ class HomePage extends StatelessWidget {
               ]),
             )
           ]),
+          Container(
+            margin: const EdgeInsets.all(20),
+            child: Column(children: [
+              Image.asset(
+                "assets/images/image1.png",
+                color: const Color.fromARGB(237, 255, 235, 59),
+              ),
+              const Text(
+                "Selling Top Courses",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+                textScaleFactor: 3.5,
+                textAlign: TextAlign.center,
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.star, color: Colors.yellow),
+                  Icon(Icons.star, color: Colors.yellow),
+                  Icon(Icons.star, color: Colors.yellow),
+                  Icon(Icons.star, color: Colors.yellow),
+                  Icon(Icons.star, color: Colors.yellow),
+                ],
+              )
+            ]),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            "Our perks",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            textScaleFactor: 3.5,
+            textAlign: TextAlign.center,
+          ),
+          ResponsiveGridRow(children: [
+            ResponsiveGridCol(
+                xl: 3,
+                lg: 4,
+                md: 4,
+                child: const AdditionalFeaturesCard(
+                  headingText: "50+",
+                  subHeadingText: "Faculty",
+                  icon: Icons.people,
+                  color: Colors.blue,
+                )),
+            ResponsiveGridCol(
+                xl: 3,
+                lg: 4,
+                md: 4,
+                child: const AdditionalFeaturesCard(
+                  headingText: "10000+",
+                  subHeadingText: "Downloads",
+                  icon: Icons.download,
+                  color: Colors.blue,
+                )),
+            ResponsiveGridCol(
+                xl: 3,
+                lg: 4,
+                md: 4,
+                child: const AdditionalFeaturesCard(
+                  headingText: "5000+",
+                  subHeadingText: "Active Install",
+                  icon: Icons.install_mobile,
+                  color: Colors.blue,
+                )),
+            ResponsiveGridCol(
+                xl: 3,
+                lg: 4,
+                md: 4,
+                child: const AdditionalFeaturesCard(
+                  headingText: "50+",
+                  subHeadingText: "Courses",
+                  icon: Icons.book_rounded,
+                  color: Colors.blue,
+                )),
+          ])
         ]),
       ),
       endDrawer:

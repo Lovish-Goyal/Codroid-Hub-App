@@ -37,6 +37,7 @@ dependencies:
   go_router: ^10.0.0
   flutter_riverpod: ^2.3.6
   responsive_grid: ^2.4.2
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
