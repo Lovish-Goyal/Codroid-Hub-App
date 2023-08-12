@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'animated_text.dart';
+import '../animated_text.dart';
 
 class AdditionalFeaturesCard extends StatelessWidget {
   const AdditionalFeaturesCard({

@@ -1,9 +1,10 @@
+import 'package:codroid_hub/Screens/widgets/cards/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
-import 'widgets/addition_feature_card.dart';
+import 'widgets/cards/addition_feature_card.dart';
 import 'widgets/end_drawer.dart';
-import 'widgets/feature_card.dart';
+import 'widgets/cards/feature_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
                 width: double.infinity,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                  opacity: 0.9,
+                  opacity: 0.8,
                   image: AssetImage("assets/images/codroid.jpg"),
                   fit: BoxFit.fill,
                 )),
@@ -195,7 +196,124 @@ class HomePage extends StatelessWidget {
                   icon: Icons.book_rounded,
                   color: Colors.blue,
                 )),
-          ])
+          ]),
+          Container(
+            padding: const EdgeInsets.only(top: 100, bottom: 20),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.blue.shade400,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text("20+",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    textScaleFactor: 10,
+                    textAlign: TextAlign.center),
+                const Text(
+                  "Premium Courses",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+                const Text("Check Our Courses",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    textScaleFactor: 2,
+                    textAlign: TextAlign.center),
+                ResponsiveGridRow(children: [
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                  ResponsiveGridCol(
+                    xl: 3,
+                    lg: 4,
+                    md: 4,
+                    child: const CourseCard(),
+                  ),
+                ]),
+              ],
+            ),
+          ),
         ]),
       ),
       endDrawer:
