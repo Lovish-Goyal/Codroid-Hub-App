@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import 'widgets/cards/addition_feature_card.dart';
+import 'widgets/teem_carousel.dart';
 import 'widgets/end_drawer.dart';
 import 'widgets/cards/feature_card.dart';
 
@@ -118,6 +119,23 @@ class HomePage extends StatelessWidget {
             )
           ]),
           Container(
+              color: Colors.blue[500],
+              padding: const EdgeInsets.symmetric(vertical: 50),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Meet Our Team",
+                      style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CarouselImages()
+                ],
+              )),
+          Container(
             margin: const EdgeInsets.all(20),
             child: Column(children: [
               Image.asset(
@@ -232,60 +250,6 @@ class HomePage extends StatelessWidget {
                     textScaleFactor: 2,
                     textAlign: TextAlign.center),
                 ResponsiveGridRow(children: [
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
                   ResponsiveGridCol(
                     xl: 3,
                     lg: 4,
