@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import 'widgets/cards/addition_feature_card.dart';
-import 'widgets/teem_carousel.dart';
+import 'widgets/team_carousel.dart';
 import 'widgets/end_drawer.dart';
 import 'widgets/cards/feature_card.dart';
 
