@@ -38,6 +38,9 @@ dependencies:
   flutter_riverpod: ^2.3.6
   responsive_grid: ^2.4.2
   animated_text_kit: ^4.2.2
+  flutter_social_button: ^1.1.4+1
+  font_awesome_flutter: ^10.5.0
+  curved_navigation_bar: ^1.0.3
   carousel_slider: ^4.2.1
 
 dev_dependencies:
