@@ -1,3 +1,4 @@
+import 'package:codroid_hub/Screens/footer.dart';
 import 'package:codroid_hub/Screens/widgets/cards/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -6,38 +7,73 @@ import 'widgets/cards/addition_feature_card.dart';
 import 'widgets/end_drawer.dart';
 import 'widgets/cards/feature_card.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Homepage extends StatefulWidget {
+  const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  int pageIndex = 0;
+
+  final pages = [Text("data"), Text("data"), Text("data"), Text("data")];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.blue[400],
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Text("Codroid Hub"),
+            Row(
+              children: [
+                Text(
+                  "CodroidHub Pvt. Ltd.",
+                  style: TextStyle(
+                      color: Colors.white, fontStyle: FontStyle.italic),
+                ),
+              ],
+            ),
             if (MediaQuery.of(context).size.width > 700)
               Row(
                 children: [
-                  TextButton(onPressed: () {}, child: const Text("Home")),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text("contact us")),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text("About us")),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text("Our Team")),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  TextButton(onPressed: () {}, child: const Text("services")),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Home",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "contact us",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "About us",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Our Team",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "services",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )),
                 ],
               )
           ],
@@ -57,24 +93,43 @@ class HomePage extends StatelessWidget {
                 )),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 180),
-                  child: const Column(
-                    children: [
-                      Text(
-                        "Welcome to Codroid Hub",
-                        style: TextStyle(
-                            fontSize: 50,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "Let`s start your journey with the best company codroid hub",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    ],
-                  ),
+                  child: (MediaQuery.of(context).size.width > 600)
+                      ? Column(
+                          children: [
+                            Text(
+                              "Welcome to Codroid Hub",
+                              style: TextStyle(
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Let`s start your journey with the best company codroid hub",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            Text(
+                              "Welcome to Codroid Hub",
+                              style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Let`s start your journey with the best company codroid hub",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
                 )),
             Container(
               margin: const EdgeInsets.only(
@@ -314,10 +369,108 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
+          (MediaQuery.of(context).size.width > 700) ? Footer() : MobileFooter()
         ]),
       ),
+      bottomNavigationBar: (MediaQuery.of(context).size.width < 600)
+          ? buildMyNavBar(context)
+          : null,
       endDrawer:
           MediaQuery.of(context).size.width < 700 ? const EndDrawer() : null,
+    );
+  }
+
+  Container buildMyNavBar(BuildContext context) {
+    return Container(
+      height: 60,
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        // borderRadius: const BorderRadius.only(
+        //   topLeft: Radius.circular(20),
+        //   topRight: Radius.circular(20),
+        // ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 0;
+              });
+            },
+            icon: pageIndex == 0
+                ? const Icon(
+                    Icons.home_filled,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.home_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 1;
+              });
+            },
+            icon: pageIndex == 1
+                ? const Icon(
+                    Icons.work_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.work_outline_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 2;
+              });
+            },
+            icon: pageIndex == 2
+                ? const Icon(
+                    Icons.widgets_rounded,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.widgets_outlined,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
+          IconButton(
+            enableFeedback: false,
+            onPressed: () {
+              setState(() {
+                pageIndex = 3;
+              });
+            },
+            icon: pageIndex == 3
+                ? const Icon(
+                    Icons.person,
+                    color: Colors.white,
+                    size: 35,
+                  )
+                : const Icon(
+                    Icons.person_outline,
+                    color: Colors.white,
+                    size: 35,
+                  ),
+          ),
+        ],
+      ),
     );
   }
 }

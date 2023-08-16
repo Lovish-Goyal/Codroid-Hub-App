@@ -6,7 +6,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
-      builder: (context, state) => const HomePage(),
+      builder: (context, state) => const Homepage(),
     ),
   ]);
 });
