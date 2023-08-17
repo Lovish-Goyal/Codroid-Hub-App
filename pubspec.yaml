@@ -41,6 +41,7 @@ dependencies:
   flutter_social_button: ^1.1.4+1
   font_awesome_flutter: ^10.5.0
   curved_navigation_bar: ^1.0.3
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
