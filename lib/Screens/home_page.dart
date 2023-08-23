@@ -18,7 +18,12 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   int pageIndex = 0;
 
-  final pages = [Text("data"), Text("data"), Text("data"), Text("data")];
+  final pages = [
+    const Text("data"),
+    const Text("data"),
+    const Text("data"),
+    const Text("data")
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class _HomepageState extends State<Homepage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Row(
+            const Row(
               children: [
                 Text(
                   "CodroidHub Pvt. Ltd.",
@@ -42,35 +47,35 @@ class _HomepageState extends State<Homepage> {
                 children: [
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Home",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "contact us",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "About us",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Our Team",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "services",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
@@ -95,7 +100,7 @@ class _HomepageState extends State<Homepage> {
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 180),
                   child: (MediaQuery.of(context).size.width > 600)
-                      ? Column(
+                      ? const Column(
                           children: [
                             Text(
                               "Welcome to Codroid Hub",
@@ -113,7 +118,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         )
-                      : Column(
+                      : const Column(
                           children: [
                             Text(
                               "Welcome to Codroid Hub",
@@ -333,7 +338,9 @@ class _HomepageState extends State<Homepage> {
               ],
             ),
           ),
-          (MediaQuery.of(context).size.width > 700) ? Footer() : MobileFooter()
+          (MediaQuery.of(context).size.width > 700)
+              ? const Footer()
+              : const MobileFooter()
         ]),
       ),
       bottomNavigationBar: (MediaQuery.of(context).size.width < 600)
