@@ -1,12 +1,15 @@
+import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class EndDrawer extends StatelessWidget {
+class EndDrawer extends ConsumerWidget {
   const EndDrawer({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final auth = ref.read(authControllerProvider.notifier);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -45,6 +48,13 @@ class EndDrawer extends StatelessWidget {
           const ListTile(
             leading: Icon(Icons.settings),
             title: Text('Account Settings'),
+          ),
+          ListTile(
+            onTap: () {
+              auth.logout(context);
+            },
+            leading: const Icon(Icons.logout),
+            title: const Text('Logout'),
           ),
           ListTile(
               onTap: () {

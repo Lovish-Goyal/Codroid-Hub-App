@@ -1,0 +1,11 @@
+{
+    "course": "CS 61A",
+    "title": "The Structure and Interpretation of Computer Programs",
+    "author": "Brian Harvey",
+    "imgUrl": "https://i.imgur.com/9QVXK0F.jpg",
+    "price": 2.3,
+    "description": "CS 61A concentrates on the idea of abstraction, allowing the programmer to think in terms appropriate to the problem rather than in low-level operations dictated by the computer hardware.",
+    "$id": "64e60c92b6a14b255d8f",
+    "$createdAt": "2023-08-23T13:41:38.748+00:00",
+    "$updatedAt": "2023-08-23T13:41:38.748+00:00"
+}

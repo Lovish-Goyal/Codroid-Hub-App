@@ -1,7 +1,10 @@
+import 'package:codroid_hub/modules/courses/model/course_model/course_response_model.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
-  const CourseCard({super.key});
+  const CourseCard({super.key, required this.course});
+
+  final CourseResponseModel course;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +17,9 @@ class CourseCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Image.asset(
-            "assets/images/codroid.jpg",
-            // height: 160,
+          Image.network(
+            course.imgUrl,
+            height: 180,
             width: double.infinity,
             fit: BoxFit.cover,
           ),
@@ -26,7 +29,7 @@ class CourseCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  "Cards Title",
+                  course.title,
                   style: TextStyle(
                     fontSize: 24,
                     color: Colors.grey[800],
@@ -34,7 +37,7 @@ class CourseCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Cards Subtitle",
+                  course.description,
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey[700],
