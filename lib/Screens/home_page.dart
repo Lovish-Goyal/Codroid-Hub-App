@@ -1,12 +1,12 @@
 import 'package:codroid_hub/Screens/footer.dart';
-import 'package:codroid_hub/Screens/widgets/cards/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
-import 'widgets/cards/addition_feature_card.dart';
-import 'widgets/team_carousel.dart';
-import 'widgets/end_drawer.dart';
-import 'widgets/cards/feature_card.dart';
+import '../widgets/cards/addition_feature_card.dart';
+import '../widgets/course_container.dart';
+import '../widgets/team_carousel.dart';
+import '../widgets/end_drawer.dart';
+import '../widgets/cards/feature_card.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -18,7 +18,12 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   int pageIndex = 0;
 
-  final pages = [Text("data"), Text("data"), Text("data"), Text("data")];
+  final pages = [
+    const Text("data"),
+    const Text("data"),
+    const Text("data"),
+    const Text("data")
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class _HomepageState extends State<Homepage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Row(
+            const Row(
               children: [
                 Text(
                   "CodroidHub Pvt. Ltd.",
@@ -42,35 +47,35 @@ class _HomepageState extends State<Homepage> {
                 children: [
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Home",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "contact us",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "About us",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Our Team",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )),
                   TextButton(
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "services",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
@@ -95,7 +100,7 @@ class _HomepageState extends State<Homepage> {
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 180),
                   child: (MediaQuery.of(context).size.width > 600)
-                      ? Column(
+                      ? const Column(
                           children: [
                             Text(
                               "Welcome to Codroid Hub",
@@ -113,7 +118,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         )
-                      : Column(
+                      : const Column(
                           children: [
                             Text(
                               "Welcome to Codroid Hub",
@@ -270,70 +275,10 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.blue,
                 )),
           ]),
-          Container(
-            padding: const EdgeInsets.only(top: 100, bottom: 20),
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-              color: Colors.blue.shade400,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            width: double.infinity,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Text("20+",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    textScaleFactor: 10,
-                    textAlign: TextAlign.center),
-                const Text(
-                  "Premium Courses",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  textScaleFactor: 3.5,
-                  textAlign: TextAlign.center,
-                ),
-                const Text("Check Our Courses",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                    textScaleFactor: 2,
-                    textAlign: TextAlign.center),
-                ResponsiveGridRow(children: [
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                  ResponsiveGridCol(
-                    xl: 3,
-                    lg: 4,
-                    md: 4,
-                    child: const CourseCard(),
-                  ),
-                ]),
-              ],
-            ),
-          ),
-          (MediaQuery.of(context).size.width > 700) ? Footer() : MobileFooter()
+          const CoursesContainer(),
+          (MediaQuery.of(context).size.width > 700)
+              ? const Footer()
+              : const MobileFooter()
         ]),
       ),
       bottomNavigationBar: (MediaQuery.of(context).size.width < 600)
