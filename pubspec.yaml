@@ -47,6 +47,7 @@ dependencies:
   uuid: ^3.0.7
   envied: ^0.3.0+3
   logger: ^2.0.1
+  animated_switch: ^0.0.2
 
 dev_dependencies:
   flutter_test:

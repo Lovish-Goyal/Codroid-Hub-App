@@ -1,5 +1,9 @@
-import 'package:codroid_hub/Screens/footer.dart';
+import 'package:codroid_hub/widgets/footer.dart';
+import 'package:codroid_hub/auth/pages/login.dart';
+import 'package:codroid_hub/auth/pages/signup.dart';
+import 'package:codroid_hub/widgets/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../widgets/cards/addition_feature_card.dart';
@@ -29,61 +33,9 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[400],
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const Row(
-              children: [
-                Text(
-                  "CodroidHub Pvt. Ltd.",
-                  style: TextStyle(
-                      color: Colors.white, fontStyle: FontStyle.italic),
-                ),
-              ],
-            ),
-            if (MediaQuery.of(context).size.width > 700)
-              Row(
-                children: [
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Home",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      )),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "contact us",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      )),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "About us",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      )),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Our Team",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      )),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "services",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      )),
-                ],
-              )
-          ],
-        ),
+        toolbarHeight: 70,
+        backgroundColor: Colors.black87,
+        title: AppBarhelper(context)
       ),
       body: SingleChildScrollView(
         child: Column(children: [
@@ -94,7 +46,7 @@ class _HomepageState extends State<Homepage> {
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                   opacity: 0.8,
-                  image: AssetImage("assets/images/codroid.jpg"),
+                  image: AssetImage("images/myhome.jpg"),
                   fit: BoxFit.fill,
                 )),
                 child: Container(
@@ -105,16 +57,15 @@ class _HomepageState extends State<Homepage> {
                             Text(
                               "Welcome to Codroid Hub",
                               style: TextStyle(
-                                  fontSize: 50,
+                                  fontSize: 60,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black),
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
                             Text(
                               "Let`s start your journey with the best company codroid hub",
-                              style: TextStyle(color: Colors.black),
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.black),
                             ),
                           ],
                         )
