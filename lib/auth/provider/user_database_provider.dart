@@ -16,7 +16,7 @@ class UserDatabaseServices {
           databaseId: Env.dataBaseId,
           collectionId: Env.userCollectionId,
           documentId: ID.unique(),
-          data: user.toJson());
+          data: user.toMap());
       Logger().f("User data saved");
     } on AppwriteException catch (e) {
       Logger().e(e.message);
@@ -26,5 +26,23 @@ class UserDatabaseServices {
       return e.toString();
     }
     return null;
+  }
+
+  Future<String?> updateUserData(UserModel user, String id) async {
+    try {
+      final result = await ApiClient.database.updateDocument(
+        databaseId: Env.dataBaseId,
+        collectionId: Env.userCollectionId,
+        documentId: id,
+        data: user.toMap(),
+      );
+      Logger().f(result);
+
+      return null;
+    } on AppwriteException catch (e) {
+      return e.toString();
+    } catch (e) {
+      return e.toString();
+    }
   }
 }

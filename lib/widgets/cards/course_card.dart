@@ -1,10 +1,10 @@
-import 'package:codroid_hub/modules/courses/model/course_model/course_response_model.dart';
+import 'package:codroid_hub/modules/courses/model/course_model.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
   const CourseCard({super.key, required this.course});
 
-  final CourseResponseModel course;
+  final CourseModel course;
 
   @override
   Widget build(BuildContext context) {
