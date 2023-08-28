@@ -1,7 +1,6 @@
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../auth_controller.dart';
 
 class CustomAlertBox extends ConsumerStatefulWidget {
   const CustomAlertBox({super.key});
@@ -26,8 +25,8 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
 
   @override
   Widget build(BuildContext context) {
-    final auth = ref.read(authControllerProvider.notifier);
-    final isLoadingState = ref.watch(authControllerProvider);
+    // final auth = ref.read(authControllerProvider.notifier);
+    // final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(vertical: 140),
@@ -60,7 +59,7 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
@@ -91,17 +90,17 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                           if (value!.isEmpty) {
                             return 'Please enter your password';
                           } else if (value.length > 8) {
-                              return "Please enter 8 digit password";
-                            }
+                            return "Please enter 8 digit password";
+                          }
                           return null;
                         },
                         keyboardType: TextInputType.text,
                         obscureText: _obscureText,
                         decoration: InputDecoration(
-                          focusedBorder: UnderlineInputBorder(
+                          focusedBorder: const UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: Colors.transparent)),
-                          enabledBorder: UnderlineInputBorder(
+                          enabledBorder: const UnderlineInputBorder(
                               borderSide:
                                   BorderSide(color: Colors.transparent)),
                           hintText: 'Enter your password',
@@ -170,7 +169,7 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                     onPressed: () {},
                     child: TextButton(
                         onPressed: () => showDialogSignUp(context),
-                        child: Text('Sign up',
+                        child: const Text('Sign up',
                             style: TextStyle(color: Colors.blue))))
               ],
             ),
@@ -185,12 +184,12 @@ void showDialogLogin(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return CustomAlertBox();
+      return const CustomAlertBox();
     },
   );
 }
 
-extension extString on String {
+extension ExtString on String {
   bool get isValidEmail {
     final emailRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     return emailRegExp.hasMatch(this);

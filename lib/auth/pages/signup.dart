@@ -2,8 +2,6 @@ import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../auth_controller.dart';
-
 class CustomAlertBox extends ConsumerStatefulWidget {
   const CustomAlertBox({super.key});
 
@@ -17,7 +15,7 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
   final TextEditingController confirmpass = TextEditingController();
   bool _obscureText = true;
 
-    final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -28,8 +26,8 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
 
   @override
   Widget build(BuildContext context) {
-    final auth = ref.read(authControllerProvider.notifier);
-    final isLoadingState = ref.watch(authControllerProvider);
+    // final auth = ref.read(authControllerProvider.notifier);
+    // final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
         insetPadding: const EdgeInsets.symmetric(vertical: 100),
@@ -61,7 +59,7 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                             }
                             return null;
                           },
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.transparent)),
@@ -99,10 +97,10 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                           controller: pass,
                           obscureText: _obscureText,
                           decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
+                            focusedBorder: const UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
-                            enabledBorder: UnderlineInputBorder(
+                            enabledBorder: const UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
                             hintText: 'Enter your password',
@@ -149,10 +147,10 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                           controller: confirmpass,
                           obscureText: _obscureText,
                           decoration: InputDecoration(
-                            focusedBorder: UnderlineInputBorder(
+                            focusedBorder: const UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
-                            enabledBorder: UnderlineInputBorder(
+                            enabledBorder: const UnderlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
                             hintText: 'Confirm your password',
@@ -211,7 +209,7 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                       onPressed: () {},
                       child: TextButton(
                           onPressed: () => showDialogLogin(context),
-                          child: Text('Login',
+                          child: const Text('Login',
                               style: TextStyle(color: Colors.blue))))
                 ],
               ),
@@ -223,7 +221,7 @@ void showDialogSignUp(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return CustomAlertBox();
+      return const CustomAlertBox();
     },
   );
 }

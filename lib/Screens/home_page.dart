@@ -1,14 +1,11 @@
-import 'package:codroid_hub/widgets/footer.dart';
-import 'package:codroid_hub/auth/pages/login.dart';
-import 'package:codroid_hub/auth/pages/signup.dart';
+import 'package:codroid_hub/modules/members/pages/members_page.dart';
 import 'package:codroid_hub/widgets/appbar.dart';
+import 'package:codroid_hub/widgets/footer.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../widgets/cards/addition_feature_card.dart';
 import '../widgets/course_container.dart';
-import '../widgets/team_carousel.dart';
 import '../widgets/end_drawer.dart';
 import '../widgets/cards/feature_card.dart';
 
@@ -33,10 +30,9 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
-        backgroundColor: Colors.black87,
-        title: AppBarhelper(context)
-      ),
+          toolbarHeight: 70,
+          backgroundColor: Colors.black87,
+          title: appBarhelper(context)),
       body: SingleChildScrollView(
         child: Column(children: [
           Stack(children: [
@@ -46,7 +42,7 @@ class _HomepageState extends State<Homepage> {
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                   opacity: 0.8,
-                  image: AssetImage("images/myhome.jpg"),
+                  image: AssetImage("assets/images/myhome.jpg"),
                   fit: BoxFit.fill,
                 )),
                 child: Container(
@@ -63,9 +59,8 @@ class _HomepageState extends State<Homepage> {
                             ),
                             Text(
                               "Let`s start your journey with the best company codroid hub",
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black),
+                              style:
+                                  TextStyle(fontSize: 30, color: Colors.black),
                             ),
                           ],
                         )
@@ -129,23 +124,7 @@ class _HomepageState extends State<Homepage> {
               ]),
             )
           ]),
-          Container(
-              color: Colors.blue[500],
-              padding: const EdgeInsets.symmetric(vertical: 50),
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Meet Our Team",
-                      style: TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white)),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  CarouselImages()
-                ],
-              )),
+          const MembersPage(),
           Container(
             margin: const EdgeInsets.all(20),
             child: Column(children: [
@@ -242,7 +221,7 @@ class _HomepageState extends State<Homepage> {
 
   Container buildMyNavBar(BuildContext context) {
     return Container(
-      height: 60,
+      height: 50,
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
         // borderRadius: const BorderRadius.only(
@@ -281,12 +260,12 @@ class _HomepageState extends State<Homepage> {
             },
             icon: pageIndex == 1
                 ? const Icon(
-                    Icons.work_rounded,
+                    Icons.shopping_cart,
                     color: Colors.white,
                     size: 35,
                   )
                 : const Icon(
-                    Icons.work_outline_outlined,
+                    Icons.shopping_cart_outlined,
                     color: Colors.white,
                     size: 35,
                   ),

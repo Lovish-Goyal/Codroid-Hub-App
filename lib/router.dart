@@ -10,8 +10,8 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
-      builder: (context, state) =>  Homepage(),
-     // builder: (context, state) => showAlertDialogLogin(context),
+      builder: (context, state) => const Homepage(),
+      // builder: (context, state) => showAlertDialogLogin(context),
       // user.when(
       //     data: (user) {
       //       if (user != null) {

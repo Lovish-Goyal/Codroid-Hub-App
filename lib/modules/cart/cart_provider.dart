@@ -15,15 +15,6 @@ class CartNotifier extends StateNotifier<List<CartItem>> {
   void removeItemFromCart(String productId) {
     state = state.where((item) => item.productId != productId).toList();
   }
-
-  void updateItemQuantity(String productId, int newQuantity) {
-    state = state.map((item) {
-      if (item.productId == productId) {
-        return item.copyWith(quantity: newQuantity);
-      }
-      return item;
-    }).toList();
-  }
 }
 
 extension CartItemExtensions on CartItem {
