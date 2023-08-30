@@ -14,7 +14,6 @@ final membersListProvider = FutureProvider<List<MembersModel>>((ref) async {
       databaseId: Env.dataBaseId,
     );
 
-    Logger().i(result.documents.first.data);
     final membersList = result.documents
         .map((member) => MembersModel.fromMap(member.data))
         .toList();

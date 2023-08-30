@@ -15,8 +15,8 @@ class UserModel {
   final String profileImg;
   final List<dynamic> transactions;
   final String? id;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  final String? createdAt;
+  final String? updatedAt;
   UserModel({
     required this.name,
     required this.email,
@@ -45,8 +45,8 @@ class UserModel {
     String? profileImg,
     List<dynamic>? transactions,
     String? id,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    String? createdAt,
+    String? updatedAt,
   }) {
     return UserModel(
       name: name ?? this.name,
@@ -77,8 +77,6 @@ class UserModel {
       'isAdmin': isAdmin,
       'profileImg': profileImg,
       'transactions': transactions,
-      'createdAt': createdAt?.millisecondsSinceEpoch,
-      'updatedAt': updatedAt?.millisecondsSinceEpoch,
     };
   }
 
@@ -94,13 +92,9 @@ class UserModel {
       isAdmin: map['isAdmin'] as bool,
       profileImg: map['profileImg'] as String,
       transactions: List<dynamic>.from((map['transactions'] as List<dynamic>)),
-      id: map['\$id'] != null ? map['\$id'] as String : null,
-      createdAt: map['\$createdAt'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['\$createdAt'] as int)
-          : null,
-      updatedAt: map['\$updatedAt'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['\$updatedAt'] as int)
-          : null,
+      id: map['\$id'] as String?,
+      createdAt: map['\$createdAt'] as String?,
+      updatedAt: map['\$updatedAt'] as String?,
     );
   }
 

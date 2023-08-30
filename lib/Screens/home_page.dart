@@ -2,6 +2,7 @@ import 'package:codroid_hub/modules/members/pages/members_page.dart';
 import 'package:codroid_hub/widgets/appbar.dart';
 import 'package:codroid_hub/widgets/footer.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../widgets/cards/addition_feature_card.dart';
@@ -254,6 +255,7 @@ class _HomepageState extends State<Homepage> {
           IconButton(
             enableFeedback: false,
             onPressed: () {
+              context.push("/cart");
               setState(() {
                 pageIndex = 1;
               });

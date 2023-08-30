@@ -7,12 +7,18 @@ class CourseModel {
   final String imgUrl;
   final int price;
   final String description;
+  final String? id;
+  final String? createdAt;
+  final String? updatedAt;
   CourseModel({
     required this.title,
     required this.author,
     required this.imgUrl,
     required this.price,
     required this.description,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
   });
 
   CourseModel copyWith({
@@ -21,6 +27,9 @@ class CourseModel {
     String? imgUrl,
     int? price,
     String? description,
+    String? id,
+    String? createdAt,
+    String? updatedAt,
   }) {
     return CourseModel(
       title: title ?? this.title,
@@ -28,6 +37,9 @@ class CourseModel {
       imgUrl: imgUrl ?? this.imgUrl,
       price: price ?? this.price,
       description: description ?? this.description,
+      id: id ?? this.id,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
     );
   }
 
@@ -38,6 +50,9 @@ class CourseModel {
       'imgUrl': imgUrl,
       'price': price,
       'description': description,
+      // 'id': id,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
     };
   }
 
@@ -46,8 +61,13 @@ class CourseModel {
       title: map['title'] as String,
       author: map['author'] as String,
       imgUrl: map['imgUrl'] as String,
-      price: map['price'],
+      price: map['price'] as int,
       description: map['description'] as String,
+      id: map['\$id'] != null ? map['\$id'] as String : null,
+      createdAt:
+          map['\$createdAt'] != null ? map['\$createdAt'] as String : null,
+      updatedAt:
+          map['\$updatedAt'] != null ? map['\$updatedAt'] as String : null,
     );
   }
 
@@ -58,7 +78,7 @@ class CourseModel {
 
   @override
   String toString() {
-    return 'CourseModel(title: $title, author: $author, imgUrl: $imgUrl, price: $price, description: $description)';
+    return 'CourseModel(title: $title, author: $author, imgUrl: $imgUrl, price: $price, description: $description, id: $id, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -69,7 +89,10 @@ class CourseModel {
         other.author == author &&
         other.imgUrl == imgUrl &&
         other.price == price &&
-        other.description == description;
+        other.description == description &&
+        other.id == id &&
+        other.createdAt == createdAt &&
+        other.updatedAt == updatedAt;
   }
 
   @override
@@ -78,6 +101,9 @@ class CourseModel {
         author.hashCode ^
         imgUrl.hashCode ^
         price.hashCode ^
-        description.hashCode;
+        description.hashCode ^
+        id.hashCode ^
+        createdAt.hashCode ^
+        updatedAt.hashCode;
   }
 }

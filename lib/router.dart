@@ -2,6 +2,7 @@ import 'package:codroid_hub/Screens/about.dart';
 import 'package:codroid_hub/Screens/contact.dart';
 import 'package:codroid_hub/Screens/courses.dart';
 import 'package:codroid_hub/Screens/home_page.dart';
+import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -40,6 +41,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       path: RouteKey.courses,
       builder: (context, state) => const Courses(),
     ),
+    GoRoute(
+      path: RouteKey.cart,
+      builder: (context, state) => const CartPage(),
+    ),
   ]);
 });
 
@@ -50,4 +55,5 @@ class RouteKey {
   static const String about = '/about';
   static const String contact = '/contact';
   static const String courses = '/courses';
+  static const String cart = '/cart';
 }

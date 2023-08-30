@@ -14,7 +14,6 @@ final courseListProvider = FutureProvider((ref) async {
       databaseId: Env.dataBaseId,
     );
 
-    Logger().i(result.documents.first.data);
     final courseList =
         result.documents.map((e) => CourseModel.fromMap(e.data)).toList();
     return courseList;
