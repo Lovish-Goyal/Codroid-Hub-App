@@ -1,13 +1,16 @@
-import 'package:codroid_hub/modules/courses/model/course_model/course_response_model.dart';
+import 'package:codroid_hub/modules/cart/provider/cart_controller_provider.dart';
+import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
-class CourseCard extends StatelessWidget {
+class CourseCard extends ConsumerWidget {
   const CourseCard({super.key, required this.course});
 
-  final CourseResponseModel course;
+  final CourseModel course;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       shape: RoundedRectangleBorder(
@@ -48,17 +51,22 @@ class CourseCard extends StatelessWidget {
                   children: <Widget>[
                     TextButton(
                       child: const Text(
-                        "SHARE",
+                        "Add to Cart",
                         style: TextStyle(color: Colors.blue),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        ref.read(cartProvider.notifier).addItemToCart(
+                            "64eb8bcd4b906865298a", course.id ?? "");
+                      },
                     ),
                     TextButton(
                       child: const Text(
                         "EXPLORE",
                         style: TextStyle(color: Colors.green),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.push("/courseDetails", extra: course);
+                      },
                     ),
                   ],
                 ),

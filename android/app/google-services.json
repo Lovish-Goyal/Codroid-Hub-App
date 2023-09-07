@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "653936850127",
+    "project_id": "codroid-hub-app",
+    "storage_bucket": "codroid-hub-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653936850127:android:f63fb8f5ab865024eab3ba",
+        "android_client_info": {
+          "package_name": "com.example.codroid_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653936850127-ga5tukab0u1ddkf1rm56boqj23is062b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbg6ilBNrO_I9ZJ-SgGLW_25fBslAgo8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653936850127-ga5tukab0u1ddkf1rm56boqj23is062b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

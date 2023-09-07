@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../auth/pages/login.dart';
 import '../auth/pages/signup.dart';
 
-Widget AppBarhelper(BuildContext context) {
+Widget appBarhelper(BuildContext context) {
   return AppBar(
     toolbarHeight: 70,
     backgroundColor: Colors.black87,
@@ -33,7 +33,7 @@ Widget AppBarhelper(BuildContext context) {
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               TextButton(
@@ -43,7 +43,7 @@ Widget AppBarhelper(BuildContext context) {
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               TextButton(
@@ -53,7 +53,7 @@ Widget AppBarhelper(BuildContext context) {
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               TextButton(
@@ -75,7 +75,7 @@ Widget AppBarhelper(BuildContext context) {
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
-              Text(
+              const Text(
                 "/",
                 style: TextStyle(color: Colors.white),
               ),
@@ -86,6 +86,13 @@ Widget AppBarhelper(BuildContext context) {
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
+              // TextButton(
+              //     onPressed: () => context.push('/createCourse'),
+              //     child: const Text(
+              //       "create course",
+              //       style: TextStyle(
+              //           color: Colors.white, fontWeight: FontWeight.bold),
+              //     )),
             ],
           )
       ],

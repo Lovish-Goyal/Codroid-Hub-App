@@ -59,36 +59,6 @@ class CoursesContainer extends ConsumerWidget {
                               ),
                             ))
                         .toList(),
-                    // ResponsiveGridCol(
-                    //   xl: 3,
-                    //   lg: 4,
-                    //   md: 4,
-                    //   child: const CourseCard(),
-                    // ),
-                    // ResponsiveGridCol(
-                    //   xl: 3,
-                    //   lg: 4,
-                    //   md: 4,
-                    //   child: const CourseCard(),
-                    // ),
-                    // ResponsiveGridCol(
-                    //   xl: 3,
-                    //   lg: 4,
-                    //   md: 4,
-                    //   child: const CourseCard(),
-                    // ),
-                    // ResponsiveGridCol(
-                    //   xl: 3,
-                    //   lg: 4,
-                    //   md: 4,
-                    //   child: const CourseCard(),
-                    // ),
-                    // ResponsiveGridCol(
-                    //   xl: 3,
-                    //   lg: 4,
-                    //   md: 4,
-                    //   child: const CourseCard(),
-                    // ),
                   ),
                 ],
               ),

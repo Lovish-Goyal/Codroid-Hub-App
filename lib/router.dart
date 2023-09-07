@@ -2,6 +2,11 @@ import 'package:codroid_hub/Screens/about.dart';
 import 'package:codroid_hub/Screens/contact.dart';
 import 'package:codroid_hub/Screens/courses.dart';
 import 'package:codroid_hub/Screens/home_page.dart';
+import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
+import 'package:codroid_hub/modules/courses/models/course_model.dart';
+import 'package:codroid_hub/modules/courses/pages/course_view.dart';
+import 'package:codroid_hub/modules/courses/pages/create_course_page.dart';
+import 'package:codroid_hub/modules/courses/pages/create_outline_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,8 +15,8 @@ final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
-      builder: (context, state) =>  Homepage(),
-     // builder: (context, state) => showAlertDialogLogin(context),
+      builder: (context, state) => const Homepage(),
+      // builder: (context, state) => showAlertDialogLogin(context),
       // user.when(
       //     data: (user) {
       //       if (user != null) {
@@ -40,6 +45,24 @@ final routerProvider = Provider<GoRouter>((ref) {
       path: RouteKey.courses,
       builder: (context, state) => const Courses(),
     ),
+    GoRoute(
+      path: RouteKey.cart,
+      builder: (context, state) => const CartPage(),
+    ),
+    GoRoute(
+      path: RouteKey.addCourses,
+      builder: (context, state) => const CreateCoursePage(),
+    ),
+    GoRoute(
+      path: RouteKey.courseDetails,
+      builder: (context, state) =>
+          CourseDetailPage(course: state.extra as CourseModel),
+    ),
+    GoRoute(
+        path: "${RouteKey.createOutlinePage}/:courseId",
+        name: "createOutlinePage",
+        builder: (context, state) => CreateOutlinePage(
+            courseId: state.pathParameters['courseId'] ?? "")),
   ]);
 });
 
@@ -50,4 +73,8 @@ class RouteKey {
   static const String about = '/about';
   static const String contact = '/contact';
   static const String courses = '/courses';
+  static const String cart = '/cart';
+  static const String addCourses = '/addCourses';
+  static const String courseDetails = '/courseDetails';
+  static const String createOutlinePage = '/createOutlinePage';
 }

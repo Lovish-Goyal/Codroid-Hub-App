@@ -48,6 +48,11 @@ dependencies:
   envied: ^0.3.0+3
   logger: ^2.0.1
   animated_switch: ^0.0.2
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.9.0
+  google_sign_in: ^6.1.5
+  cloud_firestore: ^4.9.1
+  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:

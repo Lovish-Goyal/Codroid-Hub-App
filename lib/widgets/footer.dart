@@ -85,13 +85,13 @@ class _FooterState extends State<Footer> {
                           style: TextStyle(color: Colors.white),
                         )),
                     TextButton(
-                        onPressed:  () => context.go('/contact'),
+                        onPressed: () => context.go('/contact'),
                         child: const Text(
                           "Contact Us",
                           style: TextStyle(color: Colors.white),
                         )),
                     TextButton(
-                        onPressed:  () => context.go('/about'),
+                        onPressed: () => context.go('/about'),
                         child: const Text(
                           "About us",
                           style: TextStyle(color: Colors.white),
@@ -281,9 +281,9 @@ class MobileFooter extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(32),
               ),
-              child: SizedBox(
+              child: const SizedBox(
                 width: 200,
-                child: const TextField(
+                child: TextField(
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Enter your Email',

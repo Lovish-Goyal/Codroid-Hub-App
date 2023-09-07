@@ -17,17 +17,16 @@ class _CoursesState extends State<Courses> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
-        backgroundColor: Colors.black87,
-        title: AppBarhelper(context)
-      ),
+          toolbarHeight: 70,
+          backgroundColor: Colors.black87,
+          title: appBarhelper(context)),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CoursesContainer(),
+            const CoursesContainer(),
             (MediaQuery.of(context).size.width > 700)
-              ? const Footer()
-              : const MobileFooter()
+                ? const Footer()
+                : const MobileFooter()
           ],
         ),
       ),
