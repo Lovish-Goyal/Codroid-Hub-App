@@ -2,7 +2,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:codroid_hub/appwrite.dart';
 import 'package:codroid_hub/auth/provider/user_database_provider.dart';
 import 'package:codroid_hub/data/env.dart';
-import 'package:codroid_hub/modules/courses/model/course_model.dart';
+import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 

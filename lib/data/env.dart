@@ -25,4 +25,7 @@ abstract class Env {
 
   @EnviedField(varName: 'membersCollectionId')
   static String membersCollectionId = _Env.membersCollectionId;
+
+  @EnviedField(varName: 'outlineCollectionId')
+  static String outlineCollectionId = _Env.outlineCollectionId;
 }

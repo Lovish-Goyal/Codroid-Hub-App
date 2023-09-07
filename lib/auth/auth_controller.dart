@@ -23,8 +23,8 @@ class AuthController extends StateNotifier<bool> {
   final ProviderContainer _ref = ProviderContainer();
   void signUp(UserModel user, String pass, BuildContext context) async {
     state = true;
-    _ref.read(userDatabaseProvider).saveUserData(user);
     final res = await _ref.read(authServicesProvider).signUp(user.email, pass);
+    _ref.read(userDatabaseProvider).saveUserData(user);
     state = false;
     if (res == null) {
       if (!mounted) return;

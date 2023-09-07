@@ -57,14 +57,12 @@ class UserDatabaseServices {
     try {
       final user =
           await ref.read(authControllerProvider.notifier).currentUser();
-      print(user?.$id);
+
       final userId = user?.$id;
       final document = await ApiClient.database.getDocument(
         databaseId: Env.dataBaseId,
         collectionId: Env.userCollectionId,
-
-        //TODO: Change this to user id  when user is implemented
-        documentId: "64eb8bcd4b906865298a",
+        documentId: userId ?? "",
       );
       Logger().f("User data retreived");
       return UserModel.fromMap(document.data);

@@ -86,6 +86,13 @@ Widget appBarhelper(BuildContext context) {
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
+              // TextButton(
+              //     onPressed: () => context.push('/createCourse'),
+              //     child: const Text(
+              //       "create course",
+              //       style: TextStyle(
+              //           color: Colors.white, fontWeight: FontWeight.bold),
+              //     )),
             ],
           )
       ],

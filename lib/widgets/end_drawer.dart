@@ -1,6 +1,7 @@
 import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class EndDrawer extends ConsumerWidget {
   const EndDrawer({
@@ -56,6 +57,10 @@ class EndDrawer extends ConsumerWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Logout'),
           ),
+          ListTile(
+              onTap: () => context.push('/addCourses'),
+              leading: const Icon(Icons.add),
+              title: const Text("Add Courses")),
           ListTile(
               onTap: () {
                 Navigator.pop(context);

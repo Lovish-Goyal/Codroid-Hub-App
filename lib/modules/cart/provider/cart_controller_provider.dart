@@ -1,5 +1,5 @@
 import 'package:codroid_hub/modules/cart/provider/cart_services.dart';
-import 'package:codroid_hub/modules/courses/model/course_model.dart';
+import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final cartProvider = StateNotifierProvider<CartNotifier, List<CourseModel>>(

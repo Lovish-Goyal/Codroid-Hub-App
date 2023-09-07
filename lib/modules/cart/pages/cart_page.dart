@@ -1,5 +1,5 @@
 import 'package:codroid_hub/modules/cart/provider/cart_controller_provider.dart';
-import 'package:codroid_hub/modules/courses/model/course_model.dart';
+import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/utils/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
