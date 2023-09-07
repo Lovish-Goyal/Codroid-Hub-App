@@ -44,7 +44,8 @@ class CourseServices {
           documentId: ID.unique(),
           data: courseOutline.toMap());
 
-      ref.refresh(courseOutlineListProvider(courseOutline.courseId ?? ""));
+      // ignore: unused_result
+      ref.refresh(courseOutlineListProvider(courseOutline.courseId));
       Logger().f("courseOutline Created succesfully");
     } on AppwriteException catch (e) {
       Logger().e(e.message);

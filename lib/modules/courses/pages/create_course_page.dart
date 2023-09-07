@@ -1,7 +1,6 @@
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/provider/course_provider.dart';
 import 'package:codroid_hub/modules/courses/provider/course_services_provider.dart';
-import 'package:codroid_hub/utils/string_to_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,7 +1,5 @@
-import 'package:codroid_hub/auth/provider/firebase_auth_services.dart';
 import 'package:codroid_hub/modules/cart/provider/cart_controller_provider.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
-import 'package:codroid_hub/modules/courses/pages/course_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
