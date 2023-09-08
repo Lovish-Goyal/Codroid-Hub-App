@@ -15,17 +15,20 @@ class EndDrawer extends ConsumerWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
-            //header of drawer
-            decoration: BoxDecoration(
-                color: Colors.redAccent,
-                image: DecorationImage(
-                    image: AssetImage("assets/images/codroidLogo.jpg"),
-                    fit: BoxFit.cover)),
-            child: Text(
-              'My Drawer Header',
-              style: TextStyle(
-                color: Colors.black,
+          SizedBox(
+            height: 180,
+            child: const DrawerHeader(
+              //header of drawer
+              decoration: BoxDecoration(
+                  color: Colors.redAccent,
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/codroidLogo.jpg"),
+                      fit: BoxFit.fill)),
+              child: Text(
+                'My Drawer Header',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

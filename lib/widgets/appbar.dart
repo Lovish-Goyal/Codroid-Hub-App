@@ -5,10 +5,7 @@ import '../auth/pages/login.dart';
 import '../auth/pages/signup.dart';
 
 Widget appBarhelper(BuildContext context) {
-  return AppBar(
-    toolbarHeight: 70,
-    backgroundColor: Colors.black87,
-    title: Row(
+  return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         const Row(
@@ -96,6 +93,5 @@ Widget appBarhelper(BuildContext context) {
             ],
           )
       ],
-    ),
   );
 }
