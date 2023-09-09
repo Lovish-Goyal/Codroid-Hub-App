@@ -26,7 +26,7 @@ class CourseCard extends ConsumerWidget {
             fit: BoxFit.fill,
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(0, 10, 15, 0),
+            padding: const EdgeInsets.fromLTRB(10, 10, 15, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

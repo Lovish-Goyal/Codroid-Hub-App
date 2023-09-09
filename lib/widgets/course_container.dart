@@ -15,7 +15,7 @@ class CoursesContainer extends ConsumerWidget {
 
     return courses.when(
         data: (data) => Container(
-              padding: const EdgeInsets.only(top: 100, bottom: 20),
+              padding: const EdgeInsets.only(top: 10, bottom: 20),
               // margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
                 color: Colors.blue.shade400,

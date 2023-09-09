@@ -14,8 +14,8 @@ class CarouselImages extends ConsumerWidget {
     return membersList.when(
         data: ((list) => CarouselSlider.builder(
               options: CarouselOptions(
-                height: 650,
-                viewportFraction: 0.8,
+                height: 615,
+                viewportFraction: 0.9,
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,

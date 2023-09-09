@@ -61,7 +61,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
                       image: DecorationImage(
-                        image: AssetImage("assets/images/codroid.jpg"),
+                        image: AssetImage("assets/images/home2.jpg"),
                         fit: BoxFit.cover,
                       ),
                     ),

@@ -1,5 +1,6 @@
 import 'package:codroid_hub/Screens/about.dart';
-import 'package:codroid_hub/Screens/contact.dart';
+import 'package:codroid_hub/Screens/mobile/contact.dart';
+import 'package:codroid_hub/Screens/web/contact.dart';
 import 'package:codroid_hub/Screens/web/courses.dart';
 import 'package:codroid_hub/Screens/web/home_page.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
@@ -42,7 +43,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
     GoRoute(
       path: RouteKey.contact,
-      builder: (context, state) => const ContactPage(),
+      builder: (context, state) =>kIsWeb ? const WebContactPage() : const MobContactPage(),
     ),
     GoRoute(
       path: RouteKey.courses,
