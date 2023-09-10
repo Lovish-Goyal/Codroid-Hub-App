@@ -40,8 +40,8 @@ class CartServices {
   Future addItemToCart(String userId, String cartItemId) async {
     try {
       final userData = await ref.watch(userDatabaseProvider).getUserData();
-      if (!userData!.cart.contains(cartItemId)) {
-        userData.cart.add(cartItemId);
+      if (!userData!.cart!.contains(cartItemId)) {
+        userData.cart!.add(cartItemId);
         UserDatabaseServices(ref: ref).updateUserData(userData, userId);
       }
       // final res = await ApiClient.database.getDocument(
@@ -71,7 +71,7 @@ class CartServices {
   Future removeItemFromCart(String userId, String cartItemId) async {
     try {
       final userData = await ref.watch(userDatabaseProvider).getUserData();
-      userData?.cart.remove(cartItemId);
+      userData?.cart!.remove(cartItemId);
       UserDatabaseServices(ref: ref).updateUserData(userData!, userId);
 
       // final res = await ApiClient.database.getDocument(

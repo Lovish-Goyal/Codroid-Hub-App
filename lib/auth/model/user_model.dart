@@ -4,30 +4,30 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class UserModel {
-  final String name;
-  final String email;
-  final List<dynamic> cart;
-  final List<dynamic> favourites;
-  final List<dynamic> orders;
-  final String address;
-  final String phone;
-  final bool isAdmin;
-  final String profileImg;
-  final List<dynamic> transactions;
+  final String? name;
+  final String? email;
+  final List<dynamic>? cart;
+  final List<dynamic>? favourites;
+  final List<dynamic>? orders;
+  final String? address;
+  final String? phone;
+  final bool? isAdmin;
+  final String? profileImg;
+  final List<dynamic>? transactions;
   final String? id;
   final String? createdAt;
   final String? updatedAt;
   UserModel({
-    required this.name,
-    required this.email,
-    required this.cart,
-    required this.favourites,
-    required this.orders,
-    required this.address,
-    required this.phone,
-    required this.isAdmin,
-    required this.profileImg,
-    required this.transactions,
+    this.name,
+    this.email,
+    this.cart,
+    this.favourites,
+    this.orders,
+    this.address,
+    this.phone,
+    this.isAdmin,
+    this.profileImg,
+    this.transactions,
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -99,7 +99,6 @@ class UserModel {
   }
 
   String toJson() => json.encode(toMap());
-
   factory UserModel.fromJson(String source) =>
       UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 

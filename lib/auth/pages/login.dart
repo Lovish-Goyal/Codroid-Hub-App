@@ -2,14 +2,17 @@ import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomAlertBox extends ConsumerStatefulWidget {
-  const CustomAlertBox({super.key});
+import '../auth_controller.dart';
+
+class CustomAlertLoginBox extends ConsumerStatefulWidget {
+  const CustomAlertLoginBox({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _CustomAlertBoxState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _CustomAlertLoginBoxState();
 }
 
-class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
+class _CustomAlertLoginBoxState extends ConsumerState<CustomAlertLoginBox> {
   final TextEditingController email = TextEditingController();
   final TextEditingController pass = TextEditingController();
   bool _obscureText = true;
@@ -25,8 +28,6 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
 
   @override
   Widget build(BuildContext context) {
-    // final auth = ref.read(authControllerProvider.notifier);
-    // final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(vertical: 140),
@@ -89,8 +90,6 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter your password';
-                          } else if (value.length > 8) {
-                            return "Please enter 8 digit password";
                           }
                           return null;
                         },
@@ -141,19 +140,13 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text("Success"),
-                              content:
-                                  const Text("Form Submitted Successfully"),
-                              actions: [
-                                ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text("OK"))
-                              ],
+                            return const Center(
+                              child: CircularProgressIndicator(),
                             );
                           });
+                      ref
+                          .read(authControllerProvider.notifier)
+                          .login(email.text, pass.text, context);
                     }
                   },
                   child: const Text("Login")),
@@ -184,7 +177,7 @@ void showDialogLogin(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return const CustomAlertBox();
+      return const CustomAlertLoginBox();
     },
   );
 }

@@ -23,12 +23,25 @@ class AuthController extends StateNotifier<bool> {
   final ProviderContainer _ref = ProviderContainer();
   void signUp(UserModel user, String pass, BuildContext context) async {
     state = true;
-    final res = await _ref.read(authServicesProvider).signUp(user.email, pass);
+    final res = await _ref.read(authServicesProvider).signUp(user.email!, pass);
     _ref.read(userDatabaseProvider).saveUserData(user);
     state = false;
     if (res == null) {
       if (!mounted) return;
-      showSnackBar(context, "Account Created Successfully");
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("Success"),
+              content: const Text("SignUp Successfully. Login to Continue"),
+              actions: [
+                ElevatedButton(
+                    onPressed: () => context.go("/login"),
+                    child: const Text("OK"))
+              ],
+            );
+          });
+      // showSnackBar(context, "Account Created Successfully. Login to continue");
     } else {
       if (!mounted) return;
       showSnackBar(context, res.toString());
@@ -41,8 +54,21 @@ class AuthController extends StateNotifier<bool> {
     state = false;
     if (res == null) {
       if (!mounted) return;
-      context.go('/home');
-      showSnackBar(context, "login Successfully");
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("Success"),
+              content: const Text("Login Successfully"),
+              actions: [
+                ElevatedButton(
+                    onPressed: () => context.go("/"),
+                    child: const Text("OK"))
+              ],
+            );
+          });
+      // context.go('/home');
+      // showSnackBar(context, "login Successfully");
     } else {
       if (!mounted) return;
       showSnackBar(context, res.toString());

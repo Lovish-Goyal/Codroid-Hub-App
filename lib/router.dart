@@ -3,6 +3,8 @@ import 'package:codroid_hub/Screens/mobile/contact.dart';
 import 'package:codroid_hub/Screens/web/contact.dart';
 import 'package:codroid_hub/Screens/web/courses.dart';
 import 'package:codroid_hub/Screens/web/home_page.dart';
+import 'package:codroid_hub/auth/pages/login.dart';
+import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/pages/course_view.dart';
@@ -56,6 +58,14 @@ final routerProvider = Provider<GoRouter>((ref) {
     GoRoute(
       path: RouteKey.addCourses,
       builder: (context, state) => const CreateCoursePage(),
+    ),
+    GoRoute(
+      path: RouteKey.login,
+      builder: (context, state) => const CustomAlertLoginBox(),
+    ),
+    GoRoute(
+      path: RouteKey.signup,
+      builder: (context, state) => const CustomAlertSignUpBox(),
     ),
     GoRoute(
       path: RouteKey.courseDetails,

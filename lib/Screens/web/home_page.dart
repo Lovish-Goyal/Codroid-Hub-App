@@ -1,8 +1,11 @@
+import 'package:codroid_hub/auth/auth_controller.dart';
+import 'package:codroid_hub/auth/provider/user_database_provider.dart';
+import 'package:codroid_hub/auth/provider/user_provider.dart';
 import 'package:codroid_hub/modules/members/pages/members_page.dart';
 import 'package:codroid_hub/widgets/appbar.dart';
 import 'package:codroid_hub/widgets/footer.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../../widgets/cards/addition_feature_card.dart';
@@ -10,15 +13,14 @@ import '../../widgets/course_container.dart';
 import '../../widgets/end_drawer.dart';
 import '../../widgets/cards/feature_card.dart';
 
-class Homepage extends StatefulWidget {
+class Homepage extends ConsumerStatefulWidget {
   const Homepage({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> {
-
+class _HomepageState extends ConsumerState<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class _HomepageState extends State<Homepage> {
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 180),
                   child: (MediaQuery.of(context).size.width > 600)
-                      ? const Column(
+                      ? Column(
                           children: [
                             Text(
                               "Welcome to Codroid Hub",
@@ -209,3 +211,17 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
+
+
+// class Homepage extends StatefulWidget {
+//   const Homepage({super.key});
+
+//   @override
+//   State<Homepage> createState() => _HomepageState();
+// }
+
+// class _HomepageState extends State<Homepage> {
+
+//   @override
+//   Widget build(BuildContext context) 
+// }

@@ -1,19 +1,24 @@
+import 'package:codroid_hub/auth/model/user_model.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomAlertBox extends ConsumerStatefulWidget {
-  const CustomAlertBox({super.key});
+import '../auth_controller.dart';
+
+class CustomAlertSignUpBox extends ConsumerStatefulWidget {
+  const CustomAlertSignUpBox({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _CustomAlertBoxState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _CustomAlertSignUpBoxState();
 }
 
-class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
+class _CustomAlertSignUpBoxState extends ConsumerState<CustomAlertSignUpBox> {
   final TextEditingController email = TextEditingController();
   final TextEditingController pass = TextEditingController();
   final TextEditingController confirmpass = TextEditingController();
-  bool _obscureText = true;
+  bool _obscureTextpass = true;
+  bool _obscureTextconfirmpass = true;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -26,9 +31,6 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
 
   @override
   Widget build(BuildContext context) {
-    // final auth = ref.read(authControllerProvider.notifier);
-    // final isLoadingState = ref.watch(authControllerProvider);
-
     return AlertDialog(
         insetPadding: const EdgeInsets.symmetric(vertical: 100),
         title: const Center(child: Text("SignUp to CodroidHUb")),
@@ -88,14 +90,13 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter your Password';
-                            } else if (value.length > 8) {
-                              return "Please enter 8 digit password";
-                            }
+                            } else if (value.length < 8)
+                              return 'password should be greater than 8 digits';
                             return null;
                           },
                           keyboardType: TextInputType.text,
                           controller: pass,
-                          obscureText: _obscureText,
+                          obscureText: _obscureTextpass,
                           decoration: InputDecoration(
                             focusedBorder: const UnderlineInputBorder(
                                 borderSide:
@@ -106,13 +107,13 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                             hintText: 'Enter your password',
                             suffixIcon: IconButton(
                               icon: Icon(
-                                _obscureText
+                                _obscureTextpass
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               ),
                               onPressed: () {
                                 setState(() {
-                                  _obscureText = !_obscureText;
+                                  _obscureTextpass = !_obscureTextpass;
                                 });
                               },
                             ),
@@ -138,14 +139,14 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Again Enter your password';
-                            } else if (pass != confirmpass) {
+                            } else if (pass.value != confirmpass.value) {
                               return "Password doesn`t match";
                             }
                             return null;
                           },
                           keyboardType: TextInputType.text,
                           controller: confirmpass,
-                          obscureText: _obscureText,
+                          obscureText: _obscureTextconfirmpass,
                           decoration: InputDecoration(
                             focusedBorder: const UnderlineInputBorder(
                                 borderSide:
@@ -156,13 +157,14 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                             hintText: 'Confirm your password',
                             suffixIcon: IconButton(
                               icon: Icon(
-                                _obscureText
+                                _obscureTextconfirmpass
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               ),
                               onPressed: () {
                                 setState(() {
-                                  _obscureText = !_obscureText;
+                                  _obscureTextconfirmpass =
+                                      !_obscureTextconfirmpass;
                                 });
                               },
                             ),
@@ -181,19 +183,16 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text("Success"),
-                                content:
-                                    const Text("Form Submitted Successfully"),
-                                actions: [
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text("OK"))
-                                ],
+                              return const Center(
+                                child: CircularProgressIndicator(),
                               );
                             });
+                        final auth = UserModel(
+                          email: email.text,
+                        );
+                        ref
+                            .read(authControllerProvider.notifier)
+                            .signUp(auth, pass.text, context);
                       }
                     },
                     child: const Text("Signup")),
@@ -221,7 +220,7 @@ void showDialogSignUp(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return const CustomAlertBox();
+      return const CustomAlertSignUpBox();
     },
   );
 }
