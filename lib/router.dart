@@ -3,6 +3,7 @@ import 'package:codroid_hub/Screens/contact.dart';
 import 'package:codroid_hub/Screens/courses.dart';
 import 'package:codroid_hub/Screens/home_page.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
+import 'package:codroid_hub/modules/cart/razor%20pay/razor_pay.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/pages/course_view.dart';
 import 'package:codroid_hub/modules/courses/pages/create_course_page.dart';
@@ -11,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  // final user = ref.watch(currentUserProvider);
+  // final user = ref.watch(currentUserProvider).value;
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
