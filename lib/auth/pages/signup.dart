@@ -1,15 +1,19 @@
+import 'package:codroid_hub/auth/auth_controller.dart';
+import 'package:codroid_hub/auth/model/user_model.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
 
-class CustomAlertBox extends ConsumerStatefulWidget {
-  const CustomAlertBox({super.key});
+class SignUpCustomAlertBox extends ConsumerStatefulWidget {
+  const SignUpCustomAlertBox({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _CustomAlertBoxState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _SignUpCustomAlertBoxState();
 }
 
-class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
+class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
   final TextEditingController email = TextEditingController();
   final TextEditingController pass = TextEditingController();
   final TextEditingController confirmpass = TextEditingController();
@@ -138,7 +142,7 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Again Enter your password';
-                            } else if (pass != confirmpass) {
+                            } else if (pass.text != confirmpass.text) {
                               return "Password doesn`t match";
                             }
                             return null;
@@ -178,6 +182,14 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
                 child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        final UserModel user = UserModel(
+                          name: email.text,
+                          email: email.text,
+                          id: const Uuid().v4(),
+                        );
+                        ref
+                            .watch(authControllerProvider.notifier)
+                            .signUp(user, pass.text, context);
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -221,7 +233,7 @@ void showDialogSignUp(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return const CustomAlertBox();
+      return const SignUpCustomAlertBox();
     },
   );
 }

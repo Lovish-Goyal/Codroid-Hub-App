@@ -1,13 +1,42 @@
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatefulWidget {
   const Footer({super.key});
 
   @override
   State<Footer> createState() => _FooterState();
+}
+
+_launchFacebook() async {
+  var url = Uri.parse("https://www.facebook.com/codroidhubpvtltd/");
+  var android = Uri.parse("fb://page/codroidhubpvtltd/");
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    await launchUrl(android);
+  }
+}
+
+_launchTwitter() async {
+  var url = Uri.parse("https://twitter.com/codroidhub");
+  await launchUrl(url);
+}
+
+_launchYouTube() async {
+  var url = Uri.parse(
+      "https://www.youtube.com/channel/UCh9VyrzUcj4U-i1ZmoklMeQ/videos");
+  await launchUrl(url);
+}
+
+_launchLinkedin() async {
+  var url = Uri.parse("https://in.linkedin.com/company/codroidhub");
+  await launchUrl(url);
 }
 
 class _FooterState extends State<Footer> {
@@ -154,22 +183,46 @@ class _FooterState extends State<Footer> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                        onPressed: () {},
-                        color: Colors.white,
-                        icon: const Icon(FontAwesomeIcons.facebook)),
-                    IconButton(
-                        onPressed: () {},
-                        color: Colors.white,
-                        icon: const Icon(FontAwesomeIcons.twitter)),
-                    IconButton(
-                        onPressed: () {},
-                        color: Colors.white,
-                        icon: const Icon(FontAwesomeIcons.google)),
-                    IconButton(
-                        onPressed: () {},
-                        color: Colors.white,
-                        icon: const Icon(FontAwesomeIcons.linkedin))
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: const IconButton(
+                          onPressed: _launchFacebook,
+                          color: Colors.blue,
+                          icon: Icon(FontAwesomeIcons.facebook)),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: const IconButton(
+                          onPressed: _launchTwitter,
+                          color: Colors.blue,
+                          icon: Icon(FontAwesomeIcons.twitter)),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: const IconButton(
+                          onPressed: _launchYouTube,
+                          color: Colors.red,
+                          icon: Icon(FontAwesomeIcons.youtube)),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: IconButton(
+                          onPressed: _launchLinkedin,
+                          color: Colors.blue[700],
+                          icon: const Icon(FontAwesomeIcons.linkedin)),
+                    )
                   ],
                 )
               ],
@@ -251,22 +304,46 @@ class MobileFooter extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              IconButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  icon: const Icon(FontAwesomeIcons.facebook)),
-              IconButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  icon: const Icon(FontAwesomeIcons.twitter)),
-              IconButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  icon: const Icon(FontAwesomeIcons.google)),
-              IconButton(
-                  onPressed: () {},
-                  color: Colors.white,
-                  icon: const Icon(FontAwesomeIcons.linkedin))
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: const IconButton(
+                    onPressed: _launchFacebook,
+                    color: Colors.blue,
+                    icon: Icon(FontAwesomeIcons.facebook)),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: const IconButton(
+                    onPressed: _launchTwitter,
+                    color: Colors.blue,
+                    icon: Icon(FontAwesomeIcons.twitter)),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: const IconButton(
+                    onPressed: _launchYouTube,
+                    color: Colors.red,
+                    icon: Icon(FontAwesomeIcons.youtube)),
+              ),
+              Container(
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: IconButton(
+                    onPressed: _launchLinkedin,
+                    color: Colors.blue[700],
+                    icon: const Icon(FontAwesomeIcons.linkedin)),
+              )
             ],
           ),
           const SizedBox(

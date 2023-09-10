@@ -4,30 +4,30 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 class UserModel {
-  final String name;
+  final String? name;
   final String email;
   final List<dynamic> cart;
-  final List<dynamic> favourites;
-  final List<dynamic> orders;
-  final String address;
-  final String phone;
-  final bool isAdmin;
-  final String profileImg;
-  final List<dynamic> transactions;
+  final List<dynamic>? favourites;
+  final List<dynamic>? orders;
+  final String? address;
+  final String? phone;
+  final bool? isAdmin;
+  final String? profileImg;
+  final List<dynamic>? transactions;
   final String? id;
   final String? createdAt;
   final String? updatedAt;
   UserModel({
-    required this.name,
+    this.name,
     required this.email,
-    required this.cart,
-    required this.favourites,
-    required this.orders,
-    required this.address,
-    required this.phone,
-    required this.isAdmin,
-    required this.profileImg,
-    required this.transactions,
+    this.cart = const [],
+    this.favourites,
+    this.orders,
+    this.address,
+    this.phone,
+    this.isAdmin,
+    this.profileImg,
+    this.transactions,
     this.id,
     this.createdAt,
     this.updatedAt,
@@ -82,15 +82,15 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      name: map['name'] as String,
+      name: map['name'] as String?,
       email: map['email'] as String,
       cart: List<dynamic>.from((map['cart'] as List<dynamic>)),
       favourites: List<dynamic>.from((map['favourites'] as List<dynamic>)),
       orders: List<dynamic>.from((map['orders'] as List<dynamic>)),
-      address: map['address'] as String,
-      phone: map['phone'] as String,
-      isAdmin: map['isAdmin'] as bool,
-      profileImg: map['profileImg'] as String,
+      address: map['address'] as String?,
+      phone: map['phone'] as String?,
+      isAdmin: map['isAdmin'] as bool?,
+      profileImg: map['profileImg'] as String?,
       transactions: List<dynamic>.from((map['transactions'] as List<dynamic>)),
       id: map['\$id'] as String?,
       createdAt: map['\$createdAt'] as String?,

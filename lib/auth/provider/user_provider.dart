@@ -10,10 +10,10 @@ final authServicesProvider = Provider((ref) {
 });
 
 class AuthServices {
-  Future signUp(String email, String password) async {
+  Future signUp(String email, String password, String userId) async {
     try {
       final response = await ApiClient.account
-          .create(userId: ID.unique(), email: email, password: password);
+          .create(userId: userId, email: email, password: password);
 
       Logger().i(response.email);
       return null;
@@ -30,6 +30,7 @@ class AuthServices {
     try {
       final response = await ApiClient.account
           .createEmailSession(email: email, password: password);
+
       Logger().i(response);
       return null;
     } on AppwriteException catch (e) {

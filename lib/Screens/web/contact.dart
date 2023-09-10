@@ -2,17 +2,17 @@ import 'package:codroid_hub/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import '../widgets/end_drawer.dart';
-import '../widgets/footer.dart';
+import '../../widgets/end_drawer.dart';
+import '../../widgets/footer.dart';
 
-class ContactPage extends StatefulWidget {
-  const ContactPage({super.key});
+class WebContactPage extends StatefulWidget {
+  const WebContactPage({super.key});
 
   @override
-  State<ContactPage> createState() => _ContactPageState();
+  State<WebContactPage> createState() => _WebContactPageState();
 }
 
-class _ContactPageState extends State<ContactPage> {
+class _WebContactPageState extends State<WebContactPage> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -129,7 +129,7 @@ class _ContactPageState extends State<ContactPage> {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text("(+91) 9874676543")
+                                  Text("(+91) 9138555661")
                                 ],
                               ),
                             ),
@@ -167,7 +167,7 @@ class _ContactPageState extends State<ContactPage> {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text("codroidhub@gmail.com")
+                                  Text("programmanager@codroidhub.com")
                                 ],
                               ),
                             ),

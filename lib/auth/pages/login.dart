@@ -1,15 +1,16 @@
+import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomAlertBox extends ConsumerStatefulWidget {
-  const CustomAlertBox({super.key});
+class LoginCustomAlert extends ConsumerStatefulWidget {
+  const LoginCustomAlert({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _CustomAlertBoxState();
 }
 
-class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
+class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
   final TextEditingController email = TextEditingController();
   final TextEditingController pass = TextEditingController();
   bool _obscureText = true;
@@ -25,8 +26,8 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
 
   @override
   Widget build(BuildContext context) {
-    // final auth = ref.read(authControllerProvider.notifier);
-    // final isLoadingState = ref.watch(authControllerProvider);
+    final auth = ref.read(authControllerProvider.notifier);
+    final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(vertical: 140),
@@ -138,6 +139,9 @@ class _CustomAlertBoxState extends ConsumerState<CustomAlertBox> {
               child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
+                      auth.login(email.text, pass.text, context);
+                      ref.refresh(authControllerProvider);
+
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
@@ -184,7 +188,7 @@ void showDialogLogin(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return const CustomAlertBox();
+      return const LoginCustomAlert();
     },
   );
 }

@@ -1,9 +1,9 @@
 import 'package:codroid_hub/widgets/course_container.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/appbar.dart';
-import '../widgets/end_drawer.dart';
-import '../widgets/footer.dart';
+import '../../widgets/appbar.dart';
+import '../../widgets/end_drawer.dart';
+import '../../widgets/footer.dart';
 
 class Courses extends StatefulWidget {
   const Courses({super.key});

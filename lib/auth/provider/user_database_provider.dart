@@ -16,10 +16,11 @@ class UserDatabaseServices {
   UserDatabaseServices({required this.ref});
   Future<String?> saveUserData(UserModel user) async {
     try {
+      Logger().f(user.id);
       await ApiClient.database.createDocument(
           databaseId: Env.dataBaseId,
           collectionId: Env.userCollectionId,
-          documentId: user.id ?? ID.unique(),
+          documentId: user.id ?? "",
           data: user.toMap());
       Logger().f("User data saved");
     } on AppwriteException catch (e) {
@@ -34,14 +35,12 @@ class UserDatabaseServices {
 
   Future<String?> updateUserData(UserModel user, String id) async {
     try {
-      final result = await ApiClient.database.updateDocument(
+      await ApiClient.database.updateDocument(
         databaseId: Env.dataBaseId,
         collectionId: Env.userCollectionId,
         documentId: id,
         data: user.toMap(),
       );
-      Logger().d("helllllllllllllllllllllllll");
-      Logger().f(result);
 
       return null;
     } on AppwriteException catch (e) {
@@ -56,7 +55,7 @@ class UserDatabaseServices {
   Future<UserModel?> getUserData() async {
     try {
       final user =
-          await ref.read(authControllerProvider.notifier).currentUser();
+          await ref.watch(authControllerProvider.notifier).currentUser();
 
       final userId = user?.$id;
       final document = await ApiClient.database.getDocument(
@@ -64,6 +63,7 @@ class UserDatabaseServices {
         collectionId: Env.userCollectionId,
         documentId: userId ?? "",
       );
+
       Logger().f("User data retreived");
       return UserModel.fromMap(document.data);
     } on AppwriteException catch (e) {

@@ -1,4 +1,5 @@
 import 'package:codroid_hub/widgets/appbar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import '../widgets/cards/addition_feature_card.dart';
@@ -23,7 +24,7 @@ class AboutPage extends StatelessWidget {
               width: double.infinity,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("images/codroid.jpg"), fit: BoxFit.cover),
+                    image: AssetImage("assets/images/aboutpage.jpg"), fit: BoxFit.fill),
               ),
               child: Container(
                 margin: const EdgeInsets.all(20),
@@ -36,7 +37,7 @@ class AboutPage extends StatelessWidget {
                         const Center(
                           child: Text(
                             "Empowering Education through Technological Advancements",
-                            style: TextStyle(fontSize: 45, color: Colors.white),
+                            style: TextStyle(fontSize: 35, color: Colors.white),
                           ),
                         ),
                         const SizedBox(
@@ -146,6 +147,7 @@ class AboutPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
+            if(kIsWeb)
             (MediaQuery.of(context).size.width > 700)
                 ? const Footer()
                 : const MobileFooter()

@@ -3,6 +3,8 @@ import 'package:codroid_hub/appwrite.dart';
 import 'package:codroid_hub/auth/provider/user_database_provider.dart';
 import 'package:codroid_hub/data/env.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
+import 'package:codroid_hub/utils/show_snackbar.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
@@ -37,12 +39,13 @@ class CartServices {
     }
   }
 
-  Future addItemToCart(String userId, String cartItemId) async {
+  Future addItemToCart(String cartItemId) async {
     try {
-      final userData = await ref.watch(userDatabaseProvider).getUserData();
+      final userDatabaseServices = ref.watch(userDatabaseProvider);
+      final userData = await userDatabaseServices.getUserData();
       if (!userData!.cart.contains(cartItemId)) {
         userData.cart.add(cartItemId);
-        UserDatabaseServices(ref: ref).updateUserData(userData, userId);
+        userDatabaseServices.updateUserData(userData, userData.id ?? "");
       }
       // final res = await ApiClient.database.getDocument(
       //     databaseId: Env.dataBaseId,
@@ -68,11 +71,13 @@ class CartServices {
     }
   }
 
-  Future removeItemFromCart(String userId, String cartItemId) async {
+  Future removeItemFromCart(String cartItemId) async {
     try {
-      final userData = await ref.watch(userDatabaseProvider).getUserData();
+      final userDatabaseServices = ref.watch(userDatabaseProvider);
+      final userData = await userDatabaseServices.getUserData();
       userData?.cart.remove(cartItemId);
-      UserDatabaseServices(ref: ref).updateUserData(userData!, userId);
+      UserDatabaseServices(ref: ref)
+          .updateUserData(userData!, userData.id ?? "");
 
       // final res = await ApiClient.database.getDocument(
       //     databaseId: Env.dataBaseId,
