@@ -7,7 +7,8 @@ class LoginCustomAlert extends ConsumerStatefulWidget {
   const LoginCustomAlert({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _CustomAlertBoxState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _CustomAlertBoxState();
 }
 
 class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
@@ -90,8 +91,6 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Please enter your password';
-                          } else if (value.length > 8) {
-                            return "Please enter 8 digit password";
                           }
                           return null;
                         },
@@ -145,19 +144,13 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text("Success"),
-                              content:
-                                  const Text("Form Submitted Successfully"),
-                              actions: [
-                                ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: const Text("OK"))
-                              ],
+                            return const Center(
+                              child: CircularProgressIndicator(),
                             );
                           });
+                      ref
+                          .read(authControllerProvider.notifier)
+                          .login(email.text, pass.text, context);
                     }
                   },
                   child: const Text("Login")),

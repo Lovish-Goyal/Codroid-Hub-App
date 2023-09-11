@@ -39,7 +39,7 @@ class _HomepageState extends State<Homepage> {
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 180),
                   child: (MediaQuery.of(context).size.width > 600)
-                      ? const Column(
+                      ? Column(
                           children: [
                             Text(
                               "Welcome to Codroid Hub",

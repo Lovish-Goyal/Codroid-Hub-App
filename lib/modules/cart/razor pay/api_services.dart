@@ -33,7 +33,10 @@ class RazorApiServices {
     if (response.statusCode == 200) {
       return await response.stream.bytesToString();
     } else {
-      return {"status": "fail", "message": (response.reasonPhrase)};
+      return {
+        "status": "fail",
+        "message": (await response.stream.bytesToString())
+      };
     }
   }
 }

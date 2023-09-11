@@ -17,7 +17,8 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
   final TextEditingController email = TextEditingController();
   final TextEditingController pass = TextEditingController();
   final TextEditingController confirmpass = TextEditingController();
-  bool _obscureText = true;
+  bool _obscureTextpass = true;
+  bool _obscureTextconfirmpass = true;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -30,9 +31,6 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
 
   @override
   Widget build(BuildContext context) {
-    // final auth = ref.read(authControllerProvider.notifier);
-    // final isLoadingState = ref.watch(authControllerProvider);
-
     return AlertDialog(
         insetPadding: const EdgeInsets.symmetric(vertical: 100),
         title: const Center(child: Text("SignUp to CodroidHUb")),
@@ -92,14 +90,13 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter your Password';
-                            } else if (value.length > 8) {
-                              return "Please enter 8 digit password";
-                            }
+                            } else if (value.length < 8)
+                              return 'password should be greater than 8 digits';
                             return null;
                           },
                           keyboardType: TextInputType.text,
                           controller: pass,
-                          obscureText: _obscureText,
+                          obscureText: _obscureTextpass,
                           decoration: InputDecoration(
                             focusedBorder: const UnderlineInputBorder(
                                 borderSide:
@@ -110,13 +107,13 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                             hintText: 'Enter your password',
                             suffixIcon: IconButton(
                               icon: Icon(
-                                _obscureText
+                                _obscureTextpass
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               ),
                               onPressed: () {
                                 setState(() {
-                                  _obscureText = !_obscureText;
+                                  _obscureTextpass = !_obscureTextpass;
                                 });
                               },
                             ),
@@ -149,7 +146,7 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                           },
                           keyboardType: TextInputType.text,
                           controller: confirmpass,
-                          obscureText: _obscureText,
+                          obscureText: _obscureTextconfirmpass,
                           decoration: InputDecoration(
                             focusedBorder: const UnderlineInputBorder(
                                 borderSide:
@@ -160,13 +157,14 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                             hintText: 'Confirm your password',
                             suffixIcon: IconButton(
                               icon: Icon(
-                                _obscureText
+                                _obscureTextconfirmpass
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               ),
                               onPressed: () {
                                 setState(() {
-                                  _obscureText = !_obscureText;
+                                  _obscureTextconfirmpass =
+                                      !_obscureTextconfirmpass;
                                 });
                               },
                             ),
@@ -193,19 +191,16 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text("Success"),
-                                content:
-                                    const Text("Form Submitted Successfully"),
-                                actions: [
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text("OK"))
-                                ],
+                              return const Center(
+                                child: CircularProgressIndicator(),
                               );
                             });
+                        final auth = UserModel(
+                          email: email.text,
+                        );
+                        ref
+                            .read(authControllerProvider.notifier)
+                            .signUp(auth, pass.text, context);
                       }
                     },
                     child: const Text("Signup")),

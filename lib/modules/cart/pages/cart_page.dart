@@ -4,6 +4,7 @@ import 'package:codroid_hub/modules/cart/provider/cart_controller_provider.dart'
 import 'package:codroid_hub/modules/cart/razor%20pay/api_services.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/utils/loading_page.dart';
+import 'package:codroid_hub/utils/show_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
@@ -30,11 +31,13 @@ class _CartPageState extends ConsumerState<CartPage> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
+    showSnackBar(context, "Payment Success");
     Logger().i("Payment Success");
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
     // Do something when payment fails
+    showSnackBar(context, "Payment Failed");
     Logger().e(response.message);
     Logger().e("Payment Failed");
   }
