@@ -9,7 +9,7 @@ class MembersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.blue[500],
+        color: Colors.grey.shade800,
         padding: const EdgeInsets.symmetric(vertical: 50),
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,

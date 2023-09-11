@@ -57,7 +57,6 @@ class _CartPageState extends ConsumerState<CartPage> {
     final razorApiServices = ref.watch(razorPayApiServicesProvider);
     int total = 0;
     final cartList = ref.watch(cartProvider.notifier).getCartItemsList();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cart"),

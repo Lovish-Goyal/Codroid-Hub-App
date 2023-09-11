@@ -36,7 +36,7 @@ Widget appBarhelper(BuildContext context) {
               TextButton(
                   onPressed: () => context.go('/contact'),
                   child: const Text(
-                    "Contact us",
+                    "Contact Us",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
@@ -46,7 +46,7 @@ Widget appBarhelper(BuildContext context) {
               TextButton(
                   onPressed: () => context.go('/about'),
                   child: const Text(
-                    "About us",
+                    "About Us",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
@@ -79,7 +79,7 @@ Widget appBarhelper(BuildContext context) {
               TextButton(
                   onPressed: () => showDialogSignUp(context),
                   child: const Text(
-                    "Signup",
+                    "Register",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),

@@ -18,7 +18,7 @@ class CoursesContainer extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 10, bottom: 20),
               // margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: Colors.blue.shade400,
+                color: Colors.black87,
                 // borderRadius: BorderRadius.circular(10),
               ),
               width: double.infinity,
@@ -42,12 +42,12 @@ class CoursesContainer extends ConsumerWidget {
                     textScaleFactor: 3.5,
                     textAlign: TextAlign.center,
                   ),
-                  const Text("Check Our Courses",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                      textScaleFactor: 2,
-                      textAlign: TextAlign.center),
+                  // const Text("Check Our Courses",
+                  //     style: TextStyle(
+                  //       color: Colors.white,
+                  //     ),
+                  //     textScaleFactor: 2,
+                  //     textAlign: TextAlign.center),
                   ResponsiveGridRow(
                     children: data
                         .map((course) => ResponsiveGridCol(

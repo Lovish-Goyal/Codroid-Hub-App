@@ -16,12 +16,12 @@ class FeatureCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(50),
+      margin: const EdgeInsets.all(30),
       // height: 350,
       // width: 400,
       color: color,
       child: Container(
-        margin: const EdgeInsets.all(30),
+        margin: const EdgeInsets.all(15),
         child: Column(
           children: [
             Icon(
@@ -38,6 +38,9 @@ class FeatureCard extends StatelessWidget {
                 fontSize: 20,
                 color: Colors.white,
               ),
+            ),
+             const SizedBox(
+              height: 10,
             ),
             Text(
               detailText,
