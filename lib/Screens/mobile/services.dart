@@ -25,18 +25,18 @@ class _ServicesState extends ConsumerState<Services> {
           Container(
             height: 200,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(image: NetworkImage("https://cdn.pixabay.com/photo/2018/04/26/16/31/marine-3352341_640.jpg"),fit: BoxFit.cover),
             
             ),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 60,vertical: 20),
-              child: Text("We Offer a Wide Variety of It Services",style: TextStyle(fontSize: 25,color: Colors.black87, fontWeight: FontWeight.bold),)),
+              padding: const EdgeInsets.symmetric(horizontal: 60,vertical: 20),
+              child: const Text("We Offer a Wide Variety of It Services",style: TextStyle(fontSize: 25,color: Colors.black87, fontWeight: FontWeight.bold),)),
           ),
 
 
           Container(
-           margin: EdgeInsets.all(10),
+           margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(20),
@@ -45,18 +45,18 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 280,
                     child: Column(
                       children: [
-                        Icon(Icons.developer_mode,size: 70,),
-                        SizedBox(
+                        const Icon(Icons.developer_mode,size: 70,),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Web development",style: TextStyle(fontSize: 25),),
+                        const Text("Web development",style: TextStyle(fontSize: 25),),
                         Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
+                          padding: const EdgeInsets.all(20),
+                          child: const Text(
                               "The process of designing, building, and maintaining websites using various technologies, tools, programming languages and no - code approach"),
                         )
                       ],
@@ -67,7 +67,7 @@ class _ServicesState extends ConsumerState<Services> {
               )),
 
               Container(
-           margin: EdgeInsets.all(10),
+           margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(20),
@@ -76,18 +76,18 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 280,
                     child: Column(
                       children: [
-                        Icon(Icons.developer_mode,size: 70,),
-                        SizedBox(
+                        const Icon(Icons.developer_mode,size: 70,),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Cyber Security",style: TextStyle(fontSize: 25),),
+                        const Text("Cyber Security",style: TextStyle(fontSize: 25),),
                         Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
+                          padding: const EdgeInsets.all(20),
+                          child: const Text(
                               "Protection of computer systems, networks, and data from unauthorized access, attacks, and digital threats"),
                         )
                       ],
@@ -98,7 +98,7 @@ class _ServicesState extends ConsumerState<Services> {
               )),
 
               Container(
-           margin: EdgeInsets.all(10),
+           margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(20),
@@ -107,18 +107,18 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 280,
                     child: Column(
                       children: [
-                        Icon(Icons.developer_mode,size: 70,),
-                        SizedBox(
+                        const Icon(Icons.developer_mode,size: 70,),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Blockchain",style: TextStyle(fontSize: 25),),
+                        const Text("Blockchain",style: TextStyle(fontSize: 25),),
                         Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
+                          padding: const EdgeInsets.all(20),
+                          child: const Text(
                               "Transparent, secure, decentralized ledger for recording and verifying transactions immutably"),
                         )
                       ],
@@ -128,7 +128,7 @@ class _ServicesState extends ConsumerState<Services> {
                 ],
               )),
               Container(
-           margin: EdgeInsets.all(10),
+           margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(20),
@@ -137,18 +137,18 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 280,
                     child: Column(
                       children: [
-                        Icon(Icons.developer_mode,size: 70,),
-                        SizedBox(
+                        const Icon(Icons.developer_mode,size: 70,),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("AI/ML Services",style: TextStyle(fontSize: 25),),
+                        const Text("AI/ML Services",style: TextStyle(fontSize: 25),),
                         Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
+                          padding: const EdgeInsets.all(20),
+                          child: const Text(
                               "AI/ML refers to the use of algorithms to enable machines to learn from data and make intelligent decisions"),
                         )
                       ],
@@ -159,7 +159,7 @@ class _ServicesState extends ConsumerState<Services> {
               )),
 
               Container(
-           margin: EdgeInsets.all(10),
+           margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(20),
@@ -168,18 +168,18 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 280,
                     child: Column(
                       children: [
-                        Icon(Icons.developer_mode,size: 70,),
-                        SizedBox(
+                        const Icon(Icons.developer_mode,size: 70,),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Product Design",style: TextStyle(fontSize: 25),),
+                        const Text("Product Design",style: TextStyle(fontSize: 25),),
                         Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
+                          padding: const EdgeInsets.all(20),
+                          child: const Text(
                               "Product design is the iterative process of conceptualizing, prototyping, and refining products to deliver exceptional user experiences and values"),
                         )
                       ],
@@ -190,7 +190,7 @@ class _ServicesState extends ConsumerState<Services> {
               )),
 
               Container(
-           margin: EdgeInsets.all(10),
+           margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(20),
@@ -199,18 +199,18 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     height: 280,
                     child: Column(
                       children: [
-                        Icon(Icons.developer_mode,size: 70,),
-                        SizedBox(
+                        const Icon(Icons.developer_mode,size: 70,),
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text("Dedicated Team",style: TextStyle(fontSize: 25),),
+                        const Text("Dedicated Team",style: TextStyle(fontSize: 25),),
                         Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
+                          padding: const EdgeInsets.all(20),
+                          child: const Text(
                               "A dedicated team is a focused group of professionals committed to achieving project goals through specialized expertise and coordinated efforts"),
                         )
                       ],

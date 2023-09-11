@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 
 class UserModel {
   final String? name;
-  final String? email;
-  final List<dynamic>? cart;
+  final String email;
+  final List<dynamic> cart;
   final List<dynamic>? favourites;
   final List<dynamic>? orders;
   final String? address;
@@ -19,8 +19,8 @@ class UserModel {
   final String? updatedAt;
   UserModel({
     this.name,
-    this.email,
-    this.cart,
+    required this.email,
+    this.cart = const [],
     this.favourites,
     this.orders,
     this.address,
@@ -82,15 +82,15 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      name: map['name'] as String,
+      name: map['name'] as String?,
       email: map['email'] as String,
       cart: List<dynamic>.from((map['cart'] as List<dynamic>)),
       favourites: List<dynamic>.from((map['favourites'] as List<dynamic>)),
       orders: List<dynamic>.from((map['orders'] as List<dynamic>)),
-      address: map['address'] as String,
-      phone: map['phone'] as String,
-      isAdmin: map['isAdmin'] as bool,
-      profileImg: map['profileImg'] as String,
+      address: map['address'] as String?,
+      phone: map['phone'] as String?,
+      isAdmin: map['isAdmin'] as bool?,
+      profileImg: map['profileImg'] as String?,
       transactions: List<dynamic>.from((map['transactions'] as List<dynamic>)),
       id: map['\$id'] as String?,
       createdAt: map['\$createdAt'] as String?,

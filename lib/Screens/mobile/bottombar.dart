@@ -1,6 +1,4 @@
-
-import 'package:codroid_hub/Screens/about.dart';
-import 'package:codroid_hub/Screens/web/home_page.dart';
+import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 
 import 'courses.dart';
@@ -20,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   static const List<Widget> _pages = <Widget>[
     HomeView(),
     MobCourses(),
-    AboutPage(),
+    CartPage(),
     Profile(),
   ];
   int _selectedIndex = 0;

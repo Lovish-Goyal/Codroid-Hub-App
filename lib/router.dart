@@ -5,6 +5,8 @@ import 'package:codroid_hub/Screens/web/courses.dart';
 import 'package:codroid_hub/Screens/web/home_page.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
+import 'package:codroid_hub/auth/pages/login.dart';
+import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/pages/course_view.dart';
@@ -17,11 +19,12 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'Screens/mobile/bottombar.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  // final user = ref.watch(currentUserProvider);
+  // final user = ref.watch(currentUserProvider).value;
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
-      builder: (context, state) => kIsWeb ?  const Homepage() : BottomNavBar(),
+      builder: (context, state) =>
+          kIsWeb ? const Homepage() : const BottomNavBar(),
       // builder: (context, state) => showAlertDialogLogin(context),
       // user.when(
       //     data: (user) {
@@ -35,17 +38,18 @@ final routerProvider = Provider<GoRouter>((ref) {
       //         )),
       //     loading: () => const LoadingPage()),
     ),
-    // GoRoute(
-    //   path: RouteKey.home,
-    //   builder: (context, state) => const Homepage(),
-    // ),
+    GoRoute(
+      path: RouteKey.home,
+      builder: (context, state) => const Homepage(),
+    ),
     GoRoute(
       path: RouteKey.about,
       builder: (context, state) => const AboutPage(),
     ),
     GoRoute(
       path: RouteKey.contact,
-      builder: (context, state) =>kIsWeb ? const WebContactPage() : const MobContactPage(),
+      builder: (context, state) =>
+          kIsWeb ? const WebContactPage() : const MobContactPage(),
     ),
     GoRoute(
       path: RouteKey.courses,
@@ -61,11 +65,11 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
     GoRoute(
       path: RouteKey.login,
-      builder: (context, state) => const CustomAlertLoginBox(),
+      builder: (context, state) => const LoginCustomAlert(),
     ),
     GoRoute(
       path: RouteKey.signup,
-      builder: (context, state) => const CustomAlertSignUpBox(),
+      builder: (context, state) => const SignUpCustomAlertBox(),
     ),
     GoRoute(
       path: RouteKey.courseDetails,

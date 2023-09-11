@@ -15,9 +15,9 @@ class EndDrawer extends ConsumerWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 180,
-            child: const DrawerHeader(
+            child: DrawerHeader(
               //header of drawer
               decoration: BoxDecoration(
                   color: Colors.redAccent,

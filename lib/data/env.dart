@@ -28,4 +28,10 @@ abstract class Env {
 
   @EnviedField(varName: 'outlineCollectionId')
   static String outlineCollectionId = _Env.outlineCollectionId;
+
+  @EnviedField(varName: 'razorPayApiKey')
+  static String razorPayApiKey = _Env.razorPayApiKey;
+
+  @EnviedField(varName: 'razorPayKeySecret')
+  static String razorPayKeySecret = _Env.razorPayKeySecret;
 }

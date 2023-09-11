@@ -14,18 +14,22 @@ final authControllerProvider =
 
 FutureProvider<model.Account?> currentUserProvider =
     FutureProvider<model.Account?>((ref) {
-  return ref.watch(authControllerProvider.notifier).currentUser();
+  return AuthController().currentUser();
 });
 
 class AuthController extends StateNotifier<bool> {
   AuthController() : super(false);
 
   final ProviderContainer _ref = ProviderContainer();
+
   void signUp(UserModel user, String pass, BuildContext context) async {
-    state = true;
-    final res = await _ref.read(authServicesProvider).signUp(user.email!, pass);
+    // state = true;
+    final res = await _ref
+        .read(authServicesProvider)
+        .signUp(user.email??"", pass, user.id!);
+
     _ref.read(userDatabaseProvider).saveUserData(user);
-    state = false;
+    // state = false;
     if (res == null) {
       if (!mounted) return;
       showDialog(
@@ -51,42 +55,40 @@ class AuthController extends StateNotifier<bool> {
   void login(String email, String pass, BuildContext context) async {
     state = true;
     final res = await _ref.read(authServicesProvider).signIn(email, pass);
+
     state = false;
     if (res == null) {
       if (!mounted) return;
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text("Success"),
-              content: const Text("Login Successfully"),
-              actions: [
-                ElevatedButton(
-                    onPressed: () => context.go("/"),
-                    child: const Text("OK"))
-              ],
-            );
-          });
-      // context.go('/home');
-      // showSnackBar(context, "login Successfully");
+      context.go('/');
+      _ref.refresh(currentUserProvider);
+      showSnackBar(context, "login Successfully");
     } else {
       if (!mounted) return;
       showSnackBar(context, res.toString());
     }
   }
 
-  Future<model.Account?> currentUser() =>
-      _ref.read(authServicesProvider).getCurrentUser();
+  Future<model.Account?> currentUser() async {
+    final account = await _ref.read(authServicesProvider).getCurrentUser();
+    final bool isAvailable;
+    if (account != null) {
+      isAvailable = true;
+    } else {
+      isAvailable = false;
+    }
+    state = isAvailable;
+    return _ref.read(authServicesProvider).getCurrentUser();
+  }
 
   void logout(BuildContext context) async {
     final res = await _ref.read(authServicesProvider).logout();
     if (res == null) {
+      state = false;
       if (!mounted) return;
       showSnackBar(context, "logout Successfully");
     } else {
       if (!mounted) return;
       showSnackBar(context, res.toString());
     }
-    context.go('/login');
   }
 }

@@ -43,7 +43,7 @@ class _MobCoursesState extends ConsumerState<MobCourses> {
         loading: (() => const Center(
               child: CircularProgressIndicator(),
             ))),
-        endDrawer: Container(
+        endDrawer: const SizedBox(
           width: 220,
           child: EndDrawer()),
     );

@@ -54,8 +54,9 @@ class CourseCard extends ConsumerWidget {
                         style: TextStyle(color: Colors.blue),
                       ),
                       onPressed: () {
-                        ref.read(cartProvider.notifier).addItemToCart(
-                            "64eb8bcd4b906865298a", course.id ?? "");
+                        ref
+                            .read(cartProvider.notifier)
+                            .addItemToCart(course.id ?? "", context);
                       },
                     ),
                     TextButton(
@@ -79,11 +80,12 @@ class CourseCard extends ConsumerWidget {
   }
 }
 
-
-
 class MobCourseCard extends ConsumerWidget {
   final CourseModel course;
-  const MobCourseCard( {super.key, required this.course,});
+  const MobCourseCard({
+    super.key,
+    required this.course,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -99,7 +101,7 @@ class MobCourseCard extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: 150,
               width: double.infinity,
               child: Image.network(
@@ -131,7 +133,7 @@ class MobCourseCard extends ConsumerWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -140,10 +142,11 @@ class MobCourseCard extends ConsumerWidget {
                       "Add to cart",
                       style: TextStyle(color: Colors.green),
                     ),
-                     onPressed: () {
-                        ref.read(cartProvider.notifier).addItemToCart(
-                            "64eb8bcd4b906865298a", course.id ?? "");
-                      },
+                    onPressed: () {
+                      ref
+                          .read(cartProvider.notifier)
+                          .addItemToCart(course.id ?? "", context);
+                    },
                   ),
                   TextButton(
                     child: const Text(
@@ -151,8 +154,8 @@ class MobCourseCard extends ConsumerWidget {
                       style: TextStyle(color: Colors.green),
                     ),
                     onPressed: () {
-                        context.push("/courseDetails", extra: course);
-                      },
+                      context.push("/courseDetails", extra: course);
+                    },
                   ),
                 ],
               ),

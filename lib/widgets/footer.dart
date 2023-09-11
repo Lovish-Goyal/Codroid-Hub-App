@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,11 +15,11 @@ class Footer extends StatefulWidget {
 
 _launchFacebook() async {
   var url = Uri.parse("https://www.facebook.com/codroidhubpvtltd/");
-  var Android = Uri.parse("fb://page/codroidhubpvtltd/");
+  var android = Uri.parse("fb://page/codroidhubpvtltd/");
   if (await canLaunchUrl(url)) {
     await launchUrl(url);
   } else {
-    await launchUrl(Android);
+    await launchUrl(android);
   }
 }
 
@@ -185,37 +184,37 @@ class _FooterState extends State<Footer> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
+                      child: const IconButton(
                           onPressed: _launchFacebook,
                           color: Colors.blue,
-                          icon: const Icon(FontAwesomeIcons.facebook)),
+                          icon: Icon(FontAwesomeIcons.facebook)),
                     ),
                     Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
+                      child: const IconButton(
                           onPressed: _launchTwitter,
                           color: Colors.blue,
-                          icon: const Icon(FontAwesomeIcons.twitter)),
+                          icon: Icon(FontAwesomeIcons.twitter)),
                     ),
                     Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
+                      child: const IconButton(
                           onPressed: _launchYouTube,
                           color: Colors.red,
-                          icon: const Icon(FontAwesomeIcons.youtube)),
+                          icon: Icon(FontAwesomeIcons.youtube)),
                     ),
                     Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(50)),
@@ -306,37 +305,37 @@ class MobileFooter extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(50)),
-                child: IconButton(
+                child: const IconButton(
                     onPressed: _launchFacebook,
                     color: Colors.blue,
-                    icon: const Icon(FontAwesomeIcons.facebook)),
+                    icon: Icon(FontAwesomeIcons.facebook)),
               ),
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(50)),
-                child: IconButton(
+                child: const IconButton(
                     onPressed: _launchTwitter,
                     color: Colors.blue,
-                    icon: const Icon(FontAwesomeIcons.twitter)),
+                    icon: Icon(FontAwesomeIcons.twitter)),
               ),
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(50)),
-                child: IconButton(
+                child: const IconButton(
                     onPressed: _launchYouTube,
                     color: Colors.red,
-                    icon: const Icon(FontAwesomeIcons.youtube)),
+                    icon: Icon(FontAwesomeIcons.youtube)),
               ),
               Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(50)),

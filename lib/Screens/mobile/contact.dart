@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:codroid_hub/Screens/web/contact.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,28 +35,28 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                   color: Colors.grey[300],
-                  borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(60))),
+                  borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(60))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Contact us",
                     style: TextStyle(color: Colors.black, fontSize: 30),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text("Noida,Ambala,Patna,Haryana 133004"),
-                  SizedBox(
+                  const Text("Noida,Ambala,Patna,Haryana 133004"),
+                  const SizedBox(
                     height: 5,
                   ),
-                  Text("Phone: +(91) 9138555661"),
-                  Text("Email: programmanager@codroidhub.com"),
-                  SizedBox(
+                  const Text("Phone: +(91) 9138555661"),
+                  const Text("Email: programmanager@codroidhub.com"),
+                  const SizedBox(
                     height: 30,
                   ),
                   Row(
@@ -76,7 +77,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               );
                             }
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.phone,
                             size: 40,
                           )),
@@ -95,6 +96,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               await launchUrl(emailUrl);
                             } else {
                               // throw "Error occured sending an email";
+                              if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text("Unable to send Email"),
@@ -102,7 +104,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               );
                             }
                           },
-                          icon: Icon(Icons.email, size: 40)),
+                          icon: const Icon(Icons.email, size: 40)),
                       IconButton(
                           onPressed: () async {
                             var phone = "+919138555661";
@@ -119,6 +121,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                             } else if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             } else {
+                              if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text("Unable to find Whatsapp"),
@@ -126,18 +129,18 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               );
                             }
                           },
-                          icon: Icon(FontAwesomeIcons.whatsapp, size: 40))
+                          icon: const Icon(FontAwesomeIcons.whatsapp, size: 40))
                     ],
                   )
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
@@ -146,26 +149,24 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    Container(
-                      child: Text(
-                        "Enter Details",
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.black,
-                        ),
+                    const Text(
+                      "Enter Details",
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.black,
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(20),
+                      margin: const EdgeInsets.all(20),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "Name",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
+                              margin: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(border: Border.all()),
                               child: TextFormField(
                                 controller: namecontroller,
@@ -175,21 +176,21 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                                   }
                                   return null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
-                                  contentPadding: const EdgeInsets.all(16.0),
+                                  contentPadding: EdgeInsets.all(16.0),
                                   hintText: "Your name",
                                   filled: true,
                                   fillColor: Colors.white,
                                 ),
                               ),
                             ),
-                            Text(
+                            const Text(
                               "Your Email",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
+                              margin: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(border: Border.all()),
                               child: TextFormField(
                                 controller: emailcontroller,
@@ -201,21 +202,21 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                                   }
                                   return null;
                                 },
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
-                                  contentPadding: const EdgeInsets.all(16.0),
+                                  contentPadding: EdgeInsets.all(16.0),
                                   hintText: "Enter your email address",
                                   filled: true,
                                   fillColor: Colors.white,
                                 ),
                               ),
                             ),
-                            Text(
+                            const Text(
                               "Your Phone",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
+                              margin: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(border: Border.all()),
                               child: TextFormField(
                                 controller: phonecontroller,
@@ -233,21 +234,21 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                                       RegExp(r'[0-9]')),
                                   FilteringTextInputFormatter.digitsOnly
                                 ],
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
-                                  contentPadding: const EdgeInsets.all(16.0),
+                                  contentPadding: EdgeInsets.all(16.0),
                                   hintText: "(+91) Phone Number",
                                   filled: true,
                                   fillColor: Colors.white,
                                 ),
                               ),
                             ),
-                            Text(
+                            const Text(
                               "Message",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
+                              margin: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
                                 border: Border.all(),
                               ),
@@ -261,9 +262,9 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                                 },
                                 maxLines: 10,
                                 minLines: 5,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   border: InputBorder.none,
-                                  contentPadding: const EdgeInsets.all(16.0),
+                                  contentPadding: EdgeInsets.all(16.0),
                                   hintText: "Enter Your Message",
                                   filled: true,
                                   fillColor: Colors.white,
@@ -275,7 +276,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                                   if (_formKey.currentState!.validate()) {
                                     {
                                       try {
-                                        final phoneNumber = "+918607605196";
+                                        const phoneNumber = "+918607605196";
                                         if (Platform.isAndroid) {
                                           String uri =
                                               'sms:$phoneNumber?body=user details who wants to connect with codroidhub app" Name: ${namecontroller.text.toString()}", "Email: ${emailcontroller.text.toString()}", "Phone: ${phonecontroller.text.toString()}","Message: ${messagecontroller.text.toString()}"';
@@ -286,6 +287,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                                           await launchUrl(Uri.parse(uri));
                                         }
                                       } catch (e) {
+                                        if (!mounted) return;
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
@@ -296,9 +298,10 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                                       }
                                     }
                                   }
+                                  if (!mounted) return;
                                   Navigator.pop(context);
                                 },
-                                child: Text("Submit"))
+                                child: const Text("Submit"))
                           ]),
                     )
                   ],
@@ -312,44 +315,4 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
           MediaQuery.of(context).size.width < 700 ? const EndDrawer() : null,
     );
   }
-}
-
-extension extString on String {
-  bool get isValidEmail {
-    final emailRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-    return emailRegExp.hasMatch(this);
-  }
-
-  bool get isValidName {
-    final nameRegExp =
-        RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
-    return nameRegExp.hasMatch(this);
-  }
-
-  bool get isValidPassword {
-    final passwordRegExp = RegExp(
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
-    return passwordRegExp.hasMatch(this);
-  }
-
-  bool get isNotNull {
-    return this != 0;
-  }
-
-  bool get isValidPhone {
-    final phoneRegExp = RegExp(r"^\+?[0-9]{10}$");
-    return phoneRegExp.hasMatch(this);
-  }
-
-  // bool isMobileNumberValid () {
-  //   String regexPattern = r'^(?:[+0][1-9])?[0-9]{10,12}$';
-  //   var regExp = new RegExp(regexPattern);
-
-  //   if (this.length == 0) {
-  //     return false;
-  //   } else if (regExp.hasMatch(this)) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
 }

@@ -18,24 +18,23 @@ class HomeView extends ConsumerStatefulWidget {
 class _HomeViewState extends ConsumerState<HomeView> {
   _launchWhatsapp() async {
     var phone = "+918607605196";
-  var url = Uri.parse("https://wa.me/$phone?text=Hey buddy, try this super cool new app!");
-    var whatsappAndroid =Uri.parse("whatsapp://send?phone=$phone&text=hello🖐️ Welcome to our app");
+    var url = Uri.parse(
+        "https://wa.me/$phone?text=Hey buddy, try this super cool new app!");
+    var whatsappAndroid = Uri.parse(
+        "whatsapp://send?phone=$phone&text=hello🖐️ Welcome to our app");
     if (await canLaunchUrl(url)) {
-         await launchUrl(url);
-    } 
-    else {
+      await launchUrl(url);
+    } else {
       await launchUrl(whatsappAndroid);
-    } 
-}
-
-
+    }
+  }
 
   final TextEditingController pass = TextEditingController();
   final formGlobalKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
           toolbarHeight: 70,
           backgroundColor: Colors.black,
           title: appBarhelper(context)),
@@ -43,71 +42,69 @@ class _HomeViewState extends ConsumerState<HomeView> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              child: CarouselSlider(
-                items: [
-                  Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/codroid.jpg"),
-                        fit: BoxFit.cover,
-                      ),
+            CarouselSlider(
+              items: [
+                Container(
+                  margin: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: const DecorationImage(
+                      image: AssetImage("assets/images/codroid.jpg"),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/home2.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-                options: CarouselOptions(
-                  height: 250.0,
-                  enlargeCenterPage: true,
-                  autoPlay: true,
-                  aspectRatio: 16 / 9,
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  viewportFraction: 1,
                 ),
+                Container(
+                  margin: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    image: const DecorationImage(
+                      image: AssetImage("assets/images/home2.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ],
+              options: CarouselOptions(
+                height: 250.0,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                aspectRatio: 16 / 9,
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enableInfiniteScroll: true,
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                viewportFraction: 1,
               ),
             ),
             Container(
-              margin: EdgeInsets.all(10),
-              child: Text(
+              margin: const EdgeInsets.all(10),
+              child: const Text(
                 "Our Courses",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            Divider(
+            const Divider(
               indent: 10,
               endIndent: 10,
             ),
-            RowItems(),
-            SizedBox(
+            const RowItems(),
+            const SizedBox(
               height: 10,
             ),
             Container(
-              margin: EdgeInsets.all(10),
-              child: Text(
+              margin: const EdgeInsets.all(10),
+              child: const Text(
                 "Our Services",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            Divider(
+            const Divider(
               indent: 10,
               endIndent: 10,
             ),
             Container(
-              padding: EdgeInsets.all(10),
-              child: SingleChildScrollView(
+              padding: const EdgeInsets.all(10),
+              child: const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -120,7 +117,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                       title: "Cyber Security",
                     ),
                     Homeservices(
-                      icon: FontAwesomeIcons.chain,
+                      icon: FontAwesomeIcons.link,
                       title: "Blockchain",
                     ),
                     Homeservices(
@@ -142,20 +139,17 @@ class _HomeViewState extends ConsumerState<HomeView> {
           ],
         ),
       ),
-      endDrawer: Container(
-        width: 220,
-        child: EndDrawer()),
-       floatingActionButton: FloatingActionButton(
+      endDrawer: const SizedBox(width: 220, child: EndDrawer()),
+      floatingActionButton: FloatingActionButton(
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5))
-     ),
+            borderRadius: BorderRadius.all(Radius.circular(5))),
         backgroundColor: Colors.green.shade600,
         onPressed: _launchWhatsapp,
-        child: const FaIcon(FontAwesomeIcons.whatsapp),),
+        child: const FaIcon(FontAwesomeIcons.whatsapp),
+      ),
     );
   }
 }
-
 
 class Homeservices extends StatelessWidget {
   final IconData icon;
@@ -165,8 +159,8 @@ class Homeservices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color.alphaBlend(
-          Color.fromARGB(255, 39, 146, 176), Color.fromARGB(238, 33, 205, 243)),
+      color: Color.alphaBlend(const Color.fromARGB(255, 39, 146, 176),
+          const Color.fromARGB(238, 33, 205, 243)),
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
@@ -179,7 +173,7 @@ class Homeservices extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Center(
                     child: Icon(
                   icon,
@@ -187,11 +181,11 @@ class Homeservices extends StatelessWidget {
                   size: 70,
                 ))),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Center(
                 child: Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     color: Colors.white,
                   ),
