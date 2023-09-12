@@ -60,6 +60,13 @@ Widget appBarhelper(BuildContext context) {
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   )),
+                  TextButton(
+                  onPressed: () => context.go('/cart'),
+                  child: const Text(
+                    "MyCart",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )),
             ],
           ),
         if (MediaQuery.of(context).size.width > 900)

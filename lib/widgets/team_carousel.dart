@@ -14,8 +14,8 @@ class CarouselImages extends ConsumerWidget {
     return membersList.when(
         data: ((list) => CarouselSlider.builder(
               options: CarouselOptions(
-                height: 615,
-                viewportFraction: 0.9,
+                height: MediaQuery.of(context).size.width > 800 ? 625 : 600,
+                viewportFraction: MediaQuery.of(context).size.width > 800 ? 0.5 : .8,
                 initialPage: 0,
                 enableInfiniteScroll: true,
                 reverse: false,

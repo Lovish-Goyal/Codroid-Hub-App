@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:codroid_hub/auth/auth_controller.dart';
+import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:codroid_hub/modules/cart/provider/cart_controller_provider.dart';
 import 'package:codroid_hub/modules/cart/razor%20pay/api_services.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
@@ -57,6 +59,7 @@ class _CartPageState extends ConsumerState<CartPage> {
     final razorApiServices = ref.watch(razorPayApiServicesProvider);
     int total = 0;
     final cartList = ref.watch(cartProvider.notifier).getCartItemsList();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Cart"),
@@ -154,10 +157,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                     )
                   ],
                 )
-              : const Center(
-                  child: Text("No Items In Cart",
-                      style: TextStyle(fontSize: 20, color: Colors.black)),
-                );
+              : const LoginCustomAlert();
         },
       ),
     );

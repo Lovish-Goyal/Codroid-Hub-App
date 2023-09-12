@@ -1,6 +1,7 @@
 import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class EndDrawer extends ConsumerWidget {
@@ -39,28 +40,38 @@ class EndDrawer extends ConsumerWidget {
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
+            leading: Icon(Icons.contact_page),
             title: Text('Contact'),
             onTap: () => context.go('/contact'),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
+            leading: Icon(Icons.person_2),
             title: Text('About'),
             onTap: () => context.go('/about'),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
+            leading: Icon(Icons.shopping_cart),
             title: Text('My Cart'),
             onTap: () => context.go('/cart'),
           ),
           ListTile(
-            leading: Icon(Icons.settings),
+            leading: Icon(Icons.list_alt),
             title: Text('Courses'),
             onTap: () => context.go('/courses'),
           ),
           const ListTile(
             leading: Icon(Icons.settings),
             title: Text('Services'),
+          ),
+          ListTile(
+            leading: Icon(Icons.login),
+            title: Text('Login'),
+            onTap: () => context.go('/login'),
+          ),
+          ListTile(
+            leading: Icon(Icons.app_registration_rounded),
+            title: Text('SignUp'),
+            onTap: () => context.go('/signup'),
           ),
           ListTile(
             onTap: () {

@@ -2,6 +2,7 @@ import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginCustomAlert extends ConsumerStatefulWidget {
   const LoginCustomAlert({super.key});
@@ -27,23 +28,22 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
   @override
   Widget build(BuildContext context) {
     final auth = ref.read(authControllerProvider.notifier);
-    final isLoadingState = ref.watch(authControllerProvider);
+    final currentUser = ref.watch(currentUserProvider);
+    // final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(vertical: 140),
-      title: const  Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      title: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Login to"),
           SizedBox(
             width: 5,
           ),
-          Text.rich(TextSpan(
-              children: [
-                TextSpan(
-                    text: 'Codroid', style: TextStyle(color: Colors.black)),
-                TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
-              ]))
+          Text.rich(TextSpan(children: [
+            TextSpan(text: 'Codroid', style: TextStyle(color: Colors.black)),
+            TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
+          ]))
         ],
       ),
       content: Form(
@@ -153,6 +153,8 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                     if (_formKey.currentState!.validate()) {
                       auth.login(email.text, pass.text, context);
                       ref.refresh(authControllerProvider);
+
+                      context.go('/');
 
                       showDialog(
                           context: context,

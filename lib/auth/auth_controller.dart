@@ -26,7 +26,7 @@ class AuthController extends StateNotifier<bool> {
     // state = true;
     final res = await _ref
         .read(authServicesProvider)
-        .signUp(user.email??"", pass, user.id!);
+        .signUp(user.email ?? "", pass, user.id!);
 
     _ref.read(userDatabaseProvider).saveUserData(user);
     // state = false;
@@ -84,6 +84,7 @@ class AuthController extends StateNotifier<bool> {
     final res = await _ref.read(authServicesProvider).logout();
     if (res == null) {
       state = false;
+      _ref.refresh(currentUserProvider);
       if (!mounted) return;
       showSnackBar(context, "logout Successfully");
     } else {

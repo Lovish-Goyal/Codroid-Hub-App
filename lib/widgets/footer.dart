@@ -189,7 +189,7 @@ class _FooterState extends State<Footer> {
               children: [
                 Container(
                   height: 50,
-                  width: 300,
+                  width: 255,
                   padding: const EdgeInsets.only(left: 20),
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -198,7 +198,7 @@ class _FooterState extends State<Footer> {
                   child: Row(
                     children: [
                       Container(
-                        width: 140,
+                        width: 100,
                         child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -208,7 +208,7 @@ class _FooterState extends State<Footer> {
                       ),
                       Container(
                         height: 50,
-                        width: 140,
+                        width: 135,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(32),
                         ),

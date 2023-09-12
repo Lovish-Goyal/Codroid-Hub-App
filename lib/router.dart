@@ -10,32 +10,37 @@ import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/pages/course_view.dart';
 import 'package:codroid_hub/modules/courses/pages/create_course_page.dart';
 import 'package:codroid_hub/modules/courses/pages/create_outline_page.dart';
+import 'package:codroid_hub/utils/loading_page.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'Screens/mobile/bottombar.dart';
+import 'auth/auth_controller.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  // final user = ref.watch(currentUserProvider).value;
+  final user = ref.watch(currentUserProvider);
+
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
       builder: (context, state) =>
           kIsWeb ? const Homepage() : const BottomNavBar(),
-      // builder: (context, state) => showAlertDialogLogin(context),
-      // user.when(
-      //     data: (user) {
-      //       if (user != null) {
-      //         return const Homepage();
-      //       }
-      //       return const LoginView();
-      //     },
-      //     error: ((err, st) => const Center(
-      //           child: Text("Page Not found"),
-      //         )),
-      //     loading: () => const LoadingPage()),
     ),
+    // builder: (context, state) =>
+    //   user.when(
+    //       data: (user) {
+    //         if (user != null) {
+    //           return const Homepage();
+    //         }
+    //         return const LoginView();
+    //       },
+    //       error: ((err, st) => const Center(
+    //             child: Text("Page Not found"),
+    //           )),
+    //       loading: () => const LoadingPage()),
+    // ),,
     GoRoute(
       path: RouteKey.home,
       builder: (context, state) => const Homepage(),
@@ -54,9 +59,18 @@ final routerProvider = Provider<GoRouter>((ref) {
       builder: (context, state) => const Courses(),
     ),
     GoRoute(
-      path: RouteKey.cart,
-      builder: (context, state) => const CartPage(),
-    ),
+        path: RouteKey.cart,
+        builder: (context, state) => user.when(
+            data: (user) {
+              if (user == null) {
+                return LoginCustomAlert();
+              }
+              return CartPage();
+            },
+            error: (err, st) => Center(
+                  child: Text(err.toString()),
+                ),
+            loading: () => LoadingPage())),
     GoRoute(
       path: RouteKey.addCourses,
       builder: (context, state) => const CreateCoursePage(),
