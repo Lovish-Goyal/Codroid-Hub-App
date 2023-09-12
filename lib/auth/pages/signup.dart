@@ -14,6 +14,7 @@ class SignUpCustomAlertBox extends ConsumerStatefulWidget {
 }
 
 class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
+  final TextEditingController name = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController pass = TextEditingController();
   final TextEditingController confirmpass = TextEditingController();
@@ -32,15 +33,27 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        insetPadding: const EdgeInsets.symmetric(vertical: 100),
-        title: const Center(child: Text("SignUp to CodroidHUb")),
+        insetPadding: const EdgeInsets.symmetric(vertical: 80),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Register to"),
+            SizedBox(
+              width: 5,
+            ),
+            Text.rich(TextSpan(children: [
+              TextSpan(text: 'Codroid', style: TextStyle(color: Colors.black)),
+              TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
+            ]))
+          ],
+        ),
         content: Form(
             key: _formKey,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
                   margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: const Text("Username")),
+                  child: const Text("Name")),
               Container(
                 decoration: BoxDecoration(border: Border.all()),
                 child: Row(
@@ -50,7 +63,40 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                         child: const Icon(Icons.email_outlined)),
                     Container(
                         margin: const EdgeInsets.only(right: 10),
-                        width: 400,
+                        width: 300,
+                        child: TextFormField(
+                          controller: name,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Please enter your name';
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              hintText: 'Name'),
+                        )),
+                  ],
+                ),
+              ),
+              Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: const Text("Useremail")),
+              Container(
+                decoration: BoxDecoration(border: Border.all()),
+                child: Row(
+                  children: [
+                    Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 10),
+                        child: const Icon(Icons.email_outlined)),
+                    Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        width: 300,
                         child: TextFormField(
                           controller: email,
                           validator: (value) {
@@ -85,7 +131,7 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                         child: const Icon(Icons.password)),
                     Container(
                         margin: const EdgeInsets.only(right: 10),
-                        width: 400,
+                        width: 300,
                         child: TextFormField(
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -134,7 +180,7 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                         child: const Icon(Icons.password)),
                     Container(
                         margin: const EdgeInsets.only(right: 10),
-                        width: 400,
+                        width: 300,
                         child: TextFormField(
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -181,7 +227,7 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         final UserModel user = UserModel(
-                          name: email.text,
+                          name: name.text,
                           email: email.text,
                           id: const Uuid().v4(),
                         );
@@ -195,12 +241,13 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                                 child: CircularProgressIndicator(),
                               );
                             });
-                        final auth = UserModel(
-                          email: email.text,
-                        );
-                        ref
-                            .read(authControllerProvider.notifier)
-                            .signUp(auth, pass.text, context);
+                        // final auth = UserModel(
+                        //   name: name.text,
+                        //   email: email.text,
+                        // );
+                        // ref
+                        //     .read(authControllerProvider.notifier)
+                        //     .signUp(auth, pass.text, context);
                       }
                     },
                     child: const Text("Signup")),

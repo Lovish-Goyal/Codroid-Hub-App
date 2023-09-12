@@ -5,8 +5,6 @@ import 'package:codroid_hub/Screens/web/courses.dart';
 import 'package:codroid_hub/Screens/web/home_page.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
-import 'package:codroid_hub/auth/pages/login.dart';
-import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/pages/course_view.dart';

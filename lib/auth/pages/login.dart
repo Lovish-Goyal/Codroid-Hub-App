@@ -31,7 +31,21 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
 
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(vertical: 140),
-      title: const Center(child: Text("Login to CodroidHUb")),
+      title: const  Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("Login to"),
+          SizedBox(
+            width: 5,
+          ),
+          Text.rich(TextSpan(
+              children: [
+                TextSpan(
+                    text: 'Codroid', style: TextStyle(color: Colors.black)),
+                TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
+              ]))
+        ],
+      ),
       content: Form(
         key: _formKey,
         child: Column(
@@ -49,7 +63,7 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                       child: const Icon(Icons.email_outlined)),
                   Container(
                       margin: const EdgeInsets.only(right: 10),
-                      width: 400,
+                      width: 300,
                       child: TextFormField(
                         controller: email,
                         validator: (value) {
@@ -84,7 +98,7 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                       child: const Icon(Icons.password)),
                   Container(
                       margin: const EdgeInsets.only(right: 10),
-                      width: 400,
+                      width: 300,
                       child: TextFormField(
                         controller: pass,
                         validator: (value) {
