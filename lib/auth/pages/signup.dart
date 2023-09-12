@@ -136,8 +136,10 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'Please enter your Password';
-                            } else if (value.length < 8)
+                            } else if (value.length < 8) {
                               return 'password should be greater than 8 digits';
+                            }
+
                             return null;
                           },
                           keyboardType: TextInputType.text,

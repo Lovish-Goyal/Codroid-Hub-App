@@ -55,7 +55,7 @@ class UserDatabaseServices {
   Future<UserModel?> getUserData() async {
     try {
       final user =
-          await ref.watch(authControllerProvider.notifier).currentUser();
+          await ref.read(authControllerProvider.notifier).currentUser();
 
       final userId = user?.$id;
       final document = await ApiClient.database.getDocument(

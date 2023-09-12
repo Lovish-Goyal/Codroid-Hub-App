@@ -29,7 +29,7 @@ class RazorApiServices {
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
-    print(response);
+    
     if (response.statusCode == 200) {
       return await response.stream.bytesToString();
     } else {
