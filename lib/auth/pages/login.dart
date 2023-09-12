@@ -7,8 +7,7 @@ class LoginCustomAlert extends ConsumerStatefulWidget {
   const LoginCustomAlert({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _CustomAlertBoxState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _CustomAlertBoxState();
 }
 
 class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
@@ -28,7 +27,7 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
   @override
   Widget build(BuildContext context) {
     final auth = ref.read(authControllerProvider.notifier);
-    final isLoadingState = ref.watch(authControllerProvider);
+    // final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(vertical: 140),
