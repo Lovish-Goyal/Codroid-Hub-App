@@ -8,25 +8,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 final authControllerProvider =
-    StateNotifierProvider<AuthController, bool>((ref) {
-  return AuthController();
+    StateNotifierProvider<AuthController, model.Account?>((ref) {
+  return AuthController(ref: ref);
 });
 
 FutureProvider<model.Account?> currentUserProvider =
     FutureProvider<model.Account?>((ref) {
-  return AuthController().currentUser();
+  return AuthController(ref: ref).currentUser();
 });
 
-class AuthController extends StateNotifier<bool> {
-  AuthController() : super(false);
+class AuthController extends StateNotifier<model.Account?> {
+  AuthController({required Ref ref})
+      : _ref = ref,
+        super(null);
 
-  final ProviderContainer _ref = ProviderContainer();
+  final Ref _ref;
 
   void signUp(UserModel user, String pass, BuildContext context) async {
     // state = true;
     final res = await _ref
         .read(authServicesProvider)
-        .signUp(user.email ?? "", pass, user.id!);
+        .signUp(user.email, pass, user.id!);
 
     _ref.read(userDatabaseProvider).saveUserData(user);
     // state = false;
@@ -53,14 +55,17 @@ class AuthController extends StateNotifier<bool> {
   }
 
   void login(String email, String pass, BuildContext context) async {
-    state = true;
+    // state = true;
     final res = await _ref.read(authServicesProvider).signIn(email, pass);
 
-    state = false;
+    // state = await _ref.read(authServicesProvider).getCurrentUser();
+    // _ref.refresh(authControllerProvider);
+    // _ref.refresh(currentUserProvider);
+    _ref.refresh(authServicesProvider);
     if (res == null) {
       if (!mounted) return;
-      context.go('/');
-      _ref.refresh(currentUserProvider);
+      // context.go('/');
+
       showSnackBar(context, "login Successfully");
     } else {
       if (!mounted) return;
@@ -69,22 +74,18 @@ class AuthController extends StateNotifier<bool> {
   }
 
   Future<model.Account?> currentUser() async {
-    final account = await _ref.read(authServicesProvider).getCurrentUser();
-    final bool isAvailable;
-    if (account != null) {
-      isAvailable = true;
-    } else {
-      isAvailable = false;
-    }
-    state = isAvailable;
-    return _ref.read(authServicesProvider).getCurrentUser();
+    final account = await _ref.watch(authServicesProvider).getCurrentUser();
+
+    // state = account;
+
+    return account;
   }
 
   void logout(BuildContext context) async {
     final res = await _ref.read(authServicesProvider).logout();
+
+    _ref.refresh(authServicesProvider);
     if (res == null) {
-      state = false;
-      _ref.refresh(currentUserProvider);
       if (!mounted) return;
       showSnackBar(context, "logout Successfully");
     } else {

@@ -1,18 +1,19 @@
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'courses.dart';
 import 'homepage.dart';
 import 'profile.dart';
 
-class BottomNavBar extends StatefulWidget {
+class BottomNavBar extends ConsumerStatefulWidget {
   const BottomNavBar({super.key});
 
   @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _BottomNavBArState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _BottomNavBArState extends ConsumerState<BottomNavBar> {
   late String index;
 
   static const List<Widget> _pages = <Widget>[
@@ -21,10 +22,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
     CartPage(),
     Profile(),
   ];
-  int _selectedIndex = 0;
+  int selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -32,10 +33,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _pages.elementAt(_selectedIndex),
+        child: _pages.elementAt(selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex, //New
+        currentIndex: selectedIndex, //New
         onTap: _onItemTapped,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.black,

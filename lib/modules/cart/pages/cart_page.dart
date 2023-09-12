@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:codroid_hub/auth/auth_controller.dart';
-import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:codroid_hub/modules/cart/provider/cart_controller_provider.dart';
 import 'package:codroid_hub/modules/cart/razor%20pay/api_services.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
@@ -12,6 +9,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../auth/pages/login.dart';
+import '../../../auth/provider/user_provider.dart';
 
 class CartPage extends ConsumerStatefulWidget {
   const CartPage({super.key});
@@ -56,111 +56,138 @@ class _CartPageState extends ConsumerState<CartPage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = ref.watch(authServicesProvider).getCurrentUser();
     final razorApiServices = ref.watch(razorPayApiServicesProvider);
     int total = 0;
     final cartList = ref.watch(cartProvider.notifier).getCartItemsList();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Cart"),
-      ),
-      body: FutureBuilder(
-        future: cartList,
-        initialData: const [],
+    //this future builder is user to make await the user
+    return FutureBuilder(
+        future: user,
+        initialData: null,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          total = snapshot.data.fold(
-              0, (previousValue, element) => previousValue + element.price);
-          if (snapshot.hasError) {
-            return const Center(
-              child: Text("Something went wrong"),
-            );
-          }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Loder();
           }
-
-          return snapshot.hasData
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (snapshot.data.isEmpty)
-                      const Text("No Items In Cart",
-                          style: TextStyle(fontSize: 20, color: Colors.black)),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: snapshot.data.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final List<CourseModel> data = snapshot.data;
-                        return Card(
-                          child: ListTile(
-                            title: Text(data[index].title,
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold)),
-                            subtitle: Text("${data[index].price} Rs"),
-                            leading: Image.network(data[index].imgUrl),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.delete),
-                              onPressed: () {
-                                ref
-                                    .read(cartProvider.notifier)
-                                    .removeItemFromCart(
-                                        data[index].id ?? "", context)
-                                    .then((value) => setState(() {
-                                          total = total - data[index].price;
-                                        }));
-                              },
-                            ),
-                          ),
+          return snapshot.data == null
+              ? const LoginCustomAlert()
+              : Scaffold(
+                  appBar: AppBar(
+                    title: const Text("Cart"),
+                  ),
+                  body: FutureBuilder(
+                    future: cartList,
+                    initialData: const [],
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      total = snapshot.data.fold(
+                          0,
+                          (previousValue, element) =>
+                              previousValue + element.price);
+                      if (snapshot.hasError) {
+                        return const Center(
+                          child: Text("Something went wrong"),
                         );
-                      },
-                    ),
-                    Card(
-                      child: ListTile(
-                        title: const Text("Total"),
-                        subtitle: Text(
-                          "$total Rs",
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        trailing: TextButton(
-                            child: const Text("Checkout"),
-                            onPressed: () async {
-                              final apiRes = await razorApiServices.razorPayApi(
-                                  total, const Uuid().v4());
-                              Logger().i(apiRes);
+                      }
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Loder();
+                      }
+                      return snapshot.hasData
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                if (snapshot.data.isEmpty)
+                                  const Text("No Items In Cart",
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black)),
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    final List<CourseModel> data =
+                                        snapshot.data;
+                                    return Card(
+                                      child: ListTile(
+                                        title: Text(data[index].title,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                        subtitle:
+                                            Text("${data[index].price} Rs"),
+                                        leading:
+                                            Image.network(data[index].imgUrl),
+                                        trailing: IconButton(
+                                          icon: const Icon(Icons.delete),
+                                          onPressed: () {
+                                            ref
+                                                .read(cartProvider.notifier)
+                                                .removeItemFromCart(
+                                                    data[index].id ?? "",
+                                                    context)
+                                                .then((value) => setState(() {
+                                                      total = total -
+                                                          data[index].price;
+                                                    }));
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                                Card(
+                                  child: ListTile(
+                                    title: const Text("Total"),
+                                    subtitle: Text(
+                                      "$total Rs",
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    trailing: TextButton(
+                                        child: const Text("Checkout"),
+                                        onPressed: () async {
+                                          final apiRes = await razorApiServices
+                                              .razorPayApi(
+                                                  total, const Uuid().v4());
+                                          Logger().i(apiRes);
 
-                              final orderId = json.decode(apiRes)["id"];
-                              Logger().i(orderId);
-                              final options = {
-                                "key": "rzp_test_qRqtDl6Kpsdjx3",
-                                "order_id": orderId,
-                                "name": "codroid hub",
-                                "amount": json.decode(apiRes)["amount"],
-                                "description": "testing payment",
-                                "currency": "INR",
-                                // "timeout": 300,
-                                "prefill": {
-                                  "contact": "+917494979209",
-                                  "email": "test@gmail.com",
-                                },
-                                "external": {
-                                  "wallets": ["paytm"]
-                                }
-                              };
-                              try {
-                                _razorpay.open(options);
-                              } catch (e) {
-                                debugPrint(e.toString());
-                              }
-                            }),
-                      ),
-                    )
-                  ],
-                )
-              : const LoginCustomAlert();
-        },
-      ),
-    );
+                                          final orderId =
+                                              json.decode(apiRes)["id"];
+                                          Logger().i(orderId);
+                                          final options = {
+                                            "key": "rzp_test_qRqtDl6Kpsdjx3",
+                                            "order_id": orderId,
+                                            "name": "codroid hub",
+                                            "amount":
+                                                json.decode(apiRes)["amount"],
+                                            "description": "testing payment",
+                                            "currency": "INR",
+                                            // "timeout": 300,
+                                            "prefill": {
+                                              "contact": "+917494979209",
+                                              "email": "test@gmail.com",
+                                            },
+                                            "external": {
+                                              "wallets": ["paytm"]
+                                            }
+                                          };
+                                          try {
+                                            _razorpay.open(options);
+                                          } catch (e) {
+                                            debugPrint(e.toString());
+                                          }
+                                        }),
+                                  ),
+                                )
+                              ],
+                            )
+                          : const Center(
+                              child: Text("No Items In Cart",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.black)),
+                            );
+                    },
+                  ),
+                );
+        });
   }
 }
 

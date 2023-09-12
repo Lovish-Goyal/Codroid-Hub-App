@@ -197,9 +197,9 @@ class _FooterState extends State<Footer> {
                   ),
                   child: Row(
                     children: [
-                      Container(
-                        width: 100,
-                        child: const TextField(
+                      const SizedBox(
+                        width: 140,
+                        child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Enter your Email',
@@ -230,7 +230,7 @@ class _FooterState extends State<Footer> {
                 const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   "Social Media",
                   style: TextStyle(color: Colors.white, fontSize: 30),
                 ),
@@ -320,7 +320,7 @@ class MobileFooter extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text(
+                  const Text(
                     "Phone: ",
                     style: TextStyle(
                       color: Colors.white,
@@ -336,7 +336,7 @@ class MobileFooter extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text(
+                  const Text(
                     "Phone: ",
                     style: TextStyle(
                       color: Colors.white,
@@ -352,7 +352,7 @@ class MobileFooter extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text(
+                  const Text(
                     "Email: ",
                     style: TextStyle(
                       color: Colors.white,
@@ -469,9 +469,9 @@ class MobileFooter extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Container(
+                      const SizedBox(
                         width: 140,
-                        child: const TextField(
+                        child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Enter your Email',

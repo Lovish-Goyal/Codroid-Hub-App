@@ -2,8 +2,6 @@ import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-
 class LoginCustomAlert extends ConsumerStatefulWidget {
   const LoginCustomAlert({super.key});
 
@@ -28,7 +26,6 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
   @override
   Widget build(BuildContext context) {
     final auth = ref.read(authControllerProvider.notifier);
-    final currentUser = ref.watch(currentUserProvider);
     // final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
@@ -152,20 +149,6 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       auth.login(email.text, pass.text, context);
-                      ref.refresh(authControllerProvider);
-
-                      context.go('/');
-
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          });
-                      ref
-                          .read(authControllerProvider.notifier)
-                          .login(email.text, pass.text, context);
                     }
                   },
                   child: const Text("Login")),

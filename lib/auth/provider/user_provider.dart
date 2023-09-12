@@ -57,6 +57,7 @@ class AuthServices {
   Future<String?> logout() async {
     try {
       await ApiClient.account.deleteSession(sessionId: 'current');
+
       return null;
     } on AppwriteException catch (e) {
       Logger().e(e.message);

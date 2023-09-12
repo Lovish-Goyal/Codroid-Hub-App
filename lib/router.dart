@@ -3,6 +3,7 @@ import 'package:codroid_hub/Screens/mobile/contact.dart';
 import 'package:codroid_hub/Screens/web/contact.dart';
 import 'package:codroid_hub/Screens/web/courses.dart';
 import 'package:codroid_hub/Screens/web/home_page.dart';
+import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
@@ -10,18 +11,15 @@ import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/pages/course_view.dart';
 import 'package:codroid_hub/modules/courses/pages/create_course_page.dart';
 import 'package:codroid_hub/modules/courses/pages/create_outline_page.dart';
-import 'package:codroid_hub/utils/loading_page.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:logger/logger.dart';
 
 import 'Screens/mobile/bottombar.dart';
-import 'auth/auth_controller.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final user = ref.watch(currentUserProvider);
-
+  final user = ref.watch(currentUserProvider).value;
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
@@ -42,10 +40,6 @@ final routerProvider = Provider<GoRouter>((ref) {
     //       loading: () => const LoadingPage()),
     // ),,
     GoRoute(
-      path: RouteKey.home,
-      builder: (context, state) => const Homepage(),
-    ),
-    GoRoute(
       path: RouteKey.about,
       builder: (context, state) => const AboutPage(),
     ),
@@ -60,17 +54,11 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
     GoRoute(
         path: RouteKey.cart,
-        builder: (context, state) => user.when(
-            data: (user) {
-              if (user == null) {
-                return LoginCustomAlert();
-              }
-              return CartPage();
-            },
-            error: (err, st) => Center(
-                  child: Text(err.toString()),
-                ),
-            loading: () => LoadingPage())),
+        builder: (context, state) {
+         
+          Logger().f(user);
+          return user == null ? const LoginCustomAlert() : const CartPage();
+        }),
     GoRoute(
       path: RouteKey.addCourses,
       builder: (context, state) => const CreateCoursePage(),
