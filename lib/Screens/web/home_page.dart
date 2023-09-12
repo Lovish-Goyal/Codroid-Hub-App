@@ -43,8 +43,8 @@ class _HomepageState extends State<Homepage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(top: 120, left: 60),
-                                  child: Text(
+                                  margin: const EdgeInsets.only(top: 120, left: 60),
+                                  child: const Text(
                                     "TRUST AND CLIENT FOCUS",
                                     style: TextStyle(
                                         fontSize: 20,
@@ -53,8 +53,8 @@ class _HomepageState extends State<Homepage> {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(top: 20, left: 60),
-                                  child: Text(
+                                  margin: const EdgeInsets.only(top: 20, left: 60),
+                                  child: const Text(
                                     "Welcome to CodroidHub",
                                     style: TextStyle(
                                         fontSize: 60,
@@ -64,8 +64,8 @@ class _HomepageState extends State<Homepage> {
                                 ),
                                 Container(
                                   width: 600,
-                                  margin: EdgeInsets.only(top: 20, left: 60),
-                                  child: Text(
+                                  margin: const EdgeInsets.only(top: 20, left: 60),
+                                  child: const Text(
                                     "Get professional & reliable research oriented solutions for Data Science and Machine learning business needs. Enjoy stress free decision making.",
                                     style: TextStyle(
                                         fontSize: 22, color: Colors.white),
@@ -77,8 +77,8 @@ class _HomepageState extends State<Homepage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(top: 100, left: 30),
-                                  child: Text(
+                                  margin: const EdgeInsets.only(top: 100, left: 30),
+                                  child: const Text(
                                     "TRUST AND CLIENT FOCUS",
                                     style: TextStyle(
                                         fontSize: 15,
@@ -87,8 +87,8 @@ class _HomepageState extends State<Homepage> {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.only(top: 20, left: 30),
-                                  child: Text(
+                                  margin: const EdgeInsets.only(top: 20, left: 30),
+                                  child: const Text(
                                     "Welcome to CodroidHub",
                                     style: TextStyle(
                                         fontSize: 40,
@@ -98,8 +98,8 @@ class _HomepageState extends State<Homepage> {
                                 ),
                                 Container(
                                   width: 600,
-                                  margin: EdgeInsets.only(top: 20, left: 30),
-                                  child: Text(
+                                  margin: const EdgeInsets.only(top: 20, left: 30),
+                                  child: const Text(
                                     "Get professional & reliable research oriented solutions for Data Science and Machine learning business needs. Enjoy stress free decision making.",
                                     style: TextStyle(
                                         fontSize: 22, color: Colors.white),
@@ -199,7 +199,7 @@ class _HomepageState extends State<Homepage> {
             )
           ]),
           Container(
-            padding: EdgeInsets.all(40),
+            padding: const EdgeInsets.all(40),
             width: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -294,14 +294,14 @@ class _HomepageState extends State<Homepage> {
           Container(
             height: 300,
             width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             decoration: const BoxDecoration(
                 image: DecorationImage(
               image: NetworkImage(
                   "https://media.istockphoto.com/id/1406100267/video/colorful-gradient-background.jpg?s=640x640&k=20&c=aG6C38kxW_bTSDmtenLFy3A9DClLhYFwvTIGjfkVW6E="),
               fit: BoxFit.fill,
             )),
-            child: Center(
+            child: const Center(
                 child: Text(
               "We are professional team, over 5 years of experience passionate about our work",
               style: TextStyle(

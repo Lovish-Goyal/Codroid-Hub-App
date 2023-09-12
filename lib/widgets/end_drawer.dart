@@ -34,28 +34,28 @@ class EndDrawer extends ConsumerWidget {
           ),
            ListTile(
             //menu item of Drawer
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Contact'),
+            leading: const Icon(Icons.account_circle),
+            title: const Text('Contact'),
             onTap: () => context.go('/contact'),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('About'),
+            leading: const Icon(Icons.account_circle),
+            title: const Text('About'),
             onTap: () => context.go('/about'),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('My Cart'),
+            leading: const Icon(Icons.account_circle),
+            title: const Text('My Cart'),
             onTap: () => context.go('/cart'),
           ),
           ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Courses'),
+            leading: const Icon(Icons.settings),
+            title: const Text('Courses'),
             onTap: () => context.go('/courses'),
           ),
           const ListTile(

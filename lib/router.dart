@@ -3,6 +3,7 @@ import 'package:codroid_hub/Screens/mobile/contact.dart';
 import 'package:codroid_hub/Screens/web/contact.dart';
 import 'package:codroid_hub/Screens/web/courses.dart';
 import 'package:codroid_hub/Screens/web/home_page.dart';
+import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
@@ -13,11 +14,12 @@ import 'package:codroid_hub/modules/courses/pages/create_outline_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:logger/logger.dart';
 
 import 'Screens/mobile/bottombar.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  // final user = ref.watch(currentUserProvider).value;
+  final user = ref.watch(currentUserProvider).value;
   return GoRouter(initialLocation: RouteKey.home, routes: [
     GoRoute(
       path: RouteKey.home,
@@ -54,9 +56,12 @@ final routerProvider = Provider<GoRouter>((ref) {
       builder: (context, state) => const Courses(),
     ),
     GoRoute(
-      path: RouteKey.cart,
-      builder: (context, state) => const CartPage(),
-    ),
+        path: RouteKey.cart,
+        builder: (context, state) {
+         
+          Logger().f(user);
+          return user == null ? const LoginCustomAlert() : const CartPage();
+        }),
     GoRoute(
       path: RouteKey.addCourses,
       builder: (context, state) => const CreateCoursePage(),

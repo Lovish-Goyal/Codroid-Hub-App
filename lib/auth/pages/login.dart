@@ -31,19 +31,17 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
 
     return AlertDialog(
       insetPadding: const EdgeInsets.symmetric(vertical: 140),
-      title: const  Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      title: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Login to"),
           SizedBox(
             width: 5,
           ),
-          Text.rich(TextSpan(
-              children: [
-                TextSpan(
-                    text: 'Codroid', style: TextStyle(color: Colors.black)),
-                TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
-              ]))
+          Text.rich(TextSpan(children: [
+            TextSpan(text: 'Codroid', style: TextStyle(color: Colors.black)),
+            TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
+          ]))
         ],
       ),
       content: Form(
@@ -152,18 +150,6 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       auth.login(email.text, pass.text, context);
-                      ref.refresh(authControllerProvider);
-
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          });
-                      ref
-                          .read(authControllerProvider.notifier)
-                          .login(email.text, pass.text, context);
                     }
                   },
                   child: const Text("Login")),

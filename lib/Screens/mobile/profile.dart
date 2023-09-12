@@ -1,8 +1,6 @@
 import 'package:codroid_hub/Screens/mobile/services.dart';
 import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
-import 'package:codroid_hub/auth/pages/signup.dart';
-import 'package:codroid_hub/router.dart';
 import 'package:codroid_hub/utils/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,16 +18,21 @@ class _ProfileState extends ConsumerState<Profile> {
   @override
   Widget build(BuildContext context) {
     final user = ref.watch(authControllerProvider.notifier).currentUser();
+    // final bool userIsAvailable = ref.watch(authControllerProvider);
+    // print(userIsAvailable);
 
     return FutureBuilder(
       future: user,
       initialData: const [],
       builder: (BuildContext context, AsyncSnapshot snapshot) {
+        Logger().f(snapshot.data);
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingPage();
         }
-        return snapshot.hasData
-            ? Scaffold(
+
+        return snapshot.data == null
+            ? const LoginCustomAlert()
+            : Scaffold(
                 appBar: AppBar(
                   toolbarHeight: 150,
                   shape: const RoundedRectangleBorder(
@@ -55,25 +58,25 @@ class _ProfileState extends ConsumerState<Profile> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 10, top: 10),
-                        child: Column(
+                        child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               "User",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 18),
                             ),
                             // Text(user.fullName),
-                            const SizedBox(
+                            SizedBox(
                               height: 10,
                             ),
                             Text(
-                              snapshot.data.email,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 18),
+                              "test",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                             ),
                             // Text(user.email),
-                            const SizedBox(
+                            SizedBox(
                               height: 20,
                             ),
                           ],
@@ -164,7 +167,6 @@ class _ProfileState extends ConsumerState<Profile> {
                           ref
                               .read(authControllerProvider.notifier)
                               .logout(context);
-                          ref.refresh(authControllerProvider);
                         },
                       ),
                       const SizedBox(
@@ -173,8 +175,7 @@ class _ProfileState extends ConsumerState<Profile> {
                     ],
                   ),
                 ),
-              )
-            : const LoginCustomAlert();
+              );
       },
     );
   }
