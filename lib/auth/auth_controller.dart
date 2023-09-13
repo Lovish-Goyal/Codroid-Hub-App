@@ -61,6 +61,7 @@ class AuthController extends StateNotifier<model.Account?> {
     // state = await _ref.read(authServicesProvider).getCurrentUser();
     // _ref.refresh(authControllerProvider);
     // _ref.refresh(currentUserProvider);
+    // ignore: unused_result
     _ref.refresh(authServicesProvider);
     if (res == null) {
       if (!mounted) return;
@@ -84,6 +85,7 @@ class AuthController extends StateNotifier<model.Account?> {
   void logout(BuildContext context) async {
     final res = await _ref.read(authServicesProvider).logout();
 
+    // ignore: unused_result
     _ref.refresh(authServicesProvider);
     if (res == null) {
       if (!mounted) return;

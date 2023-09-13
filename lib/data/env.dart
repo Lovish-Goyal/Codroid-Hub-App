@@ -34,4 +34,7 @@ abstract class Env {
 
   @EnviedField(varName: 'razorPayKeySecret')
   static String razorPayKeySecret = _Env.razorPayKeySecret;
+
+  @EnviedField(varName: 'courseStorageBucketId')
+  static String courseStorageBucketId = _Env.courseStorageBucketId;
 }

@@ -55,7 +55,6 @@ final routerProvider = Provider<GoRouter>((ref) {
     GoRoute(
         path: RouteKey.cart,
         builder: (context, state) {
-         
           Logger().f(user);
           return user == null ? const LoginCustomAlert() : const CartPage();
         }),

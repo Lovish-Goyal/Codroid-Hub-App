@@ -25,12 +25,12 @@ class AboutPage extends StatelessWidget {
                 height: 120,
                 width: double.infinity,
                 color: Colors.grey[600],
-                child: Column(
+                child: const Column(
                   children: [],
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.only(top: 40),
                 child: ResponsiveGridRow(
                   children: [
                   ResponsiveGridCol(
@@ -38,44 +38,42 @@ class AboutPage extends StatelessWidget {
                     lg: 5,
                     child: Container(
                       width: 400,
-                      margin: EdgeInsets.symmetric(horizontal: 50),
+                      margin: const EdgeInsets.symmetric(horizontal: 50),
                       child: Column(
                         children: [
-                          Container(
-                            child: Text(
-                              "About Us",
-                              style: TextStyle(fontSize: 50, color: Colors.white),
-                            ),
+                          const Text(
+                            "About Us",
+                            style: TextStyle(fontSize: 50, color: Colors.white),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: 30,bottom: 20),
-                            child: Text(
+                            margin: const EdgeInsets.only(top: 30,bottom: 20),
+                            child: const Text(
                               "Empowering Education through Technological Advancements",
                               style: TextStyle(fontSize: 40, color: Colors.black),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Text(
                             "We are a leading provider of IT services for educational organizations across the country. Our team of highly trained professionals is dedicated to helping schools and universities leverage technology to improve their operations and optimize the learning experience for students.",
                             style: TextStyle(color: Colors.grey[600],fontSize: 18),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                           Text(
                             "Cordoidhub Private Limited has also become an important player in the government’s Digital India initiative. The company is actively involved in projects that use AI and big data to improve access to healthcare, education, and other services for rural and disadvantaged populations.",
                             style: TextStyle(color: Colors.grey[600],fontSize: 18),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                           Text(
                             "Through its products and services, the company is helping to empower people and create a more equitable society. Cordoidhub Private Limited is a great example of how a college-level technical society can grow into a successful company with a positive impact on society.",
                             style: TextStyle(color: Colors.grey[600],fontSize: 18),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
                         ],
@@ -88,7 +86,7 @@ class AboutPage extends StatelessWidget {
                     child: Container(
                       // height: 1000,
                       width: double.infinity,
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         child: Image.asset("images/home.jpeg",),
                       ),
                     ),
@@ -96,7 +94,7 @@ class AboutPage extends StatelessWidget {
               )
             ]),
             Container(
-              padding: EdgeInsets.all(40),
+              padding: const EdgeInsets.all(40),
               width: double.infinity,
               decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -160,7 +158,7 @@ class AboutPage extends StatelessWidget {
             Container(
               width: 600,
               margin: const EdgeInsets.all(40),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(

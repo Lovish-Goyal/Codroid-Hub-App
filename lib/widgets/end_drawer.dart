@@ -1,7 +1,6 @@
 import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class EndDrawer extends ConsumerWidget {
@@ -33,7 +32,7 @@ class EndDrawer extends ConsumerWidget {
               ),
             ),
           ),
-           ListTile(
+          ListTile(
             //menu item of Drawer
             leading: const Icon(Icons.home),
             title: const Text('Home'),
@@ -64,13 +63,13 @@ class EndDrawer extends ConsumerWidget {
             title: Text('Services'),
           ),
           ListTile(
-            leading: Icon(Icons.login),
-            title: Text('Login'),
+            leading: const Icon(Icons.login),
+            title: const Text('Login'),
             onTap: () => context.go('/login'),
           ),
           ListTile(
-            leading: Icon(Icons.app_registration_rounded),
-            title: Text('SignUp'),
+            leading: const Icon(Icons.app_registration_rounded),
+            title: const Text('SignUp'),
             onTap: () => context.go('/signup'),
           ),
           ListTile(
