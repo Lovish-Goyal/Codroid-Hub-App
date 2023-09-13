@@ -1,7 +1,4 @@
 import 'dart:convert';
-
-import 'package:codroid_hub/auth/pages/login.dart';
-import 'package:codroid_hub/auth/provider/user_provider.dart';
 import 'package:codroid_hub/modules/cart/provider/cart_controller_provider.dart';
 import 'package:codroid_hub/modules/cart/razor%20pay/api_services.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
@@ -12,6 +9,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../../auth/pages/login.dart';
+import '../../../auth/provider/user_provider.dart';
 
 class CartPage extends ConsumerStatefulWidget {
   const CartPage({super.key});
@@ -90,7 +90,6 @@ class _CartPageState extends ConsumerState<CartPage> {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Loder();
                       }
-
                       return snapshot.hasData
                           ? Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

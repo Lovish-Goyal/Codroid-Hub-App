@@ -25,23 +25,20 @@ final routerProvider = Provider<GoRouter>((ref) {
       path: RouteKey.home,
       builder: (context, state) =>
           kIsWeb ? const Homepage() : const BottomNavBar(),
-      // builder: (context, state) => showAlertDialogLogin(context),
-      // user.when(
-      //     data: (user) {
-      //       if (user != null) {
-      //         return const Homepage();
-      //       }
-      //       return const LoginView();
-      //     },
-      //     error: ((err, st) => const Center(
-      //           child: Text("Page Not found"),
-      //         )),
-      //     loading: () => const LoadingPage()),
     ),
-    GoRoute(
-      path: RouteKey.home,
-      builder: (context, state) => const Homepage(),
-    ),
+    // builder: (context, state) =>
+    //   user.when(
+    //       data: (user) {
+    //         if (user != null) {
+    //           return const Homepage();
+    //         }
+    //         return const LoginView();
+    //       },
+    //       error: ((err, st) => const Center(
+    //             child: Text("Page Not found"),
+    //           )),
+    //       loading: () => const LoadingPage()),
+    // ),,
     GoRoute(
       path: RouteKey.about,
       builder: (context, state) => const AboutPage(),

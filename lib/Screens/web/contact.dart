@@ -21,10 +21,38 @@ class _WebContactPageState extends State<WebContactPage> {
           toolbarHeight: 70,
           backgroundColor: Colors.black87,
           title: appBarhelper(context)),
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(
+              height: 240,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Image.asset("images/contact1.jpg", fit: BoxFit.cover),
+                  ColoredBox(
+                      color: Colors.black.withOpacity(0.9) // 0: Light, 1: Dark
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(46),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text("Contact Us",style: TextStyle(color: Colors.white,fontSize: 50),),
+                             Text("We are eager to discuss your needs, and answers any questions you may have. Enter your details and we`ll get back to you shortly.",style: TextStyle(color: Colors.white,fontSize: 16),),
+                          ],
+                        ),
+                      )
+                ],
+              ),
+            ),
+            // Container(
+            //   width: double.infinity,
+            //   height: 300,
+            //   child: Image.asset("images/contact1.jpg",fit: BoxFit.cover),
+            // ),
             ResponsiveGridRow(children: [
               ResponsiveGridCol(
                   xl: 6,
@@ -37,7 +65,7 @@ class _WebContactPageState extends State<WebContactPage> {
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
+                      color: Colors.grey[400],
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

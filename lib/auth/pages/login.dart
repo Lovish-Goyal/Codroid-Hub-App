@@ -2,7 +2,6 @@ import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 class LoginCustomAlert extends ConsumerStatefulWidget {
   const LoginCustomAlert({super.key});
 
