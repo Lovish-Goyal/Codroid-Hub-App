@@ -35,16 +35,22 @@ class _WebContactPageState extends State<WebContactPage> {
                   ColoredBox(
                       color: Colors.black.withOpacity(0.9) // 0: Light, 1: Dark
                       ),
-                      Container(
-                        margin: EdgeInsets.all(46),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text("Contact Us",style: TextStyle(color: Colors.white,fontSize: 50),),
-                             Text("We are eager to discuss your needs, and answers any questions you may have. Enter your details and we`ll get back to you shortly.",style: TextStyle(color: Colors.white,fontSize: 16),),
-                          ],
+                  Container(
+                    margin: const EdgeInsets.all(46),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Contact Us",
+                          style: TextStyle(color: Colors.white, fontSize: 50),
                         ),
-                      )
+                        Text(
+                          "We are eager to discuss your needs, and answers any questions you may have. Enter your details and we`ll get back to you shortly.",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -412,24 +418,27 @@ extension ExtString on String {
     return passwordRegExp.hasMatch(this);
   }
 
-  bool get isNotNull {
-    return this != 0;
-  }
+  //REMINDER: This is not a good way to check if a string is null or empty
+  //use   (!String.isEmpty)  instead
+  // bool get isNotNull {
+
+  //   return this.length != 0;
+  // }
 
   bool get isValidPhone {
     final phoneRegExp = RegExp(r"^\+?[0-9]{10}$");
     return phoneRegExp.hasMatch(this);
   }
 
-  // bool isMobileNumberValid () {
-  //   String regexPattern = r'^(?:[+0][1-9])?[0-9]{10,12}$';
-  //   var regExp = new RegExp(regexPattern);
+  bool isMobileNumberValid() {
+    String regexPattern = r'^(?:[+0][1-9])?[0-9]{10,12}$';
+    var regExp = RegExp(regexPattern);
 
-  //   if (this.length == 0) {
-  //     return false;
-  //   } else if (regExp.hasMatch(this)) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
+    if (isEmpty) {
+      return false;
+    } else if (regExp.hasMatch(this)) {
+      return true;
+    }
+    return false;
+  }
 }
