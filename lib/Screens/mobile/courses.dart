@@ -4,8 +4,6 @@ import 'package:codroid_hub/widgets/end_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../widgets/appbar.dart';
-
 class MobCourses extends ConsumerStatefulWidget {
   const MobCourses({super.key});
 
@@ -20,36 +18,36 @@ class _MobCoursesState extends ConsumerState<MobCourses> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-          toolbarHeight: 70,
-          backgroundColor: Colors.black,
-          title: appBarhelper(context)),
-      body: courses.when(
-        data: (data) => SingleChildScrollView(
-          child: GridView.count(
-           childAspectRatio: 1,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 1,
-                shrinkWrap: true,
-                children: data
-                    .map((course) => CourseCard(
-                          course: course,
-                        ))
-                    .toList(),
-              ),
+        toolbarHeight: 70,
+        title: const Text(
+          "Courses",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        error: (error, stack) => Center(
-              child: Text(error.toString()),
-            ),
-        loading: (() => const Center(
-              child: CircularProgressIndicator(),
-            ))),
-        endDrawer: const SizedBox(
-          width: 220,
-          child: EndDrawer()),
+      ),
+      body: courses.when(
+          data: (data) => SingleChildScrollView(
+                child: GridView.count(
+                  childAspectRatio: 1,
+                  physics: const NeverScrollableScrollPhysics(),
+                  crossAxisCount: 1,
+                  shrinkWrap: true,
+                  children: data
+                      .map((course) => CourseCard(
+                            course: course,
+                          ))
+                      .toList(),
+                ),
+              ),
+          error: (error, stack) => Center(
+                child: Text(error.toString()),
+              ),
+          loading: (() => const Center(
+                child: CircularProgressIndicator(),
+              ))),
+      drawer: const SizedBox(width: 220, child: EndDrawer()),
     );
   }
 }
-
 
 class RowItems extends ConsumerWidget {
   const RowItems({super.key});

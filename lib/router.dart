@@ -56,7 +56,9 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: RouteKey.cart,
         builder: (context, state) {
           Logger().f(user);
-          return user == null ? const LoginCustomAlert() : const CartPage();
+          return user == null
+              ? const LoginCustomAlert()
+              : const MobileCartPage();
         }),
     GoRoute(
       path: RouteKey.addCourses,

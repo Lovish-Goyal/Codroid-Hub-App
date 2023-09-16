@@ -4,6 +4,7 @@ import 'package:codroid_hub/modules/cart/razor%20pay/api_services.dart';
 import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/utils/loading_page.dart';
 import 'package:codroid_hub/utils/show_snackbar.dart';
+import 'package:codroid_hub/widgets/end_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
@@ -13,14 +14,14 @@ import 'package:uuid/uuid.dart';
 import '../../../auth/pages/login.dart';
 import '../../../auth/provider/user_provider.dart';
 
-class CartPage extends ConsumerStatefulWidget {
-  const CartPage({super.key});
+class MobileCartPage extends ConsumerStatefulWidget {
+  const MobileCartPage({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _CartPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _MobileCartPageState();
 }
 
-class _CartPageState extends ConsumerState<CartPage> {
+class _MobileCartPageState extends ConsumerState<MobileCartPage> {
   final _razorpay = Razorpay();
 
   @override
@@ -71,8 +72,14 @@ class _CartPageState extends ConsumerState<CartPage> {
           return snapshot.data == null
               ? const LoginCustomAlert()
               : Scaffold(
+                  backgroundColor: Colors.white,
                   appBar: AppBar(
-                    title: const Text("Cart"),
+                    toolbarHeight: 70,
+                    title: const Text(
+                      "My Cart",
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
                   ),
                   body: FutureBuilder(
                     future: cartList,
@@ -95,9 +102,27 @@ class _CartPageState extends ConsumerState<CartPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 if (snapshot.data.isEmpty)
-                                  const Text("No Items In Cart",
-                                      style: TextStyle(
-                                          fontSize: 20, color: Colors.black)),
+                                  Column(
+                                    children: [
+                                      Container(
+                                          margin: const EdgeInsets.only(top: 100),
+                                          child: Image.network(
+                                              "https://static.vecteezy.com/system/resources/thumbnails/005/006/007/small/no-item-in-the-shopping-cart-click-to-go-shopping-now-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-vector.jpg")),
+                                      const Text("Your Cart is Empty",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black)),
+                                      Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            vertical: 10, horizontal: 45),
+                                        child: const Text(
+                                          "Looks like you haven`t added anything to your cart. Go ahead and explore top courses",
+                                          style: TextStyle(
+                                              fontSize: 15, color: Colors.grey),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ListView.builder(
                                   shrinkWrap: true,
                                   itemCount: snapshot.data.length,
@@ -132,51 +157,55 @@ class _CartPageState extends ConsumerState<CartPage> {
                                     );
                                   },
                                 ),
-                                Card(
-                                  child: ListTile(
-                                    title: const Text("Total"),
-                                    subtitle: Text(
-                                      "$total Rs",
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    trailing: TextButton(
-                                        child: const Text("Checkout"),
-                                        onPressed: () async {
-                                          final apiRes = await razorApiServices
-                                              .razorPayApi(
-                                                  total, const Uuid().v4());
-                                          Logger().i(apiRes);
+                                if (snapshot.data.isEmpty)
+                                  const Text("")
+                                else
+                                  Card(
+                                    child: ListTile(
+                                      title: const Text("Total"),
+                                      subtitle: Text(
+                                        "$total Rs",
+                                        style: const TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      trailing: TextButton(
+                                          child: const Text("Checkout"),
+                                          onPressed: () async {
+                                            final apiRes =
+                                                await razorApiServices
+                                                    .razorPayApi(total,
+                                                        const Uuid().v4());
+                                            Logger().i(apiRes);
 
-                                          final orderId =
-                                              json.decode(apiRes)["id"];
-                                          Logger().i(orderId);
-                                          final options = {
-                                            "key": "rzp_test_qRqtDl6Kpsdjx3",
-                                            "order_id": orderId,
-                                            "name": "codroid hub",
-                                            "amount":
-                                                json.decode(apiRes)["amount"],
-                                            "description": "testing payment",
-                                            "currency": "INR",
-                                            // "timeout": 300,
-                                            "prefill": {
-                                              "contact": "+917494979209",
-                                              "email": "test@gmail.com",
-                                            },
-                                            "external": {
-                                              "wallets": ["paytm"]
+                                            final orderId =
+                                                json.decode(apiRes)["id"];
+                                            Logger().i(orderId);
+                                            final options = {
+                                              "key": "rzp_test_qRqtDl6Kpsdjx3",
+                                              "order_id": orderId,
+                                              "name": "codroid hub",
+                                              "amount":
+                                                  json.decode(apiRes)["amount"],
+                                              "description": "testing payment",
+                                              "currency": "INR",
+                                              // "timeout": 300,
+                                              "prefill": {
+                                                "contact": "+917494979209",
+                                                "email": "test@gmail.com",
+                                              },
+                                              "external": {
+                                                "wallets": ["paytm"]
+                                              }
+                                            };
+                                            try {
+                                              _razorpay.open(options);
+                                            } catch (e) {
+                                              debugPrint(e.toString());
                                             }
-                                          };
-                                          try {
-                                            _razorpay.open(options);
-                                          } catch (e) {
-                                            debugPrint(e.toString());
-                                          }
-                                        }),
-                                  ),
-                                )
+                                          }),
+                                    ),
+                                  )
                               ],
                             )
                           : const Center(
@@ -186,6 +215,7 @@ class _CartPageState extends ConsumerState<CartPage> {
                             );
                     },
                   ),
+                  drawer: const SizedBox(width: 220, child: EndDrawer()),
                 );
         });
   }

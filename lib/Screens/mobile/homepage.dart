@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../widgets/appbar.dart';
 import 'courses.dart';
 
 class HomeView extends ConsumerStatefulWidget {
@@ -17,16 +15,17 @@ class HomeView extends ConsumerStatefulWidget {
 
 class _HomeViewState extends ConsumerState<HomeView> {
   _launchWhatsapp() async {
-    var phone = "+918607605196";
-    var url = Uri.parse(
-        "https://wa.me/$phone?text=Hey buddy, try this super cool new app!");
+    var phone = "+9138555661";
+    // var url = Uri.parse(
+    //     "https://wa.me/$phone?text=Hey buddy, try this super cool new app!");
     var whatsappAndroid = Uri.parse(
-        "whatsapp://send?phone=$phone&text=hello🖐️ Welcome to our app");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
+        "whatsapp://send?phone=$phone&text=Hello, Welcome to CodroidHub 😊");
+    if (await canLaunchUrl(whatsappAndroid)) {
       await launchUrl(whatsappAndroid);
     }
+    // else {
+    //   await launchUrl(url);
+    // }
   }
 
   final TextEditingController pass = TextEditingController();
@@ -36,8 +35,10 @@ class _HomeViewState extends ConsumerState<HomeView> {
     return Scaffold(
       appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor: Colors.black,
-          title: appBarhelper(context)),
+          title: Text.rich(TextSpan(style: TextStyle(fontSize: 25), children: [
+            TextSpan(text: 'Codroid', style: TextStyle(color: Colors.black)),
+            TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
+          ]))),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +140,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
           ],
         ),
       ),
-      endDrawer: const SizedBox(width: 220, child: EndDrawer()),
+      drawer: const SizedBox(width: 220, child: EndDrawer()),
       floatingActionButton: FloatingActionButton(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(5))),

@@ -29,7 +29,7 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
     // final isLoadingState = ref.watch(authControllerProvider);
 
     return AlertDialog(
-      insetPadding: const EdgeInsets.symmetric(vertical: 140),
+      insetPadding: const EdgeInsets.symmetric(vertical: 110),
       title: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -60,7 +60,7 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                       child: const Icon(Icons.email_outlined)),
                   Container(
                       margin: const EdgeInsets.only(right: 10),
-                      width: 300,
+                      width: 250,
                       child: TextFormField(
                         controller: email,
                         validator: (value) {
@@ -95,7 +95,7 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                       child: const Icon(Icons.password)),
                   Container(
                       margin: const EdgeInsets.only(right: 10),
-                      width: 300,
+                      width: 250,
                       child: TextFormField(
                         controller: pass,
                         validator: (value) {

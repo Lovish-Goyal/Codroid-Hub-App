@@ -7,19 +7,19 @@ import 'homepage.dart';
 import 'profile.dart';
 
 class BottomNavBar extends ConsumerStatefulWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({super.key,});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _BottomNavBArState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _BottomNavBarState();
 }
 
-class _BottomNavBArState extends ConsumerState<BottomNavBar> {
+class _BottomNavBarState extends ConsumerState<BottomNavBar> {
   late String index;
 
   static const List<Widget> _pages = <Widget>[
     HomeView(),
     MobCourses(),
-    CartPage(),
+    MobileCartPage(),
     Profile(),
   ];
   int selectedIndex = 0;
