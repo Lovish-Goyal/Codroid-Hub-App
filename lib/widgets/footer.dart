@@ -158,19 +158,19 @@ class _FooterState extends State<Footer> {
                     TextButton(
                         onPressed: () {},
                         child: const Text(
-                          "9878765654",
+                          "9138555663",
                           style: TextStyle(color: Colors.blue),
                         )),
                     TextButton(
                         onPressed: () {},
                         child: const Text(
-                          "9876765454",
+                          "9138555661",
                           style: TextStyle(color: Colors.blue),
                         )),
                     TextButton(
                         onPressed: () {},
                         child: const Text(
-                          "programer@gmail.com",
+                          "programmanager@codroidhub.com",
                           style: TextStyle(color: Colors.blue),
                         )),
                   ],
@@ -198,11 +198,11 @@ class _FooterState extends State<Footer> {
                   child: Row(
                     children: [
                       const SizedBox(
-                        width: 140,
+                        width: 100,
                         child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Enter your Email',
+                            hintText: 'Enter Email',
                           ),
                         ),
                       ),
@@ -329,7 +329,7 @@ class MobileFooter extends StatelessWidget {
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "9878765654",
+                        "9138555663",
                         style: TextStyle(color: Colors.blue),
                       )),
                 ],
@@ -345,7 +345,7 @@ class MobileFooter extends StatelessWidget {
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "9876765454",
+                        "9138555661",
                         style: TextStyle(color: Colors.blue),
                       )),
                 ],
@@ -361,7 +361,7 @@ class MobileFooter extends StatelessWidget {
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "programer@gmail.com",
+                        "programmanager@codroidhub.com",
                         style: TextStyle(color: Colors.blue),
                       )),
                 ],

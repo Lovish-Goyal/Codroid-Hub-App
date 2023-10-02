@@ -42,18 +42,19 @@ class _HomepageState extends State<Homepage> {
                           ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                // Container(
+                                //   margin: const EdgeInsets.only(top: 120, left: 60),
+                                //   child: const Text(
+                                //     "TRUST AND CLIENT FOCUS",
+                                //     style: TextStyle(
+                                //         fontSize: 20,
+                                //         fontWeight: FontWeight.bold,
+                                //         color: Colors.white),
+                                //   ),
+                                // ),
                                 Container(
-                                  margin: const EdgeInsets.only(top: 120, left: 60),
-                                  child: const Text(
-                                    "TRUST AND CLIENT FOCUS",
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(top: 20, left: 60),
+                                  margin:
+                                      const EdgeInsets.only(top: 120, left: 60),
                                   child: const Text(
                                     "Welcome to CodroidHub",
                                     style: TextStyle(
@@ -64,7 +65,8 @@ class _HomepageState extends State<Homepage> {
                                 ),
                                 Container(
                                   width: 600,
-                                  margin: const EdgeInsets.only(top: 20, left: 60),
+                                  margin:
+                                      const EdgeInsets.only(top: 20, left: 60),
                                   child: const Text(
                                     "Get professional & reliable research oriented solutions for Data Science and Machine learning business needs. Enjoy stress free decision making.",
                                     style: TextStyle(
@@ -76,18 +78,19 @@ class _HomepageState extends State<Homepage> {
                           : Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                // Container(
+                                //   margin: const EdgeInsets.only(top: 100, left: 30),
+                                //   child: const Text(
+                                //     "TRUST AND CLIENT FOCUS",
+                                //     style: TextStyle(
+                                //         fontSize: 15,
+                                //         fontWeight: FontWeight.bold,
+                                //         color: Colors.white),
+                                //   ),
+                                // ),
                                 Container(
-                                  margin: const EdgeInsets.only(top: 100, left: 30),
-                                  child: const Text(
-                                    "TRUST AND CLIENT FOCUS",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(top: 20, left: 30),
+                                  margin:
+                                      const EdgeInsets.only(top: 120, left: 30),
                                   child: const Text(
                                     "Welcome to CodroidHub",
                                     style: TextStyle(
@@ -98,11 +101,12 @@ class _HomepageState extends State<Homepage> {
                                 ),
                                 Container(
                                   width: 600,
-                                  margin: const EdgeInsets.only(top: 20, left: 30),
+                                  margin:
+                                      const EdgeInsets.only(top: 20, left: 30),
                                   child: const Text(
                                     "Get professional & reliable research oriented solutions for Data Science and Machine learning business needs. Enjoy stress free decision making.",
                                     style: TextStyle(
-                                        fontSize: 22, color: Colors.white),
+                                        fontSize: 20, color: Colors.white),
                                   ),
                                 ),
                               ],
@@ -209,7 +213,7 @@ class _HomepageState extends State<Homepage> {
             child: Column(
               children: [
                 const Text(
-                  "Our perks",
+                  "Our Perks",
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
                   textScaleFactor: 3.5,
@@ -217,42 +221,43 @@ class _HomepageState extends State<Homepage> {
                 ),
                 ResponsiveGridRow(children: [
                   ResponsiveGridCol(
-                      xl: 3,
+                      xl: 4,
                       lg: 4,
                       md: 4,
                       child: const AdditionalFeaturesCard(
                         headingText: "50+",
-                        subHeadingText: "Faculty",
+                        subHeadingText: "Employees from around the World",
                         icon: Icons.people,
                         color: Colors.blue,
                       )),
                   ResponsiveGridCol(
-                      xl: 3,
+                      xl: 4,
                       lg: 4,
                       md: 4,
                       child: const AdditionalFeaturesCard(
-                        headingText: "10000+",
-                        subHeadingText: "Downloads",
+                        headingText: "20+",
+                        subHeadingText:
+                            "Happy clients from Largest corporations",
                         icon: Icons.download,
                         color: Colors.blue,
                       )),
+                  // ResponsiveGridCol(
+                  //     xl: 3,
+                  //     lg: 4,
+                  //     md: 4,
+                  //     child: const AdditionalFeaturesCard(
+                  //       headingText: "5000+",
+                  //       subHeadingText: "Active Install",
+                  //       icon: Icons.install_mobile,
+                  //       color: Colors.blue,
+                  //     )),
                   ResponsiveGridCol(
-                      xl: 3,
+                      xl: 4,
                       lg: 4,
                       md: 4,
                       child: const AdditionalFeaturesCard(
-                        headingText: "5000+",
-                        subHeadingText: "Active Install",
-                        icon: Icons.install_mobile,
-                        color: Colors.blue,
-                      )),
-                  ResponsiveGridCol(
-                      xl: 3,
-                      lg: 4,
-                      md: 4,
-                      child: const AdditionalFeaturesCard(
-                        headingText: "50+",
-                        subHeadingText: "Courses",
+                        headingText: "+2",
+                        subHeadingText: "Offices in 2 countries WorldWide",
                         icon: Icons.book_rounded,
                         color: Colors.blue,
                       )),
@@ -260,37 +265,34 @@ class _HomepageState extends State<Homepage> {
               ],
             ),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(children: [
-              Image.asset(
-                "assets/images/image1.png",
-                color: const Color.fromARGB(237, 255, 235, 59),
-              ),
-              const Text(
-                "Selling Top Courses",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-                textScaleFactor: 3.5,
-                textAlign: TextAlign.center,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Colors.yellow),
-                  Icon(Icons.star, color: Colors.yellow),
-                ],
-              )
-            ]),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const CoursesContainer(),
+
+          // Container(
+          //   margin: const EdgeInsets.symmetric(vertical: 20),
+          //   child: Column(children: [
+          //     Image.asset(
+          //       "assets/images/image1.png",
+          //       color: const Color.fromARGB(237, 255, 235, 59),
+          //     ),
+          //     const Text(
+          //       "Selling Top Courses",
+          //       style: TextStyle(
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //       textScaleFactor: 3.5,
+          //       textAlign: TextAlign.center,
+          //     ),
+          //     const Row(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: [
+          //         Icon(Icons.star, color: Colors.yellow),
+          //         Icon(Icons.star, color: Colors.yellow),
+          //         Icon(Icons.star, color: Colors.yellow),
+          //         Icon(Icons.star, color: Colors.yellow),
+          //         Icon(Icons.star, color: Colors.yellow),
+          //       ],
+          //     )
+          //   ]),
+          // ),
           Container(
             height: 300,
             width: double.infinity,
@@ -310,6 +312,72 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.amber),
             )),
           ),
+          const CoursesContainer(),
+          Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  image: DecorationImage(
+                    image: AssetImage("images/service_1.jpg"),
+                    fit: BoxFit.fill,
+                  )),
+              child: Column(
+                children: [
+                  Container(
+                      margin: EdgeInsets.only(top: 50),
+                      child: Text(
+                        "Our Services",
+                        style: TextStyle(color: Colors.grey[500], fontSize: 50),
+                      )),
+                  ResponsiveGridRow(
+                    children: [
+                      ResponsiveGridCol(
+                          xl: 6,
+                          lg: 6,
+                          md: 12,
+                          sm: 12,
+                          xs: 12,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 50),
+                            child: Text(
+                              "Seamless Integration of Education and Technology Expertise",
+                              style:
+                                  TextStyle(color: Colors.white,
+                                   fontSize: (MediaQuery.of(context).size.width > 600) ? 50 : 40),
+                            ),
+                          )),
+                      ResponsiveGridCol(
+                          xl: 6,
+                          lg: 6,
+                          md: 12,
+                          sm: 12,
+                          xs: 12,
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 50,horizontal: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "At CodroidHub, we believe that every individual and business should have access to the resources and tools needed to success in today`s ever-evolving It landscap .We are committed to providing our clients with the best possible service and support, and we look forward to helping you achieve your educational goals.",
+                                  style: TextStyle(
+                                      color: Colors.grey[300], fontSize: 20),
+                                  textAlign: TextAlign.justify,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text("All Services"))
+                              ],
+                            ),
+                          ))
+                    ],
+                  ),
+                ],
+              )),
           const MembersPage(),
           (MediaQuery.of(context).size.width > 800)
               ? const Footer()

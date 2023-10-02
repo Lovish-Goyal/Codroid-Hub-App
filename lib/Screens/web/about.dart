@@ -1,11 +1,12 @@
+import 'package:codroid_hub/modules/members/pages/members_page.dart';
 import 'package:codroid_hub/widgets/appbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import '../widgets/cards/addition_feature_card.dart';
-import '../widgets/end_drawer.dart';
-import '../widgets/team_carousel.dart';
-import '../widgets/footer.dart';
+import '../../widgets/cards/addition_feature_card.dart';
+import '../../widgets/end_drawer.dart';
+import '../../widgets/team_carousel.dart';
+import '../../widgets/footer.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -102,80 +103,72 @@ class AboutPage extends StatelessWidget {
                 fit: BoxFit.fill,
               )),
               child: Column(
-                children: [
-                  const Text(
-                    "Our perks",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
-                    textScaleFactor: 3.5,
-                    textAlign: TextAlign.center,
-                  ),
-                  ResponsiveGridRow(children: [
-                    ResponsiveGridCol(
-                        xl: 3,
-                        lg: 4,
-                        md: 4,
-                        child: const AdditionalFeaturesCard(
-                          headingText: "50+",
-                          subHeadingText: "Faculty",
-                          icon: Icons.people,
-                          color: Colors.blue,
-                        )),
-                    ResponsiveGridCol(
-                        xl: 3,
-                        lg: 4,
-                        md: 4,
-                        child: const AdditionalFeaturesCard(
-                          headingText: "10000+",
-                          subHeadingText: "Downloads",
-                          icon: Icons.download,
-                          color: Colors.blue,
-                        )),
-                    ResponsiveGridCol(
-                        xl: 3,
-                        lg: 4,
-                        md: 4,
-                        child: const AdditionalFeaturesCard(
-                          headingText: "5000+",
-                          subHeadingText: "Active Install",
-                          icon: Icons.install_mobile,
-                          color: Colors.blue,
-                        )),
-                    ResponsiveGridCol(
-                        xl: 3,
-                        lg: 4,
-                        md: 4,
-                        child: const AdditionalFeaturesCard(
-                          headingText: "50+",
-                          subHeadingText: "Courses",
-                          icon: Icons.book_rounded,
-                          color: Colors.blue,
-                        )),
-                  ]),
-                ],
-              ),
+              children: [
+                const Text(
+                  "Our Perks",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                  textScaleFactor: 3.5,
+                  textAlign: TextAlign.center,
+                ),
+                ResponsiveGridRow(children: [
+                  ResponsiveGridCol(
+                      xl: 4,
+                      lg: 4,
+                      md: 4,
+                      child: const AdditionalFeaturesCard(
+                        headingText: "50+",
+                        subHeadingText: "Employees from around the World",
+                        icon: Icons.people,
+                        color: Colors.blue,
+                      )),
+                  ResponsiveGridCol(
+                      xl: 4,
+                      lg: 4,
+                      md: 4,
+                      child: const AdditionalFeaturesCard(
+                        headingText: "20+",
+                        subHeadingText:
+                            "Happy clients from Largest corporations",
+                        icon: Icons.download,
+                        color: Colors.blue,
+                      )),
+                  ResponsiveGridCol(
+                      xl: 4,
+                      lg: 4,
+                      md: 4,
+                      child: const AdditionalFeaturesCard(
+                        headingText: "+2",
+                        subHeadingText: "Offices in 2 countries WorldWide",
+                        icon: Icons.book_rounded,
+                        color: Colors.blue,
+                      )),
+                ]),
+              ],
             ),
-            Container(
-              width: 600,
-              margin: const EdgeInsets.all(40),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                      "Discover Trust Team and",
-                      style: TextStyle(fontSize: 50),
-                    ),
-                    Text(
-                      "Our Experts",
-                      style: TextStyle(fontSize: 50),
-                    ),
-                ],
-              ),
             ),
-            const CarouselImages(),
-            const SizedBox(
-              height: 20,
-            ),
+            const MembersPage(),
+            // Container(
+            //   width: 600,
+            //   margin: const EdgeInsets.all(40),
+            //   child: const Column(
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: [
+            //       Text(
+            //           "Discover Trust Team and",
+            //           style: TextStyle(fontSize: 50),
+            //         ),
+            //         Text(
+            //           "Our Experts",
+            //           style: TextStyle(fontSize: 50),
+            //         ),
+            //     ],
+            //   ),
+            // ),
+            // const CarouselImages(),
+            // const SizedBox(
+            //   height: 20,
+            // ),
             if (kIsWeb)
               (MediaQuery.of(context).size.width > 700)
                   ? const Footer()

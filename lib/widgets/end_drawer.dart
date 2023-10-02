@@ -1,4 +1,5 @@
 import 'package:codroid_hub/auth/auth_controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -34,32 +35,32 @@ class EndDrawer extends ConsumerWidget {
           ),
           ListTile(
             //menu item of Drawer
-            leading: const Icon(Icons.home),
+            leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
-            leading: const Icon(Icons.account_circle),
+            leading: const Icon(Icons.contact_page_outlined),
             title: const Text('Contact'),
             onTap: () => context.go('/contact'),
           ),
           ListTile(
-            leading: const Icon(Icons.account_circle),
+            leading: const Icon(Icons.person_outline),
             title: const Text('About'),
             onTap: () => context.go('/about'),
           ),
           ListTile(
-            leading: const Icon(Icons.account_circle),
+            leading: const Icon(Icons.shopping_cart_outlined),
             title: const Text('My Cart'),
             onTap: () => context.go('/cart'),
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
+            leading: const Icon(Icons.settings_outlined),
             title: const Text('Courses'),
             onTap: () => context.go('/courses'),
           ),
           const ListTile(
-            leading: Icon(Icons.settings),
+            leading: Icon(Icons.design_services_outlined),
             title: Text('Services'),
           ),
           ListTile(
@@ -79,10 +80,12 @@ class EndDrawer extends ConsumerWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Logout'),
           ),
-          ListTile(
-              onTap: () => context.push('/addCourses'),
-              leading: const Icon(Icons.add),
-              title: const Text("Add Courses")),
+          kIsWeb
+              ? SizedBox()
+              : ListTile(
+                  onTap: () => context.push('/addCourses'),
+                  leading: const Icon(Icons.add),
+                  title: const Text("Add Courses")),
           ListTile(
               onTap: () {
                 Navigator.pop(context);

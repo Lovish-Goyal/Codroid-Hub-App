@@ -33,7 +33,6 @@ class StorageServices {
   static String imgUrlConverter(String imgId) {
     // final String s =
     //     "${Env.endpoint}/console/project-${Env.projectId}/storage/bucket-${Env.courseStorageBucketId}/file-$imgId";
-
     return "${Env.endpoint}/storage/buckets/${Env.courseStorageBucketId}/files/$imgId/view?project=${Env.projectId}&mode=admin";
   }
 }

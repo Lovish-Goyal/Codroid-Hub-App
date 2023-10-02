@@ -1,4 +1,4 @@
-import 'package:codroid_hub/Screens/about.dart';
+import 'package:codroid_hub/Screens/web/about.dart';
 import 'package:codroid_hub/Screens/mobile/contact.dart';
 import 'package:codroid_hub/Screens/web/contact.dart';
 import 'package:codroid_hub/Screens/web/courses.dart';
@@ -58,7 +58,7 @@ final routerProvider = Provider<GoRouter>((ref) {
           Logger().f(user);
           return user == null
               ? const LoginCustomAlert()
-              : const MobileCartPage();
+              : (kIsWeb ? WebCartpage() : const MobileCartPage()) ;
         }),
     GoRoute(
       path: RouteKey.addCourses,

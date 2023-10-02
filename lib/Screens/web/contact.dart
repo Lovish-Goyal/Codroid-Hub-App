@@ -79,7 +79,7 @@ class _WebContactPageState extends State<WebContactPage> {
                         Container(
                           margin: const EdgeInsets.all(10),
                           child: const Text(
-                            "Get in touch touch us",
+                            "Get in touch",
                             style: TextStyle(
                                 fontSize: 30,
                                 color: Colors.black,
@@ -89,7 +89,7 @@ class _WebContactPageState extends State<WebContactPage> {
                         Container(
                           margin: const EdgeInsets.all(10),
                           child: const Text(
-                            "Codroid hub is the number one company i the field of technology",
+                            "CodroidHub is the number one company in the field of Technology",
                             style: TextStyle(fontSize: 15, color: Colors.black),
                           ),
                         ),
@@ -163,7 +163,7 @@ class _WebContactPageState extends State<WebContactPage> {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  Text("(+91) 9138555661")
+                                  Text("(+91) 9138555663")
                                 ],
                               ),
                             ),

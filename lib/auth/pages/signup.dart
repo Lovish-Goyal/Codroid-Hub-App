@@ -33,7 +33,7 @@ class _SignUpCustomAlertBoxState extends ConsumerState<SignUpCustomAlertBox> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        insetPadding: const EdgeInsets.symmetric(vertical: 80),
+        insetPadding: const EdgeInsets.symmetric(vertical: 45),
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

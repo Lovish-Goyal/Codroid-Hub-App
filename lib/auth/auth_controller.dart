@@ -56,8 +56,12 @@ class AuthController extends StateNotifier<model.Account?> {
 
   void login(String email, String pass, BuildContext context) async {
     // state = true;
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Center(child: CircularProgressIndicator());
+        });
     final res = await _ref.read(authServicesProvider).signIn(email, pass);
-
     // state = await _ref.read(authServicesProvider).getCurrentUser();
     // _ref.refresh(authControllerProvider);
     // _ref.refresh(currentUserProvider);
@@ -66,7 +70,6 @@ class AuthController extends StateNotifier<model.Account?> {
     if (res == null) {
       if (!mounted) return;
       // context.go('/');
-
       showSnackBar(context, "login Successfully");
     } else {
       if (!mounted) return;

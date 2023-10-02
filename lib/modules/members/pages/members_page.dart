@@ -20,7 +20,7 @@ class MembersPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.white)),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             CarouselImages()
           ],

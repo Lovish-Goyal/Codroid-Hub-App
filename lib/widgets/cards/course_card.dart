@@ -21,7 +21,7 @@ class CourseCard extends ConsumerWidget {
         children: <Widget>[
           Image.network(
             course.imgUrl,
-            height: 180,
+            height: 200,
             width: double.infinity,
             fit: BoxFit.fill,
           ),
@@ -38,11 +38,15 @@ class CourseCard extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  course.description,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey[700],
+                Container(
+                  height: 150,
+                  child: Text(
+                    course.description,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[700],
+                    ),
                   ),
                 ),
                 Row(
@@ -96,7 +100,7 @@ class MobCourseCard extends ConsumerWidget {
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: SizedBox(
-        height: 300,
+        height: 350,
         width: 250,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
