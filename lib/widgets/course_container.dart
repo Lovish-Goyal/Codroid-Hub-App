@@ -26,8 +26,7 @@ class CoursesContainer extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    data.length.toString(),
+                  Text(data.length.toString(),
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -54,7 +53,7 @@ class CoursesContainer extends ConsumerWidget {
                         .map((course) => ResponsiveGridCol(
                               xl: 3,
                               lg: 4,
-                              md: 4,
+                              md: 6,
                               child: CourseCard(
                                 course: course,
                               ),

@@ -14,9 +14,9 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+       appBar: AppBar(
           toolbarHeight: 70,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.black87,
           title: appBarhelper(context)),
       body: SingleChildScrollView(
         child: Column(

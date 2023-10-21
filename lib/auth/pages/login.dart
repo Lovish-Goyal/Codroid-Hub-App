@@ -2,6 +2,7 @@ import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 class LoginCustomAlert extends ConsumerStatefulWidget {
   const LoginCustomAlert({super.key});
 
@@ -161,11 +162,9 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
               children: [
                 const Text("NEW USER?"),
                 TextButton(
-                    onPressed: () {},
-                    child: TextButton(
-                        onPressed: () => showDialogSignUp(context),
-                        child: const Text('Sign up',
-                            style: TextStyle(color: Colors.blue))))
+                    onPressed: () => showDialogSignUp(context),
+                    child: const Text('Sign up',
+                        style: TextStyle(color: Colors.blue)))
               ],
             ),
           ],

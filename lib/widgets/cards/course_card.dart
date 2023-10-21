@@ -39,9 +39,8 @@ class CourseCard extends ConsumerWidget {
                 ),
                 const SizedBox(height: 8),
                 Container(
-                  height: 150,
                   child: Text(
-                    course.description,
+                    "Price: ${course.price.toString()}",
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                       fontSize: 15,
@@ -49,12 +48,35 @@ class CourseCard extends ConsumerWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 8),
+                Container(
+                  child: Text(
+                    "Duration: 4-6 Weeks",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  child: Text(
+                    "Instructor: ${course.instructor}",
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     TextButton(
                       child: const Text(
-                        "Add to Cart",
+                        "ADD TO CART",
                         style: TextStyle(color: Colors.blue),
                       ),
                       onPressed: () {
@@ -83,6 +105,7 @@ class CourseCard extends ConsumerWidget {
     );
   }
 }
+
 
 class MobCourseCard extends ConsumerWidget {
   final CourseModel course;

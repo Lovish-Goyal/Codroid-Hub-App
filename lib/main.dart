@@ -2,7 +2,6 @@ import 'package:codroid_hub/appwrite.dart';
 import 'package:codroid_hub/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'data/env.dart';
 
 Future<void> main() async {

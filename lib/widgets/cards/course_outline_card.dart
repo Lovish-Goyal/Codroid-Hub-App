@@ -20,13 +20,18 @@ class CourseOutlineCard extends StatelessWidget {
         ),
         children: [
           for (var i = 0; i < courseOutline.subOutline.length; i++)
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                courseOutline.subOutline[i],
-                style: const TextStyle(),
-              ),
-            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text(
+                    courseOutline.subOutline[i],
+                    style: const TextStyle(),
+                  ),
+                ),
+              ],
+            )
         ]);
 
     // Column(

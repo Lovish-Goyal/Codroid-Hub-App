@@ -8,6 +8,7 @@ import 'package:codroid_hub/widgets/appbar.dart';
 import 'package:codroid_hub/widgets/end_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -224,7 +225,6 @@ class _MobileCartPageState extends ConsumerState<MobileCartPage> {
   }
 }
 
-
 class WebCartpage extends ConsumerStatefulWidget {
   const WebCartpage({super.key});
 
@@ -294,12 +294,19 @@ class _WebCartpageState extends ConsumerState<WebCartpage> {
                       children: [
                         Container(
                           margin: EdgeInsets.all(10),
-                          child: Text("Course cart",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
+                          child: Text(
+                            "Course cart",
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic),
+                          ),
                         ),
                         FutureBuilder(
                           future: cartList,
                           initialData: const [],
-                          builder: (BuildContext context, AsyncSnapshot snapshot) {
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
                             total = snapshot.data.fold(
                                 0,
                                 (previousValue, element) =>
@@ -309,19 +316,21 @@ class _WebCartpageState extends ConsumerState<WebCartpage> {
                                 child: Text("Something went wrong"),
                               );
                             }
-                            if (snapshot.connectionState == ConnectionState.waiting) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
                               return const Loder();
                             }
                             return snapshot.hasData
                                 ? Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       if (snapshot.data.isEmpty)
                                         Column(
                                           children: [
                                             Container(
-                                                margin:
-                                                    const EdgeInsets.only(top: 100),
+                                                margin: const EdgeInsets.only(
+                                                    top: 100),
                                                 child: Image.network(
                                                     "https://static.vecteezy.com/system/resources/thumbnails/005/006/007/small/no-item-in-the-shopping-cart-click-to-go-shopping-now-concept-illustration-flat-design-eps10-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-vector.jpg")),
                                             const Text("Your Cart is Empty",
@@ -329,27 +338,39 @@ class _WebCartpageState extends ConsumerState<WebCartpage> {
                                                     fontSize: 20,
                                                     color: Colors.black)),
                                             Container(
-                                              margin: const EdgeInsets.symmetric(
-                                                  vertical: 10, horizontal: 45),
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 45),
                                               child: const Text(
                                                 "Looks like you haven`t added anything to your cart. Go ahead and explore top courses",
                                                 style: TextStyle(
-                                                    fontSize: 15, color: Colors.grey),
+                                                    fontSize: 15,
+                                                    color: Colors.grey),
                                               ),
                                             )
                                           ],
                                         ),
-                                      GridView.builder(
-                                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+                                      ResponsiveGridRow(children: [
+                                        ResponsiveGridCol(
+                                          xl: 8,
+                                          lg: 8,
+                                          md: 6,
+                                          child: GridView.builder(
+                                            gridDelegate:
+                                                SliverGridDelegateWithFixedCrossAxisCount(
+                                                    crossAxisCount: 2),
                                             shrinkWrap: true,
                                             itemCount: snapshot.data.length,
-                                            itemBuilder:
-                                                (BuildContext context, int index) {
+                                            itemBuilder: (BuildContext context,
+                                                int index) {
                                               final List<CourseModel> data =
                                                   snapshot.data;
                                               return Card(
-                                                margin: const EdgeInsets.symmetric(
-                                                    horizontal: 20, vertical: 10),
+                                                margin:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 20,
+                                                        vertical: 10),
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(8),
@@ -362,83 +383,126 @@ class _WebCartpageState extends ConsumerState<WebCartpage> {
                                                   children: <Widget>[
                                                     Image.network(
                                                       data[index].imgUrl,
-                                                      height: 200,
+                                                      height: 250,
                                                       width: double.infinity,
                                                       fit: BoxFit.fill,
                                                     ),
                                                     Container(
-                                                      padding:
-                                                          const EdgeInsets.fromLTRB(
-                                                              10, 10, 15, 0),
+                                                      padding: const EdgeInsets
+                                                          .fromLTRB(
+                                                          10, 10, 15, 0),
                                                       child: Column(
                                                         crossAxisAlignment:
-                                                            CrossAxisAlignment.start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: <Widget>[
                                                           Text(
-                                                            data[index].title,
+                                                            "Title: ${data[index].title}",
                                                             style: TextStyle(
                                                               fontSize: 24,
-                                                              color: Colors.grey[800],
+                                                              color: Colors
+                                                                  .grey[800],
                                                             ),
                                                           ),
-                                                          const SizedBox(height: 8),
+                                                          const SizedBox(
+                                                              height: 10),
                                                           Text(
-                                                            "${data[index].price.toString()}/-",
+                                                            "Price: ${data[index].price.toString()}/-",
                                                             style: TextStyle(
                                                               fontSize: 18,
-                                                              color: Colors.grey[800],
+                                                              color: Colors
+                                                                  .grey[800],
                                                             ),
                                                           ),
-                                                          const SizedBox(height: 8),
+                                                          const SizedBox(
+                                                              height: 10),
                                                           Container(
-                                                            height: 150,
                                                             child: Text(
-                                                              data[index].description,
+                                                              "Instructor: ${data[index].instructor}",
                                                               textAlign:
-                                                                  TextAlign.justify,
+                                                                  TextAlign
+                                                                      .justify,
                                                               style: TextStyle(
-                                                                fontSize: 15,
-                                                                color:
-                                                                    Colors.grey[700],
+                                                                fontSize: 18,
+                                                                color: Colors
+                                                                    .grey[800],
                                                               ),
                                                             ),
                                                           ),
-                                                          Center(
-                                                            child:
-                                                                ElevatedButton.icon(
-                                                                    style: ElevatedButton
-                                                                        .styleFrom(
-                                                                            backgroundColor:
-                                                                                Colors
-                                                                                    .red),
-                                                                    onPressed: () {
-                                                                      ref
-                                                                          .read(cartProvider
-                                                                              .notifier)
-                                                                          .removeItemFromCart(
-                                                                              data[index].id ??
-                                                                                  "",
-                                                                              context)
-                                                                          .then((value) =>
-                                                                              setState(
-                                                                                  () {
-                                                                                total =
-                                                                                    total - data[index].price;
-                                                                              }));
-                                                                    },
-                                                                    icon: Icon(
-                                                                      Icons.delete,
-                                                                      color: Colors
-                                                                          .white,
-                                                                    ),
-                                                                    label: Text(
-                                                                      "Remove from cart",
-                                                                      style: TextStyle(
-                                                                          color: Colors
-                                                                              .white),
-                                                                    )),
+                                                          const SizedBox(
+                                                              height: 10),
+                                                          Container(
+                                                            child: Text(
+                                                              "Duration: 4-6 Weeks",
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .justify,
+                                                              style: TextStyle(
+                                                                fontSize: 18,
+                                                                color: Colors
+                                                                    .grey[800],
+                                                              ),
+                                                            ),
                                                           ),
-                                                          const SizedBox(height: 10)
+                                                          const SizedBox(
+                                                              height: 30),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              SizedBox(
+                                                                width: 150,
+                                                                child:
+                                                                    ElevatedButton(
+                                                                        style: ElevatedButton.styleFrom(
+                                                                            backgroundColor: Colors
+                                                                                .green),
+                                                                        onPressed:
+                                                                            () {
+                                                                          context.push(
+                                                                              "/courseDetails",
+                                                                              extra: data[index]);
+                                                                        },
+                                                                        child:
+                                                                            Text(
+                                                                          "Explore",
+                                                                          style:
+                                                                              TextStyle(color: Colors.white),
+                                                                        )),
+                                                              ),
+                                                              SizedBox(
+                                                                width: 150,
+                                                                child: ElevatedButton
+                                                                    .icon(
+                                                                        style: ElevatedButton.styleFrom(
+                                                                            backgroundColor: Colors
+                                                                                .red),
+                                                                        onPressed:
+                                                                            () {
+                                                                          ref.read(cartProvider.notifier).removeItemFromCart(data[index].id ?? "", context).then((value) =>
+                                                                              setState(() {
+                                                                                total = total - data[index].price;
+                                                                              }));
+                                                                        },
+                                                                        icon:
+                                                                            Icon(
+                                                                          Icons
+                                                                              .delete,
+                                                                          color:
+                                                                              Colors.white,
+                                                                        ),
+                                                                        label:
+                                                                            Text(
+                                                                          "Remove",
+                                                                          style:
+                                                                              TextStyle(color: Colors.white),
+                                                                        )),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          const SizedBox(
+                                                              height: 10)
                                                         ],
                                                       ),
                                                     ),
@@ -470,55 +534,82 @@ class _WebCartpageState extends ConsumerState<WebCartpage> {
                                               );
                                             },
                                           ),
-                                      if (snapshot.data.isEmpty)
-                                        const Text("")
-                                      else
-                                        Card(
-                                          child: ListTile(
-                                            title: const Text("Total"),
-                                            subtitle: Text(
-                                              "$total Rs",
-                                              style: const TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            trailing: TextButton(
-                                                child: const Text("Checkout"),
-                                                onPressed: () async {
-                                                  final apiRes =
-                                                      await razorApiServices
-                                                          .razorPayApi(total,
-                                                              const Uuid().v4());
-                                                  Logger().i(apiRes);
-                  
-                                                  final orderId =
-                                                      json.decode(apiRes)["id"];
-                                                  Logger().i(orderId);
-                                                  final options = {
-                                                    "key": "rzp_test_qRqtDl6Kpsdjx3",
-                                                    "order_id": orderId,
-                                                    "name": "codroid hub",
-                                                    "amount":
-                                                        json.decode(apiRes)["amount"],
-                                                    "description": "testing payment",
-                                                    "currency": "INR",
-                                                    // "timeout": 300,
-                                                    "prefill": {
-                                                      "contact": "+917494979209",
-                                                      "email": "test@gmail.com",
-                                                    },
-                                                    "external": {
-                                                      "wallets": ["paytm"]
-                                                    }
-                                                  };
-                                                  try {
-                                                    _razorpay.open(options);
-                                                  } catch (e) {
-                                                    debugPrint(e.toString());
-                                                  }
-                                                }),
-                                          ),
-                                        )
+                                        ),
+                                        ResponsiveGridCol(
+                                            xl: 4,
+                                            lg: 4,
+                                            md: 6,
+                                            sm: 12,
+                                            xs: 12,
+                                            child: (snapshot.data.isEmpty)
+                                                ? const Text("")
+                                                : Card(
+                                                    child: ListTile(
+                                                      title:
+                                                          const Text("Total"),
+                                                      subtitle: Text(
+                                                        "$total Rs",
+                                                        style: const TextStyle(
+                                                            fontSize: 20,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      trailing: TextButton(
+                                                          child: const Text(
+                                                              "Checkout"),
+                                                          onPressed: () async {
+                                                            final apiRes =
+                                                                await razorApiServices
+                                                                    .razorPayApi(
+                                                                        total,
+                                                                        const Uuid()
+                                                                            .v4());
+                                                            Logger().i(apiRes);
+
+                                                            final orderId =
+                                                                json.decode(
+                                                                        apiRes)[
+                                                                    "id"];
+                                                            Logger().i(orderId);
+                                                            final options = {
+                                                              "key":
+                                                                  "rzp_test_qRqtDl6Kpsdjx3",
+                                                              "order_id":
+                                                                  orderId,
+                                                              "name":
+                                                                  "codroid hub",
+                                                              "amount":
+                                                                  json.decode(
+                                                                          apiRes)[
+                                                                      "amount"],
+                                                              "description":
+                                                                  "testing payment",
+                                                              "currency": "INR",
+                                                              // "timeout": 300,
+                                                              "prefill": {
+                                                                "contact":
+                                                                    "+917494979209",
+                                                                "email":
+                                                                    "test@gmail.com",
+                                                              },
+                                                              "external": {
+                                                                "wallets": [
+                                                                  "paytm"
+                                                                ]
+                                                              }
+                                                            };
+                                                            try {
+                                                              _razorpay.open(
+                                                                  options);
+                                                            } catch (e) {
+                                                              debugPrint(
+                                                                  e.toString());
+                                                            }
+                                                          }),
+                                                    ),
+                                                  ))
+                                      ])
                                     ],
                                   )
                                 : const Center(
@@ -531,7 +622,9 @@ class _WebCartpageState extends ConsumerState<WebCartpage> {
                       ],
                     ),
                   ),
-                  drawer: const SizedBox(width: 220, child: EndDrawer()),
+                  endDrawer: MediaQuery.of(context).size.width < 700
+                      ? const EndDrawer()
+                      : null,
                 );
         });
   }

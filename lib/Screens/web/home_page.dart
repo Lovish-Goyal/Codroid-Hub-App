@@ -2,6 +2,7 @@ import 'package:codroid_hub/modules/members/pages/members_page.dart';
 import 'package:codroid_hub/widgets/appbar.dart';
 import 'package:codroid_hub/widgets/footer.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../../widgets/cards/addition_feature_card.dart';
@@ -343,9 +344,12 @@ class _HomepageState extends State<Homepage> {
                                 horizontal: 50, vertical: 50),
                             child: Text(
                               "Seamless Integration of Education and Technology Expertise",
-                              style:
-                                  TextStyle(color: Colors.white,
-                                   fontSize: (MediaQuery.of(context).size.width > 600) ? 50 : 40),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      (MediaQuery.of(context).size.width > 600)
+                                          ? 50
+                                          : 40),
                             ),
                           )),
                       ResponsiveGridCol(
@@ -355,7 +359,8 @@ class _HomepageState extends State<Homepage> {
                           sm: 12,
                           xs: 12,
                           child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 50,horizontal: 20),
+                            margin: EdgeInsets.symmetric(
+                                vertical: 50, horizontal: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -369,7 +374,7 @@ class _HomepageState extends State<Homepage> {
                                   height: 20,
                                 ),
                                 ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () => context.go('/services'),
                                     child: Text("All Services"))
                               ],
                             ),
