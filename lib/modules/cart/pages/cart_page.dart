@@ -140,9 +140,9 @@ class _MobileCartPageState extends ConsumerState<MobileCartPage> {
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         subtitle:
-                                            Text("${data[index].price} Rs"),
+                                            Text("Price: ${data[index].price}/-"),
                                         leading:
-                                            Image.network(data[index].imgUrl),
+                                            Image.network(data[index].imgUrl,width: 100,fit: BoxFit.contain,),
                                         trailing: IconButton(
                                           icon: const Icon(Icons.delete),
                                           onPressed: () {

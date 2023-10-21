@@ -106,7 +106,6 @@ class CourseCard extends ConsumerWidget {
   }
 }
 
-
 class MobCourseCard extends ConsumerWidget {
   final CourseModel course;
   const MobCourseCard({
@@ -123,7 +122,7 @@ class MobCourseCard extends ConsumerWidget {
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: SizedBox(
-        height: 350,
+        height: 380,
         width: 250,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,20 +143,85 @@ class MobCourseCard extends ConsumerWidget {
                   Text(
                     course.title,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 22,
                       color: Colors.grey[800],
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Rs: ${course.price.toString()} /-",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey[700],
-                    ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text(
+                        "Price: ",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      Text(
+                        "${course.price.toString()}",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                   Row(
+                    children: [
+                      Text(
+                        "Duration: ",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      Text(
+                        "4-6 Weeks",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                    ],
+                  ),
+                   SizedBox(
+                    height: 10,
+                  ),
+                   Row(
+                    children: [
+                      Text(
+                        "Instructor: ",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      Text(
+                        "${course.instructor}",
+                        textAlign: TextAlign.justify,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
+            ),
+            SizedBox(
+              height: 5,
             ),
             Container(
               padding: const EdgeInsets.all(10),
@@ -166,8 +230,8 @@ class MobCourseCard extends ConsumerWidget {
                 children: [
                   TextButton(
                     child: const Text(
-                      "Add to cart",
-                      style: TextStyle(color: Colors.green),
+                      "ADD TO CART",
+                      style: TextStyle(color: Colors.blue),
                     ),
                     onPressed: () {
                       ref

@@ -3,6 +3,7 @@ import 'package:codroid_hub/widgets/end_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'courses.dart';
 
@@ -38,7 +39,15 @@ class _HomeViewState extends ConsumerState<HomeView> {
           title: Text.rich(TextSpan(style: TextStyle(fontSize: 25), children: [
             TextSpan(text: 'Codroid', style: TextStyle(color: Colors.black)),
             TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
-          ]))),
+          ])),
+          actions: [
+            IconButton(
+              onPressed: () => context.push('/cart'),
+               icon: Icon(Icons.shopping_cart)),
+               SizedBox(
+                width: 20,
+               )
+          ],),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,8 +59,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: const DecorationImage(
-                      image: AssetImage("assets/images/codroid.jpg"),
-                      fit: BoxFit.cover,
+                      image: AssetImage("assets/images/home.jpeg"),
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
@@ -61,7 +70,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                     borderRadius: BorderRadius.circular(10.0),
                     image: const DecorationImage(
                       image: AssetImage("assets/images/home2.jpg"),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 ),

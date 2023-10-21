@@ -58,11 +58,11 @@ class _ProfileState extends ConsumerState<Profile> {
                       ),
                       Container(
                         margin: const EdgeInsets.only(left: 10, top: 10),
-                        child: const Column(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "User",
+                              "Name: ",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 18),
                             ),
@@ -88,6 +88,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 backgroundColor: Colors.white,
                 body: SingleChildScrollView(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                           margin: const EdgeInsets.symmetric(
@@ -96,7 +97,7 @@ class _ProfileState extends ConsumerState<Profile> {
                             "More Information",
                             style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 18,
+                                fontSize: 25,
                                 fontWeight: FontWeight.bold),
                           )),
                       const Divider(
@@ -131,20 +132,11 @@ class _ProfileState extends ConsumerState<Profile> {
                         endIndent: 10,
                       ),
                       ProfileList(
-                        icon: Icons.takeout_dining,
-                        text: 'Enrolled Courses',
-                        onTap: () {},
-                      ),
-                      const Divider(
-                        indent: 10,
-                        endIndent: 10,
-                      ),
-                      ProfileList(
                         icon: Icons.developer_board_outlined,
                         text: 'Services',
                         onTap: () => Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return const Services();
+                          return const MobServices();
                         })),
                       ),
                       const Divider(
@@ -223,7 +215,7 @@ class ProfileList extends StatelessWidget {
           GestureDetector(
             onTap: onTap,
             child: Container(
-              height: 50,
+              height: 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.grey[200],

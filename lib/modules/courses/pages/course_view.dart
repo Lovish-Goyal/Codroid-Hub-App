@@ -270,3 +270,226 @@ class CourseDetailPage extends ConsumerWidget {
     );
   }
 }
+
+class MobCourseDetailPage extends ConsumerWidget {
+  final CourseModel course;
+
+  const MobCourseDetailPage({super.key, required this.course});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final courseOutlineList =
+        ref.watch(courseOutlineListProvider(course.id ?? ""));
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        toolbarHeight: 70,
+        title: const Text(
+          "Course Details",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: SingleChildScrollView(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            child: Image.network(
+              course.imgUrl,
+              height: 200,
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(23),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "${course.title}",
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[700]),
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Text("Price: ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[900])),
+                    Text(
+                      '${course.price.toStringAsFixed(2)} /-',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Text("Duration: ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[900])),
+                    Text(
+                      '4-6 Weeks',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Text(
+                      "Instructor: ",
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[900]),
+                    ),
+                    Text(
+                      course.instructor,
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Text("Course level: ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[900])),
+                    Text(
+                      'Intermediate',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                Row(
+                  children: [
+                    Text("Organized By: ",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey[900])),
+                    Text(
+                      'CodroidHub',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Center(
+                  child: SizedBox(
+                    width: 320,
+                    child: ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    side: BorderSide(color: Colors.blue)))),
+                        onPressed: () {
+                          ref
+                              .read(cartProvider.notifier)
+                              .addItemToCart(course.id ?? "", context);
+                        },
+                        child: Text(
+                          "ADD TO CART",
+                          style: TextStyle(color: Colors.white),
+                        )),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Description:',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    course.description,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(fontSize: 15),
+                  )
+                ],
+              )),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 30),
+            child: const Text(
+              'Course Outline:',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            decoration: BoxDecoration(border: Border.all()),
+            child: Column(
+              children: [
+                courseOutlineList.when(
+                  data: (courseOutline) {
+                    if (courseOutline.isEmpty) {
+                      return const Center(
+                        child: Text('No Outline available',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      );
+                    }
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: courseOutline.length,
+                      itemBuilder: (context, index) {
+                        return CourseOutlineCard(
+                          courseOutline: courseOutline[index],
+                          index: index,
+                        );
+                      },
+                    );
+                  },
+                  error: ((err, st) => Center(
+                        child: Text(err.toString()),
+                      )),
+                  loading: (() => const Loder()),
+                ),
+                Align(
+                  child: TextButton(
+                    onPressed: () => context.pushNamed("createOutlinePage",
+                        pathParameters: {"courseId": course.id ?? ""}),
+                    child: const Text(
+                      "Add Outlines",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      )),
+      drawer: const SizedBox(width: 220, child: EndDrawer()),
+    );
+  }
+}

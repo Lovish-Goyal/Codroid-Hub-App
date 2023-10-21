@@ -42,22 +42,12 @@ class EndDrawer extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.contact_page_outlined),
             title: const Text('Contact'),
-            onTap: () => context.go('/contact'),
+            onTap: () => context.push('/contact'),
           ),
           ListTile(
             leading: const Icon(Icons.person_outline),
             title: const Text('About'),
-            onTap: () => context.go('/about'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.shopping_cart_outlined),
-            title: const Text('My Cart'),
-            onTap: () => context.go('/cart'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.settings_outlined),
-            title: const Text('Courses'),
-            onTap: () => context.go('/courses'),
+            onTap: () => context.push('/about'),
           ),
           const ListTile(
             leading: Icon(Icons.design_services_outlined),
@@ -68,18 +58,18 @@ class EndDrawer extends ConsumerWidget {
             title: const Text('Login'),
             onTap: () => context.go('/login'),
           ),
-          ListTile(
-            leading: const Icon(Icons.app_registration_rounded),
-            title: const Text('SignUp'),
-            onTap: () => context.go('/signup'),
-          ),
-          ListTile(
-            onTap: () {
-              auth.logout(context);
-            },
-            leading: const Icon(Icons.logout),
-            title: const Text('Logout'),
-          ),
+          // ListTile(
+          //   leading: const Icon(Icons.app_registration_rounded),
+          //   title: const Text('SignUp'),
+          //   onTap: () => context.go('/signup'),
+          // ),
+          // ListTile(
+          //   onTap: () {
+          //     auth.logout(context);
+          //   },
+          //   leading: const Icon(Icons.logout),
+          //   title: const Text('Logout'),
+          // ),
           kIsWeb
               ? SizedBox()
               : ListTile(

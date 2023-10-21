@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:codroid_hub/Screens/mobile/about.dart';
 import 'package:codroid_hub/Screens/web/about.dart';
 import 'package:codroid_hub/Screens/mobile/contact.dart';
 import 'package:codroid_hub/Screens/web/contact.dart';
@@ -45,7 +46,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     // ),,
     GoRoute(
       path: RouteKey.about,
-      builder: (context, state) => const AboutPage(),
+      builder: (context, state) => 
+      kIsWeb ? const AboutPage() : const MobAboutPage(),
     ),
     GoRoute(
       path: RouteKey.contact,
@@ -84,8 +86,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
     GoRoute(
       path: RouteKey.courseDetails,
-      builder: (context, state) =>
-          CourseDetailPage(course: state.extra as CourseModel),
+      builder: (context, state) => kIsWeb ?
+          CourseDetailPage(course: state.extra as CourseModel) : MobCourseDetailPage(course: state.extra as CourseModel),
     ),
     GoRoute(
         path: "${RouteKey.createOutlinePage}/:courseId",

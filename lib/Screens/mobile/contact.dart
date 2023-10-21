@@ -26,36 +26,45 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-          toolbarHeight: 70,
-          backgroundColor: Colors.black,
-          title: appBarhelper(context)),
+        toolbarHeight: 70,
+        backgroundColor: Colors.white,
+        title: Text(
+          "Contact us",
+          style: TextStyle(color: Colors.black, fontSize: 30),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: Colors.black,
                   borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(60))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Contact us",
-                    style: TextStyle(color: Colors.black, fontSize: 30),
-                  ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-                  const Text("Noida,Ambala,Patna,Haryana 133004"),
+                  const Text(
+                    "Noida,Ambala,Patna,Haryana 133004",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                   const SizedBox(
                     height: 5,
                   ),
-                  const Text("Phone: +(91) 9138555661"),
-                  const Text("Email: programmanager@codroidhub.com"),
+                  const Text(
+                    "Phone: +(91) 9138555661",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
+                  const Text(
+                    "Email: programmanager@codroidhub.com",
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                   const SizedBox(
                     height: 30,
                   ),
@@ -80,6 +89,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                           icon: const Icon(
                             Icons.phone,
                             size: 40,
+                            color: Colors.white,
                           )),
                       IconButton(
                           onPressed: () async {
@@ -104,7 +114,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               );
                             }
                           },
-                          icon: const Icon(Icons.email, size: 40)),
+                          icon: const Icon(Icons.email, size: 40,color: Colors.white,)),
                       IconButton(
                           onPressed: () async {
                             var phone = "+919138555661";
@@ -129,7 +139,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               );
                             }
                           },
-                          icon: const Icon(FontAwesomeIcons.whatsapp, size: 40))
+                          icon: const Icon(FontAwesomeIcons.whatsapp, size: 40,color: Colors.white,))
                     ],
                   )
                 ],
@@ -143,7 +153,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
               margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
+                color: Color.fromARGB(255, 172, 172, 172),
               ),
               child: Form(
                 key: _formKey,
@@ -311,8 +321,6 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
           ],
         ),
       ),
-      endDrawer:
-          MediaQuery.of(context).size.width < 700 ? const EndDrawer() : null,
     );
   }
 }

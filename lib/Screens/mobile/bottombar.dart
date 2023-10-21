@@ -1,3 +1,4 @@
+import 'package:codroid_hub/Screens/mobile/services.dart';
 import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +20,7 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
   static const List<Widget> _pages = <Widget>[
     HomeView(),
     MobCourses(),
-    MobileCartPage(),
+    MobServices(),
     Profile(),
   ];
   int selectedIndex = 0;
@@ -50,8 +51,8 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
             label: 'Courses',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'cart',
+            icon: Icon(Icons.design_services_outlined),
+            label: 'Services',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_2_outlined),

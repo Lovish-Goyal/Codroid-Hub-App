@@ -27,7 +27,7 @@ class _MobCoursesState extends ConsumerState<MobCourses> {
       body: courses.when(
           data: (data) => SingleChildScrollView(
                 child: GridView.count(
-                  childAspectRatio: .75,
+                  childAspectRatio: .80,
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisCount: 1,
                   shrinkWrap: true,
