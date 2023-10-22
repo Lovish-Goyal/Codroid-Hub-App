@@ -1,3 +1,4 @@
+import 'package:codroid_hub/Screens/mobile/auth/login.dart';
 import 'package:codroid_hub/Screens/mobile/services.dart';
 import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:codroid_hub/auth/pages/login.dart';
@@ -31,7 +32,7 @@ class _ProfileState extends ConsumerState<Profile> {
         }
 
         return snapshot.data == null
-            ? const LoginCustomAlert()
+            ? const MobLogin()
             : Scaffold(
                 appBar: AppBar(
                   toolbarHeight: 150,

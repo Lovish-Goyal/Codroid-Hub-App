@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:codroid_hub/Screens/mobile/about.dart';
+import 'package:codroid_hub/Screens/mobile/auth/login.dart';
+import 'package:codroid_hub/Screens/mobile/auth/signup.dart';
 import 'package:codroid_hub/Screens/web/about.dart';
 import 'package:codroid_hub/Screens/mobile/contact.dart';
 import 'package:codroid_hub/Screens/web/contact.dart';
@@ -14,12 +14,10 @@ import 'package:codroid_hub/modules/courses/models/course_model.dart';
 import 'package:codroid_hub/modules/courses/pages/course_view.dart';
 import 'package:codroid_hub/modules/courses/pages/create_course_page.dart';
 import 'package:codroid_hub/modules/courses/pages/create_outline_page.dart';
-import 'package:codroid_hub/widgets/course_container.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:logger/logger.dart';
-
 import 'Screens/mobile/bottombar.dart';
 import 'Screens/web/services.dart';
 
@@ -78,11 +76,11 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
     GoRoute(
       path: RouteKey.login,
-      builder: (context, state) => const LoginCustomAlert(),
+      builder: (context, state) => kIsWeb ? const LoginCustomAlert() : MobLogin(),
     ),
     GoRoute(
       path: RouteKey.signup,
-      builder: (context, state) => const SignUpCustomAlertBox(),
+      builder: (context, state) => kIsWeb ? const SignUpCustomAlertBox() : MobSignUp(),
     ),
     GoRoute(
       path: RouteKey.courseDetails,

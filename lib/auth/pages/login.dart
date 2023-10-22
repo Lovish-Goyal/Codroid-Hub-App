@@ -118,8 +118,8 @@ class _CustomAlertBoxState extends ConsumerState<LoginCustomAlert> {
                           suffixIcon: IconButton(
                             icon: Icon(
                               _obscureText
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                             ),
                             onPressed: () {
                               setState(() {

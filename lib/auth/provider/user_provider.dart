@@ -30,7 +30,6 @@ class AuthServices {
     try {
       final response = await ApiClient.account
           .createEmailSession(email: email, password: password);
-
       Logger().i(response);
       return null;
     } on AppwriteException catch (e) {
