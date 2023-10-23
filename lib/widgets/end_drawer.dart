@@ -1,4 +1,3 @@
-import 'package:codroid_hub/auth/auth_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,7 +10,7 @@ class EndDrawer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final auth = ref.read(authControllerProvider.notifier);
+    // final auth = ref.read(authControllerProvider.notifier);
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -34,7 +33,6 @@ class EndDrawer extends ConsumerWidget {
             ),
           ),
           ListTile(
-            //menu item of Drawer
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
             onTap: () => Navigator.pop(context),
@@ -49,27 +47,16 @@ class EndDrawer extends ConsumerWidget {
             title: const Text('About'),
             onTap: () => context.push('/about'),
           ),
-          const ListTile(
+          ListTile(
             leading: Icon(Icons.design_services_outlined),
             title: Text('Services'),
+            onTap: () => context.push('/services'),
           ),
           ListTile(
             leading: const Icon(Icons.login),
             title: const Text('Login'),
             onTap: () => context.go('/login'),
           ),
-          // ListTile(
-          //   leading: const Icon(Icons.app_registration_rounded),
-          //   title: const Text('SignUp'),
-          //   onTap: () => context.go('/signup'),
-          // ),
-          // ListTile(
-          //   onTap: () {
-          //     auth.logout(context);
-          //   },
-          //   leading: const Icon(Icons.logout),
-          //   title: const Text('Logout'),
-          // ),
           kIsWeb
               ? SizedBox()
               : ListTile(

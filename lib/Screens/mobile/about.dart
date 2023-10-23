@@ -13,13 +13,14 @@ class _MobContactPageState extends ConsumerState<MobAboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 251, 251, 251),
+      backgroundColor: Color.fromARGB(255, 249, 248, 248),
       appBar: AppBar(
         toolbarHeight: 70,
-        backgroundColor: Color.fromARGB(255, 197, 196, 196),
+        backgroundColor: Color.fromARGB(255, 114, 111, 111),
         title: const Text(
           "About Us",
-          style: TextStyle(color: Colors.black, fontSize: 30),
+          style: TextStyle(
+              color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(

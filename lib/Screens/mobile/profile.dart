@@ -1,7 +1,6 @@
 import 'package:codroid_hub/Screens/mobile/auth/login.dart';
 import 'package:codroid_hub/Screens/mobile/services.dart';
 import 'package:codroid_hub/auth/auth_controller.dart';
-import 'package:codroid_hub/auth/pages/login.dart';
 import 'package:codroid_hub/utils/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,21 +37,26 @@ class _ProfileState extends ConsumerState<Profile> {
                   toolbarHeight: 150,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(50),
+                      bottom: Radius.circular(40),
                     ),
                   ),
-                  backgroundColor: Colors.black87,
+                  backgroundColor: Color.fromARGB(221, 18, 53, 129),
                   title: Row(
                     children: [
                       Container(
-                        margin: const EdgeInsets.all(25),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 25),
                         child: const CircleAvatar(
                           radius: 50,
                           backgroundColor: Colors.white,
                           child: CircleAvatar(
                             radius: 45,
-                            backgroundImage: NetworkImage(
-                                "https://3.bp.blogspot.com/-UI5bnoLTRAE/VuU18_s6bRI/AAAAAAAADGA/uafLtb4ICCEK8iO3NOh1C_Clh86GajUkw/s1600/guest.png"),
+                            child: Icon(
+                              Icons.person_3_outlined,
+                              size: 65,
+                            ),
+                            // backgroundImage: NetworkImage(
+                            //     "https://3.bp.blogspot.com/-UI5bnoLTRAE/VuU18_s6bRI/AAAAAAAADGA/uafLtb4ICCEK8iO3NOh1C_Clh86GajUkw/s1600/guest.png"),
                             backgroundColor: Colors.transparent,
                           ),
                         ),
@@ -92,8 +96,8 @@ class _ProfileState extends ConsumerState<Profile> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 40, vertical: 20),
+                          margin: const EdgeInsets.only(
+                              left: 30, top: 30, bottom: 20),
                           child: const Text(
                             "More Information",
                             style: TextStyle(

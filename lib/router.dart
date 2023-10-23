@@ -1,6 +1,7 @@
 import 'package:codroid_hub/Screens/mobile/about.dart';
 import 'package:codroid_hub/Screens/mobile/auth/login.dart';
 import 'package:codroid_hub/Screens/mobile/auth/signup.dart';
+import 'package:codroid_hub/Screens/mobile/services.dart';
 import 'package:codroid_hub/Screens/web/about.dart';
 import 'package:codroid_hub/Screens/mobile/contact.dart';
 import 'package:codroid_hub/Screens/web/contact.dart';
@@ -44,31 +45,28 @@ final routerProvider = Provider<GoRouter>((ref) {
     // ),,
     GoRoute(
       path: RouteKey.about,
-      builder: (context, state) => 
-      kIsWeb ? const AboutPage() : const MobAboutPage(),
+      builder: (context, state) =>
+          kIsWeb ? const AboutPage() : const MobAboutPage(),
     ),
     GoRoute(
       path: RouteKey.contact,
       builder: (context, state) =>
           kIsWeb ? const WebContactPage() : const MobContactPage(),
     ),
+    GoRoute(path: RouteKey.courses, builder: (context, state) => Courses()
+        // const Courses(),
+        ),
     GoRoute(
-      path: RouteKey.courses,
-      builder: (context, state) => Courses()
-      // const Courses(),
-    ),
-     GoRoute(
-      path: RouteKey.services,
-      builder: (context, state) => const Services()
-      // const Courses(),
-    ),
+        path: RouteKey.services,
+        builder: (context, state) => kIsWeb ? Services() : MobServices()
+        ),
     GoRoute(
         path: RouteKey.cart,
         builder: (context, state) {
           Logger().f(user);
           return user == null
-              ? const LoginCustomAlert()
-              : (kIsWeb ? WebCartpage() : const MobileCartPage()) ;
+              ? (kIsWeb ? LoginCustomAlert() : MobLogin())
+              : (kIsWeb ? WebCartpage() : const MobileCartPage());
         }),
     GoRoute(
       path: RouteKey.addCourses,
@@ -76,16 +74,19 @@ final routerProvider = Provider<GoRouter>((ref) {
     ),
     GoRoute(
       path: RouteKey.login,
-      builder: (context, state) => kIsWeb ? const LoginCustomAlert() : MobLogin(),
+      builder: (context, state) =>
+          kIsWeb ? const LoginCustomAlert() : MobLogin(),
     ),
     GoRoute(
       path: RouteKey.signup,
-      builder: (context, state) => kIsWeb ? const SignUpCustomAlertBox() : MobSignUp(),
+      builder: (context, state) =>
+          kIsWeb ? const SignUpCustomAlertBox() : MobSignUp(),
     ),
     GoRoute(
       path: RouteKey.courseDetails,
-      builder: (context, state) => kIsWeb ?
-          CourseDetailPage(course: state.extra as CourseModel) : MobCourseDetailPage(course: state.extra as CourseModel),
+      builder: (context, state) => kIsWeb
+          ? CourseDetailPage(course: state.extra as CourseModel)
+          : MobCourseDetailPage(course: state.extra as CourseModel),
     ),
     GoRoute(
         path: "${RouteKey.createOutlinePage}/:courseId",

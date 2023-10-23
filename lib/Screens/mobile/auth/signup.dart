@@ -84,199 +84,204 @@ class _MobSignUpState extends ConsumerState<MobSignUp> {
                               fontSize: 50))
                     ])),
                   ),
-                  // Container(
-                  //     height: 120,
-                  //     decoration: BoxDecoration(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //     ),
-                  //     margin: EdgeInsets.only(top: 80, left: 20),
-                  //     child: Image.asset('assets/images/codroidLogo.jpg')
-                  //     ),
-                  Row(
-                    children: [
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        child: Text("Create New Account",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30)),
-                      ),
-                    ],
+
+                  Container(
+                    margin: EdgeInsets.all(15),
+                    child: Text("Create New Account",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30)),
                   ),
 
                   // Name
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[500]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: TextFormField(
-                        controller: name,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your name';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Icon(
-                                  Icons.person_2_outlined,
-                                  size: 30,
-                                )),
-                            hintText: 'Name',
-                            hintStyle: TextStyle(fontSize: 22)),
-                        style: TextStyle(),
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                      ),
+                  Container(
+                    height: 60,
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(),
+                        color: Colors.white),
+                    child: Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Icon(Icons.email_outlined)),
+                        Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 250,
+                            child: TextFormField(
+                              controller: name,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your name';
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  hintText: 'Name'),
+                            )),
+                      ],
                     ),
                   ),
 
                   // Email
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[500]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: TextFormField(
-                        controller: email,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your email';
-                          } else if (value.isValidEmail == false) {
-                            return "Please enter a valid email address";
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Icon(
-                                  Icons.email,
-                                  size: 25,
-                                )),
-                            hintText: 'Email',
-                            hintStyle: TextStyle(fontSize: 18)),
-                        style: TextStyle(),
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                      ),
+                  Container(
+                    height: 60,
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(),
+                        color: Colors.white),
+                    child: Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Icon(Icons.email_outlined)),
+                        Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 250,
+                            child: TextFormField(
+                              controller: email,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email';
+                                } else if (value.isValidEmail == false) {
+                                  return "Please enter a valid email address";
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  hintText: 'Email'),
+                            )),
+                      ],
                     ),
                   ),
 
                   // Password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[500]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your Password';
-                          } else if (value.length < 8) {
-                            return 'password should be greater than 8 digits';
-                          }
+                  Container(
+                    height: 60,
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(),
+                        color: Colors.white),
+                    child: Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Icon(Icons.password)),
+                        Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 250,
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your Password';
+                                } else if (value.length < 8) {
+                                  return 'password should be greater than 8 digits';
+                                }
 
-                          return null;
-                        },
-                        keyboardType: TextInputType.text,
-                        controller: pass,
-                        obscureText: _obscureTextpass,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Icon(
-                                  Icons.lock,
-                                  size: 25,
-                                )),
-                            hintText: 'Password',
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureTextpass
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _obscureTextpass = !_obscureTextpass;
-                                });
+                                return null;
                               },
-                            ),
-                            hintStyle: TextStyle()),
-                        style: TextStyle(fontSize: 18),
-                        textInputAction: TextInputAction.done,
-                      ),
+                              keyboardType: TextInputType.text,
+                              controller: pass,
+                              obscureText: _obscureTextpass,
+                              decoration: InputDecoration(
+                                focusedBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                hintText: 'Enter your password',
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureTextpass
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureTextpass = !_obscureTextpass;
+                                    });
+                                  },
+                                ),
+                              ),
+                            )),
+                      ],
                     ),
                   ),
 
                   // Confirm password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[500]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Again Enter your password';
-                          } else if (pass.text != confirmpass.text) {
-                            return "Password doesn`t match";
-                          }
-                          return null;
-                        },
-                        keyboardType: TextInputType.text,
-                        controller: confirmpass,
-                        obscureText: _obscureTextconfirmpass,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Icon(
-                                  Icons.lock,
-                                  size: 25,
-                                )),
-                            hintText: 'Confirm Password',
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureTextconfirmpass
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _obscureTextconfirmpass =
-                                      !_obscureTextconfirmpass;
-                                });
+                  Container(
+                    height: 60,
+                    margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(),
+                        color: Colors.white),
+                    child: Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Icon(Icons.password)),
+                        Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 250,
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Again Enter your password';
+                                } else if (pass.text != confirmpass.text) {
+                                  return "Password doesn`t match";
+                                }
+                                return null;
                               },
-                            ),
-                            hintStyle: TextStyle()),
-                        style: TextStyle(fontSize: 18),
-                        textInputAction: TextInputAction.done,
-                      ),
+                              keyboardType: TextInputType.text,
+                              controller: confirmpass,
+                              obscureText: _obscureTextconfirmpass,
+                              decoration: InputDecoration(
+                                focusedBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                hintText: 'Confirm your password',
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureTextconfirmpass
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureTextconfirmpass =
+                                          !_obscureTextconfirmpass;
+                                    });
+                                  },
+                                ),
+                              ),
+                            )),
+                      ],
                     ),
                   ),
+
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(top: 20),
                     child: Center(
                       child: SizedBox(
                         width: 300,

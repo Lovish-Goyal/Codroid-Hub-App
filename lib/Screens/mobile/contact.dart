@@ -1,14 +1,10 @@
 import 'dart:io';
-
 import 'package:codroid_hub/Screens/web/contact.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import '../../widgets/appbar.dart';
-import '../../widgets/end_drawer.dart';
 
 class MobContactPage extends ConsumerStatefulWidget {
   const MobContactPage({super.key});
@@ -26,13 +22,14 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 249, 248, 248),
       appBar: AppBar(
         toolbarHeight: 70,
-        backgroundColor: Colors.white,
+        backgroundColor: Color.fromARGB(255, 154, 150, 150),
         title: Text(
           "Contact us",
-          style: TextStyle(color: Colors.black, fontSize: 30),
+          style: TextStyle(
+              color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -41,15 +38,12 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Color.fromARGB(255, 154, 150, 150),
                   borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(60))),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
                   const Text(
                     "Noida,Ambala,Patna,Haryana 133004",
                     style: TextStyle(fontSize: 16, color: Colors.white),
@@ -114,7 +108,11 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               );
                             }
                           },
-                          icon: const Icon(Icons.email, size: 40,color: Colors.white,)),
+                          icon: const Icon(
+                            Icons.email,
+                            size: 40,
+                            color: Colors.white,
+                          )),
                       IconButton(
                           onPressed: () async {
                             var phone = "+919138555661";
@@ -139,7 +137,11 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
                               );
                             }
                           },
-                          icon: const Icon(FontAwesomeIcons.whatsapp, size: 40,color: Colors.white,))
+                          icon: const Icon(
+                            FontAwesomeIcons.whatsapp,
+                            size: 40,
+                            color: Colors.white,
+                          ))
                     ],
                   )
                 ],
@@ -153,7 +155,7 @@ class _MobContactPageState extends ConsumerState<MobContactPage> {
               margin: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(255, 172, 172, 172),
+                color: Color.fromARGB(255, 154, 150, 150),
               ),
               child: Form(
                 key: _formKey,

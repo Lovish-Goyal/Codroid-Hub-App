@@ -73,12 +73,13 @@ class AuthController extends StateNotifier<model.Account?> {
       showSnackBar(context, "login Successfully");
     } else {
       if (!mounted) return;
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return Center(child: Text("Invalid Username or password"));
-          });
-      showSnackBar(context, res.toString());
+      // showDialog(
+      //     context: context,
+      //     builder: (BuildContext context) {
+      //       return Center(child: Text("Invalid Username or password"));
+      //     });
+      showSnackBar(context, "Invalid Username or password");
+      // showSnackBar(context, res.toString());
     }
   }
 

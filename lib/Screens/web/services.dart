@@ -108,7 +108,7 @@ class _ServicesState extends ConsumerState<Services> {
                         md: 12,
                         child: Container(
                           margin: EdgeInsets.only(
-                              right: MediaQuery.of(context).size.width > 950
+                              right: MediaQuery.of(context).size.width > 1000
                                   ? 50
                                   : 0,
                               // top: MediaQuery.of(context).size.width > 1200
@@ -164,26 +164,27 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   ResponsiveGridRow(children: [
-                    ResponsiveGridCol(
-                      xl: 7,
-                      lg: 6,
-                      md: 12,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          "https://miro.medium.com/v2/resize:fit:1080/0*BRwAoKDQMpVtGYMU.jpeg",
-                          height: 400,
-                          fit: BoxFit.fill,
+                    if (MediaQuery.of(context).size.width > 1000)
+                      ResponsiveGridCol(
+                        xl: 7,
+                        lg: 6,
+                        md: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "https://miro.medium.com/v2/resize:fit:1080/0*BRwAoKDQMpVtGYMU.jpeg",
+                            height: 400,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
                     ResponsiveGridCol(
                         xl: 5,
                         lg: 6,
                         md: 12,
                         child: Container(
                           margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width > 950
+                              left: MediaQuery.of(context).size.width > 1000
                                   ? 50
                                   : 0,
                               // top: MediaQuery.of(context).size.width < 1200 ? 50 : 0,
@@ -213,6 +214,20 @@ class _ServicesState extends ConsumerState<Services> {
                             ],
                           ),
                         )),
+                    if (MediaQuery.of(context).size.width < 1000)
+                      ResponsiveGridCol(
+                        xl: 7,
+                        lg: 6,
+                        md: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "https://miro.medium.com/v2/resize:fit:1080/0*BRwAoKDQMpVtGYMU.jpeg",
+                            height: 400,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
                   ])
                 ],
               ),
@@ -230,7 +245,7 @@ class _ServicesState extends ConsumerState<Services> {
                         md: 12,
                         child: Container(
                           margin: EdgeInsets.only(
-                              right: MediaQuery.of(context).size.width > 950
+                              right: MediaQuery.of(context).size.width > 1000
                                   ? 50
                                   : 0,
                               // top: MediaQuery.of(context).size.width > 1200
@@ -286,26 +301,27 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   ResponsiveGridRow(children: [
-                    ResponsiveGridCol(
-                      xl: 7,
-                      lg: 6,
-                      md: 12,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          "https://images.squarespace-cdn.com/content/v1/58d20c79725e25b221549193/1515745250847-5FRYEZ3KFE1F8CHHIV39/cloud-integration-services.jpeg?format=2500w",
-                          height: 400,
-                          fit: BoxFit.fill,
+                    if (MediaQuery.of(context).size.width > 1000)
+                      ResponsiveGridCol(
+                        xl: 7,
+                        lg: 6,
+                        md: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "https://images.squarespace-cdn.com/content/v1/58d20c79725e25b221549193/1515745250847-5FRYEZ3KFE1F8CHHIV39/cloud-integration-services.jpeg?format=2500w",
+                            height: 400,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
                     ResponsiveGridCol(
                         xl: 5,
                         lg: 6,
                         md: 12,
                         child: Container(
                           margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width > 950
+                              left: MediaQuery.of(context).size.width > 1000
                                   ? 50
                                   : 0,
                               // top: MediaQuery.of(context).size.width < 1200 ? 50 : 0,
@@ -335,6 +351,20 @@ class _ServicesState extends ConsumerState<Services> {
                             ],
                           ),
                         )),
+                    if (MediaQuery.of(context).size.width < 1000)
+                      ResponsiveGridCol(
+                        xl: 7,
+                        lg: 6,
+                        md: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "https://images.squarespace-cdn.com/content/v1/58d20c79725e25b221549193/1515745250847-5FRYEZ3KFE1F8CHHIV39/cloud-integration-services.jpeg?format=2500w",
+                            height: 400,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
                   ])
                 ],
               ),
@@ -352,7 +382,7 @@ class _ServicesState extends ConsumerState<Services> {
                         md: 12,
                         child: Container(
                           margin: EdgeInsets.only(
-                              right: MediaQuery.of(context).size.width > 950
+                              right: MediaQuery.of(context).size.width > 1000
                                   ? 50
                                   : 0,
                               // top: MediaQuery.of(context).size.width > 1200
@@ -408,26 +438,27 @@ class _ServicesState extends ConsumerState<Services> {
               child: Column(
                 children: [
                   ResponsiveGridRow(children: [
-                    ResponsiveGridCol(
-                      xl: 7,
-                      lg: 6,
-                      md: 12,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/04/Data-Science-Innovations.jpeg",
-                          height: 400,
-                          fit: BoxFit.fill,
+                    if (MediaQuery.of(context).size.width > 1000)
+                      ResponsiveGridCol(
+                        xl: 7,
+                        lg: 6,
+                        md: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/04/Data-Science-Innovations.jpeg",
+                            height: 400,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
                     ResponsiveGridCol(
                         xl: 5,
                         lg: 6,
                         md: 12,
                         child: Container(
                           margin: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width > 950
+                              left: MediaQuery.of(context).size.width > 1000
                                   ? 50
                                   : 0,
                               // top: MediaQuery.of(context).size.width < 1200 ? 50 : 0,
@@ -457,6 +488,20 @@ class _ServicesState extends ConsumerState<Services> {
                             ],
                           ),
                         )),
+                    if (MediaQuery.of(context).size.width < 1000)
+                      ResponsiveGridCol(
+                        xl: 7,
+                        lg: 6,
+                        md: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "https://cdn.analyticsvidhya.com/wp-content/uploads/2023/04/Data-Science-Innovations.jpeg",
+                            height: 400,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
                   ])
                 ],
               ),
@@ -467,7 +512,7 @@ class _ServicesState extends ConsumerState<Services> {
           ],
         ),
       ),
-       endDrawer:
+      endDrawer:
           MediaQuery.of(context).size.width < 700 ? const EndDrawer() : null,
     );
   }

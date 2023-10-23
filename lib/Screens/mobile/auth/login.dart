@@ -55,133 +55,213 @@ class _MobLoginState extends ConsumerState<MobLogin> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.black45,
-                        borderRadius: BorderRadius.circular(50)),
-                    padding: EdgeInsets.all(20),
-                    margin: EdgeInsets.only(
-                      top: 100,
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 100),
+                      decoration: BoxDecoration(
+                          color: Colors.black45,
+                          borderRadius: BorderRadius.circular(50)),
+                      padding: EdgeInsets.all(20),
+                      child: Text.rich(
+                          TextSpan(style: TextStyle(fontSize: 25), children: [
+                        TextSpan(
+                            text: 'C',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 50)),
+                        TextSpan(
+                            text: 'H',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 50))
+                      ])),
                     ),
-                    child: Text.rich(
-                        TextSpan(style: TextStyle(fontSize: 25), children: [
-                      TextSpan(
-                          text: 'C',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 50)),
-                      TextSpan(
-                          text: 'H',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 50))
-                    ])),
                   ),
-                  // Container(
-                  //     height: 120,
-                  //     decoration: BoxDecoration(
-                  //       borderRadius: BorderRadius.circular(10),
-                  //     ),
-                  //     margin: EdgeInsets.only(top: 80, left: 20),
-                  //     child: Image.asset('assets/images/codroidLogo.jpg')
-                  //     ),
                   Container(
+                    margin: EdgeInsets.all(
+                      20,
+                    ),
+                    child: Text("Welcome back",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35)),
+                  ),
+
+                  Container(
+                    height: 60,
                     margin: EdgeInsets.all(20),
-                    child: Center(
-                      child: Text("Welcome Back",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 35)),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(),
+                        color: Colors.white),
+                    child: Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Icon(Icons.email_outlined)),
+                        Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 250,
+                            child: TextFormField(
+                              controller: email,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your email';
+                                } else if (value.isValidEmail == false) {
+                                  return "Please enter a valid email address";
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  hintText: 'Email'),
+                            )),
+                      ],
                     ),
                   ),
 
                   // Email
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      height: 70,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[500]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: TextFormField(
-                        controller: email,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your email';
-                          } else if (value.isValidEmail == false) {
-                            return "Please enter a valid email address";
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Icon(
-                                  Icons.email,
-                                  size: 25,
-                                )),
-                            hintText: 'Email',
-                            hintStyle: TextStyle(fontSize: 18)),
-                        style: TextStyle(),
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 10),
+                  //   child: Container(
+                  //     margin: EdgeInsets.symmetric(horizontal: 10),
+                  //     height: 70,
+                  //     decoration: BoxDecoration(
+                  //         color: Colors.grey[500]?.withOpacity(0.5),
+                  //         borderRadius: BorderRadius.circular(16)),
+                  //     child: TextFormField(
+                  //       controller: email,
+                  //       validator: (value) {
+                  //         if (value!.isEmpty) {
+                  //           return 'Please enter your email';
+                  //         } else if (value.isValidEmail == false) {
+                  //           return "Please enter a valid email address";
+                  //         }
+                  //         return null;
+                  //       },
+                  //       decoration: InputDecoration(
+                  //           border: InputBorder.none,
+                  //           prefixIcon: Padding(
+                  //               padding: EdgeInsets.symmetric(horizontal: 20),
+                  //               child: Icon(
+                  //                 Icons.email,
+                  //                 size: 25,
+                  //               )),
+                  //           hintText: 'Email',
+                  //           hintStyle: TextStyle(fontSize: 18)),
+                  //       style: TextStyle(),
+                  //       keyboardType: TextInputType.emailAddress,
+                  //       textInputAction: TextInputAction.next,
+                  //     ),
+                  //   ),
+                  // ),
 
                   // Password
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
-                      height: 70,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[500]?.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(16)),
-                      child: TextFormField(
-                        controller: pass,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
-                        keyboardType: TextInputType.text,
-                        obscureText: _obscureText,
-                        decoration: InputDecoration(
-                            border: InputBorder.none,
-                            prefixIcon: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Icon(
-                                  Icons.lock,
-                                  size: 25,
-                                )),
-                            hintText: 'Password',
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureText
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  _obscureText = !_obscureText;
-                                });
+                  Container(
+                    height: 60,
+                    margin: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(),
+                        color: Colors.white),
+                    child: Row(
+                      children: [
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Icon(Icons.password)),
+                        Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            width: 250,
+                            child: TextFormField(
+                              controller: pass,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Please enter your password';
+                                }
+                                return null;
                               },
-                            ),
-                            hintStyle: TextStyle()),
-                        style: TextStyle(fontSize: 18),
-                        textInputAction: TextInputAction.done,
-                      ),
+                              keyboardType: TextInputType.text,
+                              obscureText: _obscureText,
+                              decoration: InputDecoration(
+                                focusedBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                hintText: 'Enter your password',
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureText
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _obscureText = !_obscureText;
+                                    });
+                                  },
+                                ),
+                              ),
+                            )),
+                      ],
                     ),
                   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 10),
+                  //   child: Container(
+                  //     margin: EdgeInsets.symmetric(horizontal: 10),
+                  //     height: 70,
+                  //     decoration: BoxDecoration(
+                  //         color: Colors.grey[500]?.withOpacity(0.5),
+                  //         borderRadius: BorderRadius.circular(16)),
+                  //     child: TextFormField(
+                  //       controller: pass,
+                  //       validator: (value) {
+                  //         if (value!.isEmpty) {
+                  //           return 'Please enter your password';
+                  //         }
+                  //         return null;
+                  //       },
+                  //       keyboardType: TextInputType.text,
+                  //       obscureText: _obscureText,
+                  //       decoration: InputDecoration(
+                  //           border: InputBorder.none,
+                  //           prefixIcon: Padding(
+                  //               padding: EdgeInsets.symmetric(horizontal: 20),
+                  //               child: Icon(
+                  //                 Icons.lock,
+                  //                 size: 25,
+                  //               )),
+                  //           hintText: 'Password',
+                  //           suffixIcon: IconButton(
+                  //             icon: Icon(
+                  //               _obscureText
+                  //                   ? Icons.visibility_off
+                  //                   : Icons.visibility,
+                  //             ),
+                  //             onPressed: () {
+                  //               setState(() {
+                  //                 _obscureText = !_obscureText;
+                  //               });
+                  //             },
+                  //           ),
+                  //           hintStyle: TextStyle()),
+                  //       style: TextStyle(fontSize: 18),
+                  //       textInputAction: TextInputAction.done,
+                  //     ),
+                  //   ),
+                  // ),
                   Container(
                     margin: EdgeInsets.all(10),
                     child: Row(

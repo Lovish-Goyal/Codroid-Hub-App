@@ -6,14 +6,14 @@ import 'package:flutter/foundation.dart';
 class CourseOutlineModel {
   String mainOutline;
   List<String> subOutline;
-  String courseId;
+  String? courseId;
   String? id;
   String? createdAt;
   String? updatedAt;
   CourseOutlineModel({
     required this.mainOutline,
     required this.subOutline,
-    required this.courseId,
+    this.courseId,
     this.id,
     this.createdAt,
     this.updatedAt,

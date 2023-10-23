@@ -223,8 +223,10 @@ class _HomepageState extends State<Homepage> {
                 ResponsiveGridRow(children: [
                   ResponsiveGridCol(
                       xl: 4,
-                      lg: 4,
-                      md: 4,
+                      lg: 6,
+                      md: 12,
+                      sm: 12,
+                      xs: 12,
                       child: const AdditionalFeaturesCard(
                         headingText: "50+",
                         subHeadingText: "Employees from around the World",
@@ -233,8 +235,10 @@ class _HomepageState extends State<Homepage> {
                       )),
                   ResponsiveGridCol(
                       xl: 4,
-                      lg: 4,
-                      md: 4,
+                      lg: 6,
+                      md: 12,
+                      sm: 12,
+                      xs: 12,
                       child: const AdditionalFeaturesCard(
                         headingText: "20+",
                         subHeadingText:
@@ -254,8 +258,10 @@ class _HomepageState extends State<Homepage> {
                   //     )),
                   ResponsiveGridCol(
                       xl: 4,
-                      lg: 4,
-                      md: 4,
+                      lg: 6,
+                      md: 12,
+                      sm: 12,
+                      xs: 12,
                       child: const AdditionalFeaturesCard(
                         headingText: "+2",
                         subHeadingText: "Offices in 2 countries WorldWide",
@@ -329,7 +335,7 @@ class _HomepageState extends State<Homepage> {
                       margin: EdgeInsets.only(top: 50),
                       child: Text(
                         "Our Services",
-                        style: TextStyle(color: Colors.grey[500], fontSize: 50),
+                        style: TextStyle(color: Colors.white, fontSize: 50),
                       )),
                   ResponsiveGridRow(
                     children: [
@@ -373,9 +379,15 @@ class _HomepageState extends State<Homepage> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                ElevatedButton(
-                                    onPressed: () => context.go('/services'),
-                                    child: Text("All Services"))
+                                Center(
+                                  child: SizedBox(
+                                    width: 150,
+                                    child: ElevatedButton(
+                                        onPressed: () =>
+                                            context.go('/services'),
+                                        child: Text("All Services")),
+                                  ),
+                                )
                               ],
                             ),
                           ))

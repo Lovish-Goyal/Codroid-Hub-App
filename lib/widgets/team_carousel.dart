@@ -1,7 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:codroid_hub/modules/members/provider/members_provider.dart';
-import 'package:codroid_hub/utils/loading_page.dart';
-import 'package:codroid_hub/utils/text_length_limiter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,7 +7,7 @@ class CarouselImages extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final membersList = ref.watch(membersListProvider);
+    // final membersList = ref.watch(membersListProvider);
     return CarouselSlider(
       items: [
        Container(

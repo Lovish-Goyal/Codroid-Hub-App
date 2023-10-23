@@ -35,19 +35,20 @@ class _HomeViewState extends ConsumerState<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          toolbarHeight: 70,
-          title: Text.rich(TextSpan(style: TextStyle(fontSize: 25), children: [
-            TextSpan(text: 'Codroid', style: TextStyle(color: Colors.black)),
-            TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
-          ])),
-          actions: [
-            IconButton(
+        toolbarHeight: 70,
+        title: Text.rich(TextSpan(style: TextStyle(fontSize: 25), children: [
+          TextSpan(text: 'Codroid', style: TextStyle(color: Colors.black)),
+          TextSpan(text: 'Hub', style: TextStyle(color: Colors.blue))
+        ])),
+        actions: [
+          IconButton(
               onPressed: () => context.push('/cart'),
-               icon: Icon(Icons.shopping_cart)),
-               SizedBox(
-                width: 20,
-               )
-          ],),
+              icon: Icon(Icons.shopping_cart)),
+          SizedBox(
+            width: 10,
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,10 +153,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
       drawer: const SizedBox(width: 220, child: EndDrawer()),
       floatingActionButton: FloatingActionButton(
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5))),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
         backgroundColor: Colors.green.shade600,
         onPressed: _launchWhatsapp,
-        child: const FaIcon(FontAwesomeIcons.whatsapp),
+        child: const FaIcon(
+          FontAwesomeIcons.whatsapp,
+          color: Colors.white,
+          size: 30,
+        ),
       ),
     );
   }

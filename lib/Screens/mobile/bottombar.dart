@@ -1,8 +1,6 @@
 import 'package:codroid_hub/Screens/mobile/services.dart';
-import 'package:codroid_hub/modules/cart/pages/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'courses.dart';
 import 'homepage.dart';
 import 'profile.dart';
