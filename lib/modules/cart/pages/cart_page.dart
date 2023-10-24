@@ -12,7 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logger/logger.dart';
-import 'package:razorpay_flutter/razorpay_flutter.dart';
+
+import 'package:razorpay_web/razorpay_web.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../auth/pages/login.dart';
